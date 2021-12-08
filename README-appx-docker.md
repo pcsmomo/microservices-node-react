@@ -207,4 +207,11 @@ Ctrl + D (to exit)
 
 > Traditionally most containers have `sh` included, but some have `bash`
 
+### 543. Starting with a Shell
+
+```
+docker run -it busybox sh
+ping google.com
+```
+
 </details>
