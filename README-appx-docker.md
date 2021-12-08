@@ -224,6 +224,12 @@ touch hithere
 ls
 ```
 
-If I run two containers and I create a new file on one, basically they don't share file system.
+> If I run two containers and I create a new file on one, basically they don't share file system.
+
+### 546. Buildkit for Docker Desktop v2.4.0+ and Edge
+
+- [Build images with BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/)
+- [Specifying external cache sources](https://docs.docker.com/engine/reference/commandline/build/#specifying-external-cache-sources)
+- [Advanced Dockerfiles: Faster Builds and Smaller Images Using BuildKit and Multistage Builds](https://www.docker.com/blog/advanced-dockerfiles-faster-builds-and-smaller-images-using-buildkit-and-multistage-builds/)
 
 </details>
