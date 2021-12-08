@@ -232,4 +232,12 @@ ls
 - [Specifying external cache sources](https://docs.docker.com/engine/reference/commandline/build/#specifying-external-cache-sources)
 - [Advanced Dockerfiles: Faster Builds and Smaller Images Using BuildKit and Multistage Builds](https://www.docker.com/blog/advanced-dockerfiles-faster-builds-and-smaller-images-using-buildkit-and-multistage-builds/)
 
+### 547. Building a Dockerfile
+
+```sh
+# 24-docker/01-redis-image
+docker build .
+docker run 62d17fb20f2136049f12adbefc57552b347a96849cd918d4e7b78ec9bfcca00d
+```
+
 </details>

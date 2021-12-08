@@ -4,6 +4,9 @@ Microservices with Node JS and React by Stephen Grider
 
 ## Folder structure
 
+- 24-folder
+  - 01-redis-image: start from lecture "547. Building a Dockerfile"
+
 # Details
 
 [README-Appendix-Docker](./README-appx-docker.md)
