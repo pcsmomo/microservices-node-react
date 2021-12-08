@@ -117,4 +117,32 @@ docker logs 5307aeeb3432
 # hi there
 ```
 
+### 538. Stopping Containers
+
+```sh
+docker create busybox ping google.com
+# 0547fcddf48255831fc4695fba2c49426237b229746edb94fb4c7620ef186bcf
+docker start 0547fcddf48255831fc4695fba2c49426237b229746edb94fb4c7620ef186bcf
+docker logs 0547fcddf48255831fc4695fba2c49426237b229746edb94fb4c7620ef186bcf
+docker ps
+```
+
+- Stop a Container: `docker stop <container id>`
+  - stop -> `SIGTERM` -> give a little bit of time to shut it down and clean up
+  - The SIGTERM signal is a generic signal used to cause program termination. Unlike SIGKILL, this signal can be blocked, handled, and ignored. It is the normal way to politely ask a program to terminate.
+  - with `docker stop` command, if the container is not automatically stopped _in 10 seconds_, `docker kill` will be executed.
+- Kill a Container: `docker kill <container id>`
+  - kill -> `SIGKILL` -> shutdown immediately
+  - The SIGKILL signal is used to cause immediate program termination. It cannot be handled or ignored, and is therefore always fatal. It is also not possible to block this signal.
+
+[Termination Signals (The GNU C Library)](https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html)
+
+```sh
+docker stop 0547fcddf482
+# ping command doesn't really react to stop(SIGTERM) command
+# so kill will be executed
+docker start 0547fcddf482
+docker kill 0547fcddf482
+```
+
 </details>
