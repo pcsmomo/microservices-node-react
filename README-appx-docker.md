@@ -214,4 +214,16 @@ docker run -it busybox sh
 ping google.com
 ```
 
+### 544. Container Isolation
+
+```sh
+docker run -it busybox sh
+# In a new tab
+docker run -it busybox sh
+touch hithere
+ls
+```
+
+If I run two containers and I create a new file on one, basically they don't share file system.
+
 </details>
