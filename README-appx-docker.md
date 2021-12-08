@@ -52,4 +52,23 @@ docker run busybox ls bin
 why `busybox`, not `hello-world`?\
 -> hello-world doesn't contain all of them, but only one single file for hello-world
 
+### 533. Listing Running Containers : docker ps
+
+```sh
+docker ps
+docker run busybox ping google.com
+docker ps
+docker ps --all
+```
+
+### 534. Container Lifecycle
+
+`docker run` = `docker create` + `docker start`
+
+```sh
+docker create hello-world
+# 345e9a72706489ad455541d2d2c55991d28f85b63233a847dee307fec4e3a9be
+docker start -a 345e9a72706489ad455541d2d2c55991d28f85b63233a847dee307fec4e3a9be
+```
+
 </details>
