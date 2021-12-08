@@ -3,7 +3,9 @@
 <details open> 
   <summary>Click to Contract/Expend</summary>
 
-## Section 24 - [Appendix A] - Basics of Docker
+# [Appendix A] - Basics of Docker
+
+## Section 1: Dive Into Docker!
 
 ### 520. What is Docker?
 
@@ -34,6 +36,8 @@ namespacing and cgroups belong to linux system
 
 Docker Server is based on linux virtual machine\
 So it would have several containers and they communicate via Linux Kernel
+
+## Section 2: Manipulating Containers with the Docker Client
 
 ### 531. Docker Run in Detail
 
@@ -93,6 +97,24 @@ docker system prune
 #   - all dangling build cache
 
 docker container prune
+```
+
+### 537. Retrieving Output Logs
+
+```sh
+docker create busybox echo hi there
+# 5307aeeb3432e854ed7eb2a6884e4336cb71bea8be64e50076f8870beb7c5e35
+docker ps -a
+# | CONTAINER ID |  IMAGE  |     COMMAND     |    CREATED     | STATUS  | PORTS |     NAMES     |
+# | :----------: | :-----: | :-------------: | :------------: | :-----: | :---: | :-----------: |
+# | 5307aeeb3432 | busybox | "echo hi there" | 28 seconds ago | Created |       | peaceful_benz |
+docker start 5307aeeb3432e854ed7eb2a6884e4336cb71bea8be64e50076f8870beb7c5e35
+docker container ls -a
+# | CONTAINER ID |  IMAGE  |     COMMAND     |    CREATED     |          STATUS          | PORTS |     NAMES     |
+# | :----------: | :-----: | :-------------: | :------------: | :----------------------: | :---: | :-----------: |
+# | 5307aeeb3432 | busybox | "echo hi there" | 53 seconds ago | Exited (0) 2 seconds ago |       | peaceful_benz |
+docker logs 5307aeeb3432
+# hi there
 ```
 
 </details>
