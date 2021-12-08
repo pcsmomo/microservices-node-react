@@ -145,4 +145,19 @@ docker start 0547fcddf482
 docker kill 0547fcddf482
 ```
 
+### 539. Multi-Command Containers
+
+```sh
+# already installed redis via brew
+redis-server
+redis-cli
+set mynumber 5
+get mynumber
+# 5
+```
+
+```sh
+docker run redis
+```
+
 </details>
