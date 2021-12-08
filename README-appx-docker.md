@@ -82,4 +82,17 @@ docker start -a 71e182459e15
 docker start -a stoic_meninsky
 ```
 
+### 536. Removing Stopped Containers
+
+```sh
+docker system prune
+# WARNING! This will remove:
+#   - all stopped containers
+#   - all networks not used by at least one container
+#   - all dangling images
+#   - all dangling build cache
+
+docker container prune
+```
+
 </details>
