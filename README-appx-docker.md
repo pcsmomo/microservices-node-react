@@ -71,4 +71,15 @@ docker create hello-world
 docker start -a 345e9a72706489ad455541d2d2c55991d28f85b63233a847dee307fec4e3a9be
 ```
 
+### 535. Restarting Stopped Containers
+
+```sh
+docker ps -a
+# | CONTAINER ID |  IMAGE  | COMMAND  |    CREATED     |          STATUS           |     PORTS      | NAMES |
+# | :----------: | :-----: | :------: | :------------: | :-----------------------: | :------------: | :---: |
+# | 71e182459e15 | busybox | "ls bin" | 13 minutes ago | Exited (0) 33 seconds ago | stoic_meninsky |       |
+docker start -a 71e182459e15
+docker start -a stoic_meninsky
+```
+
 </details>
