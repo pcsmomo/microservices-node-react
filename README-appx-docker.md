@@ -160,4 +160,28 @@ get mynumber
 docker run redis
 ```
 
+### 540. Executing Commands in Running Containers
+
+```sh
+docker exec -it <container id> <command>
+docker run redis
+docker ps
+docker exec -it 73b7e60d4626 redis-cli
+# [127.0.0.1:6379>
+```
+
+### 541. The Purpose of the 'it' Flag
+
+- STDIN
+- STDOUT
+- STDERR
+
+```sh
+-i, --interactive          Keep STDIN open even if not attached
+    --privileged           Give extended privileges to the command
+-t, --tty                  Allocate a pseudo-TTY
+docker exec -i 73b7e60d4626 redis-cli
+# it's attached but it doens't have pretty/helping terminal support
+```
+
 </details>
