@@ -15,4 +15,11 @@
 - Docker Hub
 - Docker Compose
 
+### 528. Using the Docker Client
+
+```sh
+docker version
+docker run hello-world
+```
+
 </details>
