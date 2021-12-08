@@ -184,4 +184,27 @@ docker exec -i 73b7e60d4626 redis-cli
 # it's attached but it doens't have pretty/helping terminal support
 ```
 
+### 542. Getting a Command Prompt in a Container
+
+```sh
+docker exec -it 73b7e60d4626 sh
+cd /
+ls
+# bin  boot  data  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+echo hi there
+# hi there
+export b=5
+echo $b
+redis-cli
+# [127.0.0.1:6379>
+Ctrl + D (to exit)
+```
+
+- bash
+- powershell
+- zsh
+- sh
+
+> Traditionally most containers have `sh` included, but some have `bash`
+
 </details>
