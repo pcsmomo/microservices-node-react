@@ -41,4 +41,15 @@ So it would have several containers and they communicate via Linux Kernel
 docker run hello-world
 ```
 
+### 532. Overriding Default Commands
+
+```sh
+docker run busybox echo hi there
+docker run busybox ls
+docker run busybox ls bin
+```
+
+why `busybox`, not `hello-world`?\
+-> hello-world doesn't contain all of them, but only one single file for hello-world
+
 </details>
