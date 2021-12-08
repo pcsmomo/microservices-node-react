@@ -66,4 +66,20 @@ Just like the database-per-service pattern, async communication is going to seem
   - Data duplication (but it won't cost too much)
   - Harder to understand
 
+### 548. Dockerfile Teardown
+
+```sh
+# Use an existing docker image as a base
+FROM alpine
+
+# Download and install a dependency
+RUN apk add --update redis
+
+# Tell the image what to do when it starts as a container
+CMD ["redis-server"]
+```
+
+- alpine: A minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size
+- apk: Alpine Linux package manager
+
 </details>
