@@ -1,5 +1,6 @@
 # Specify a base image
-FROM alpine
+# alpine : small and compact version
+FROM node:alpine
 
 # Install some dependencies
 RUN npm Install

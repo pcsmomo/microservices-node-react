@@ -418,7 +418,17 @@ touch package.json
 
 ```sh
 docker build .
-# Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+# /bin/sh: npm: not found
+```
+
+### 560. Base Imagee Issues
+
+- `node:alpine`
+  - alpine : small and compact version
+
+```sh
+docker build .
+# Unknown command: "Install"
 ```
 
 </details>
