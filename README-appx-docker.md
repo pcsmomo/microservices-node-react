@@ -428,7 +428,18 @@ docker build .
 
 ```sh
 docker build .
-# Unknown command: "Install"
+# npm ERR! Tracker "idealTree" already exists
+```
+
+### 562. Copying Build Files
+
+copy source dest
+
+`copy ./ ./`
+
+```sh
+docker build -t pcsmomo/simpleweb .
+# This site can’t be reached
 ```
 
 </details>

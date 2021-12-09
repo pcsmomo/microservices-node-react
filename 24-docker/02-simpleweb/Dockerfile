@@ -2,8 +2,12 @@
 # alpine : small and compact version
 FROM node:alpine
 
+WORKDIR /usr/app
+
+COPY ./ ./
+
 # Install some dependencies
-RUN npm Install
+RUN npm install
 
 # Default command
 CMD ["npm", "start"]
