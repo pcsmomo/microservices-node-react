@@ -468,4 +468,13 @@ docker ps
 docker exec -it 81f2ed1aebd7 sh
 ```
 
+### 567. Minimizing Cache Busting and Rebuilds
+
+```sh
+# Install some dependencies
+COPY ./package.json ./
+RUN npm install
+COPY ./ ./
+```
+
 </details>
