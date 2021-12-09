@@ -414,4 +414,11 @@ cd 02-simpleweb
 touch package.json
 ```
 
+### 558. A Few Planned Errors
+
+```sh
+docker build .
+# Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+```
+
 </details>
