@@ -451,4 +451,21 @@ docker run -p 8080:8080 pcsmomo/simpleweb
 docker run -p 5000:8080 pcsmomo/simpleweb
 ```
 
+### 565. Specifying a Working Directory
+
+- `WORKDIR /usr/app`
+  - if not specifying this, it will do all the instructions such as copy/install on the 'root' directory
+
+```sh
+# working on shell when running
+docker run -it pcsmomo/simpleweb sh
+```
+
+```sh
+# "exec", working on shell if the app is running
+docker run -p 8080:8080 pcsmomo/simpleweb
+docker ps
+docker exec -it 81f2ed1aebd7 sh
+```
+
 </details>
