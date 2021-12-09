@@ -226,6 +226,8 @@ ls
 
 > If I run two containers and I create a new file on one, basically they don't share file system.
 
+## Section 3: Building Custom Images Through Docker Server
+
 ### 546. Buildkit for Docker Desktop v2.4.0+ and Edge
 
 - [Build images with BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/)
@@ -401,5 +403,15 @@ docker run c01e6d5982bc3
 ```
 
 > we don't have to copy all the full sha256 strings. Just unique enough is fine
+
+## Section 4: Making Real Projects with Docker
+
+### 557. Node Server Setup
+
+```sh
+mkdir 02-simpleweb
+cd 02-simpleweb
+touch package.json
+```
 
 </details>
