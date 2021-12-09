@@ -195,4 +195,18 @@ RUN apk add --update redis
 
 > if the series of order changes, we cannot use cache and it will build all again
 
+### 553. Tagging an Image
+
+`docker build -t pcsmomo/redis:latest .`
+
+- `pcsmomo/redis:latest`
+  - pcsmomo: my docker id
+  - redis: repo/project name
+  - latest: version
+
+```sh
+docker build -t pcsmomo/redis:latest .
+docker run pcsmomo/redis
+```
+
 </details>
