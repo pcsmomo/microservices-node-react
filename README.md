@@ -145,4 +145,54 @@ Successfully built bc5303779113
   3. Remove the temporary container
   4. Create a new image based on the result
 
+### 552. Rebuilds with Cache
+
+```
+RUN apk add --update gcc
+```
+
+```sh
+noah@Noahs-MacBook-Pro 01-redis-image % docker build .
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM alpine
+ ---> c059bfaa849c
+Step 2/4 : RUN apk add --update redis
+ ---> Using cache
+ ---> 505677ae7f28
+Step 3/4 : RUN apk add --update gcc
+ ---> Running in 4063e9253202
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.15/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.15/community/x86_64/APKINDEX.tar.gz
+(1/11) Installing libgcc (10.3.1_git20211027-r0)
+(2/11) Installing libstdc++ (10.3.1_git20211027-r0)
+(3/11) Installing binutils (2.37-r3)
+(4/11) Installing libgomp (10.3.1_git20211027-r0)
+(5/11) Installing libatomic (10.3.1_git20211027-r0)
+(6/11) Installing libgphobos (10.3.1_git20211027-r0)
+(7/11) Installing gmp (6.2.1-r0)
+(8/11) Installing isl22 (0.22-r0)
+(9/11) Installing mpfr4 (4.1.0-r0)
+(10/11) Installing mpc1 (1.2.1-r0)
+(11/11) Installing gcc (10.3.1_git20211027-r0)
+Executing busybox-1.34.1-r3.trigger
+OK: 118 MiB in 26 packages
+Removing intermediate container 4063e9253202
+ ---> 83fc43ba34a6
+Step 4/4 : CMD ["redis-server"]
+ ---> Running in e36ad7baea5f
+Removing intermediate container e36ad7baea5f
+ ---> 44f7d19aff95
+Successfully built 44f7d19aff95
+```
+
+```
+RUN apk add --update redis
+RUN apk add --update gcc
+⬇️
+RUN apk add --update gcc
+RUN apk add --update redis
+```
+
+> if the series of order changes, we cannot use cache and it will build all again
+
 </details>
