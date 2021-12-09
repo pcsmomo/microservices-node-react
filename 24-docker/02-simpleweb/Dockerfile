@@ -4,9 +4,8 @@ FROM node:alpine
 
 WORKDIR /usr/app
 
-COPY ./ ./
-
 # Install some dependencies
+COPY ./ ./
 RUN npm install
 
 # Default command

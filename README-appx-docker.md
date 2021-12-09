@@ -433,13 +433,22 @@ docker build .
 
 ### 562. Copying Build Files
 
-copy source dest
+copy source dest (source: my side side first)
 
 `copy ./ ./`
 
 ```sh
 docker build -t pcsmomo/simpleweb .
-# This site can’t be reached
+docker run pcsmomo/simpleweb
+# navigate localhost:8080 -> This site can’t be reached
+```
+
+### 564. Container Port Forwarding
+
+```sh
+docker run -p 8080:8080 pcsmomo/simpleweb
+# 8080:8080, first my side:container side later
+docker run -p 5000:8080 pcsmomo/simpleweb
 ```
 
 </details>
