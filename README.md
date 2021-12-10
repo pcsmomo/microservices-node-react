@@ -140,4 +140,14 @@ const id = randomBytes(4).toString('hex');
 npm install --save axios
 ```
 
+```json
+// settings.json
+// Enabling to use emmet in JSX
+{
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}
+```
+
 </details>
