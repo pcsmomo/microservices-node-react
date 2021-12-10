@@ -1,8 +1,11 @@
 const express = require('express');
 const { randomBytes } = require('crypto');
+const cors = require('cors');
 
+// middlewares
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const commentsByPostId = {};
 
