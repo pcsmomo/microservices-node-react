@@ -133,4 +133,11 @@ const id = randomBytes(4).toString('hex');
   - GET / localhost:4000/posts
   - Headers: Content-Type: application/json
 
+### 20. React Project Setup
+
+```sh
+# blog/client
+npm install --save axios
+```
+
 </details>
