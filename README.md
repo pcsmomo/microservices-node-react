@@ -6,7 +6,7 @@ Microservices with Node JS and React by Stephen Grider
 
 - 02-mini-microservices-app
   - blog
-    - client
+    - client: create-react-app
     - posts
     - comments
 - 03-with-docker
@@ -111,6 +111,15 @@ mkdir comments
 cd comments
 npm init -y
 npm install --save express cors axios nodemon
+```
+
+### 14. Posts Service Creation
+
+```js
+// blog/posts/index.js
+// generate simple id
+const { randomBytes } = require('crypto');
+const id = randomBytes(4).toString('hex');
 ```
 
 </details>
