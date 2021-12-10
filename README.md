@@ -4,8 +4,35 @@ Microservices with Node JS and React by Stephen Grider
 
 ## Folder structure
 
-- 24-folder
+- 02-mini-microservices-app
+  - blog
+    - client
+    - posts
+    - comments
+- 03-with-docker
+- 04-with-dubernetes
+- 05-architecture-multi-service-app
+- 06-cloud
+- 07-normalization
+- 08-database-modeling
+- 09-authentication
+- 10-testing
+- 11-SSR-nextjs
+- 12-code-sharing-reuse
+- 13-CRUD-server-setup
+- 14-NATS-streaming-server
+- 15-connecting-NATS
+- 16-NATS-client
+- 17-cross-service-data-replication
+- 18-event-flow
+- 19-listener-concurrency
+- 20-worker-services
+- 21-payment
+- 22-back-to-client
+- 23-cicd
+- 24-docker
   - 01-redis-image: start from lecture "547. Building a Dockerfile"
+  - 02-simpleweb: "556. Project Outline"
 
 # Details
 
@@ -65,5 +92,25 @@ Just like the database-per-service pattern, async communication is going to seem
 - Cons
   - Data duplication (but it won't cost too much)
   - Harder to understand
+
+## Section 2 - A Mini-Microservices App
+
+### 13. Project Setup
+
+```sh
+mkdir blog
+cd blog
+npx create-react-app client
+# ./blog/
+mkdir posts
+cd posts
+npm init -y
+npm install --save express cors axios nodemon
+# ./blog/
+mkdir comments
+cd comments
+npm init -y
+npm install --save express cors axios nodemon
+```
 
 </details>
