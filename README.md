@@ -122,4 +122,15 @@ const { randomBytes } = require('crypto');
 const id = randomBytes(4).toString('hex');
 ```
 
+### 15. Testing the Posts Service
+
+- Postman POST test
+  - POST / localhost:4000/posts
+  - Headers: Content-Type: application/json
+  - Body: raw / JSON
+    - `{ "title": "First Post" }`
+- Postman GET test
+  - GET / localhost:4000/posts
+  - Headers: Content-Type: application/json
+
 </details>
