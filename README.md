@@ -9,6 +9,7 @@ Microservices with Node JS and React by Stephen Grider
     - client: create-react-app
     - posts
     - comments
+    - event-bus
 - 03-with-docker
 - 04-with-dubernetes
 - 05-architecture-multi-service-app
