@@ -174,4 +174,26 @@ How to solve it with microservices?
   - Data duplication (but it won't cost too much)
   - Harder to understand
 
+### 30. Event Bus Overview
+
+- Many different implementations.
+  - RabbitMQ
+  - Kafka
+  - MATS
+  - ZeroMQ
+- Receives events, publishes them to listeners
+- Many different subtle features that make async communication way easier or way harder
+- We are going to build our own event bus using Express. It will not implement the vast majority of features a normal bus has
+- Yes, for our next app we will use a production grade, open source event bus
+
+### 30. Event Bus Overview
+
+```sh
+# /blog
+mkdir event-bus
+cd event-bus
+npm init -y
+npm install --save express axios nodemon
+```
+
 </details>
