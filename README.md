@@ -250,4 +250,14 @@ and it has more Services and they have to handle these comment status above?
    - Comment -> Event bus -> Moderation -> Event bus -> Comment -> Event bus -> Query Service -> GUI
    - Comment will have default status { status: 'pending' } so, if Moderation takes long time, it is okay
 
+### 44. Adding Comment Moderation
+
+```sh
+# /blog
+mkdir moderation
+cd moderation
+npm init -y
+npm install --save express axios nodemon
+```
+
 </details>
