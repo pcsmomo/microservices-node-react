@@ -150,4 +150,28 @@ npm install --save axios
 }
 ```
 
+### 27. Request Minimization Strategies
+
+> The problem so far, is that the front server is requesting too many http requests\
+> to get posts and comments
+
+It would not be a problem with a monoliths service!
+
+How to solve it with microservices?
+
+1. Solution #1 - Sync communication
+   - when get posts - take the whole bunch of data including comments
+2. Solution #2 - Async communication
+   - using _Event Broker_ (Event bus?)
+   - and using a new service: Query service
+
+### 28. An Async Solution
+
+- Pros
+  - Query Service has zaro dependencies on other services.
+  - Query Service will be extremely fast.
+- Cons
+  - Data duplication (but it won't cost too much)
+  - Harder to understand
+
 </details>
