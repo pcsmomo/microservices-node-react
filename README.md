@@ -197,4 +197,14 @@ npm init -y
 npm install --save express axios nodemon
 ```
 
+### 36. Creating the Data Query Service
+
+```sh
+# /blog
+mkdir query
+cd query
+npm init -y
+npm install --save express cors nodemon
+```
+
 </details>
