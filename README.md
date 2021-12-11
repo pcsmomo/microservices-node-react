@@ -207,4 +207,9 @@ npm init -y
 npm install --save express cors nodemon
 ```
 
+### 38. Using the Query Service
+
+> Now, if post server or comment server is down\
+> we still get all data from query server
+
 </details>
