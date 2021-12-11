@@ -222,4 +222,25 @@ Adding a new feature : Moderation service (if it contains 'Orange')
    - Chain. Comment -> Event bus -> Moderation -> Event bus -> Query Service -> GUI
    - What if the Moderation Service takes very long time to process?
 
+### 41. A Second Approach
+
+2. Option #2 - Moderation updates at both comments and query services
+   - Query service instantly create { status: 'pending' } while moderation is processing
+
+But what if the comment has various options including complex business logic
+
+- type: CommentModerated - comment.status = 'approved'
+- type: CommentUpvoted - comment.votes += 1
+- type: CommentDownvoted - comment.votes -= 1
+- type: CommentPromoted - comment.promoted = true
+- type: CommentAnonymized - comment.userId = null
+- type: CommentSearchable - comment.searchable = true
+- type: CommentAdvertised - comment.advertised = true
+
+and it has more Services and they have to handle these comment status above?
+
+- Query Service
+- Weekly Update Service
+- Recommendation Service
+
 </details>
