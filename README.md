@@ -243,4 +243,11 @@ and it has more Services and they have to handle these comment status above?
 - Weekly Update Service
 - Recommendation Service
 
+### 42. How to Handle Resource Updates
+
+3. Option #3 - Query Service only listens for 'update' events
+   - Comments Service will handle all complex logic and send 'CommentUpdated' to Query Service
+   - Comment -> Event bus -> Moderation -> Event bus -> Comment -> Event bus -> Query Service -> GUI
+   - Comment will have default status { status: 'pending' } so, if Moderation takes long time, it is okay
+
 </details>
