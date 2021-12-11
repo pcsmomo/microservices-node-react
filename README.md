@@ -212,4 +212,14 @@ npm install --save express cors nodemon
 > Now, if post server or comment server is down\
 > we still get all data from query server
 
+### 40. Issues with Comment Filtering
+
+Adding a new feature : Moderation service (if it contains 'Orange')
+
+- status : pending | approved | rejected
+
+1. Option #1 - Moderation communicates event creation to query service
+   - Chain. Comment -> Event bus -> Moderation -> Event bus -> Query Service -> GUI
+   - What if the Moderation Service takes very long time to process?
+
 </details>
