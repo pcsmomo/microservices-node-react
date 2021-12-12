@@ -278,4 +278,13 @@ npm install --save express axios nodemon
 Even when moderation service is down, the system is not clashed.\
 But when moderation service is up, the status is still 'pending' and it's a bit unsynched situation
 
+### 50. Dealing with Missing Events
+
+1. Option #1 - Sync Requests
+   - Downside: should implement expected behaviour in Query, Posts and Comments
+2. Option #2 - Direct DB Access
+   - Downside: should implement in Query Service with interfaces for different DBs
+3. \*Option #3 - Store Events
+   - in Event Bus
+
 </details>
