@@ -265,5 +265,6 @@ npm install --save express axios nodemon
 1. Comment Service
 2. Query Service
 3. Moderation Service
+4. Event Bus
 
 </details>
