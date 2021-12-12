@@ -10,7 +10,10 @@ Microservices with Node JS and React by Stephen Grider
     - posts
     - comments
     - event-bus
+    - query
+    - moderation
 - 03-with-docker
+  - blog : copied from the previous section
 - 04-with-dubernetes
 - 05-architecture-multi-service-app
 - 06-cloud
@@ -295,5 +298,19 @@ npm install --save axios
 ```
 
 > Holy moly... This is neat!
+
+## Section 3 - Running Services with Docker
+
+### 54. Deployment Issues
+
+Since deploying to a cloud service,
+
+1. Scenario #1. Comments Service is over heated, so it needs scaling up.
+   - adding two more Comemnts Services
+   - two more endpoints need to be handled
+2. Scenario #2. If additional Comments Services are built in the second virtual machine
+3. Scenario #3. When not busy time, we want to shut down additional Comments Services to save money and resource.
+
+> Docker and Kubernetes can be good solutions!!
 
 </details>
