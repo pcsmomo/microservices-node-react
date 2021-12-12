@@ -273,4 +273,9 @@ npm install --save express axios nodemon
 9. Event Bus - broadcast
 10. Query Service - receive { type: 'CommentUpdated' }
 
+### 49. Rendering Comments by Status
+
+Even when moderation service is down, the system is not clashed.\
+But when moderation service is up, the status is still 'pending' and it's a bit unsynched situation
+
 </details>
