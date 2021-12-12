@@ -260,11 +260,13 @@ npm init -y
 npm install --save express axios nodemon
 ```
 
-### 44. Adding Comment Moderation
+### 44. Adding Comment Moderation to
 
-1. Comment Service
-2. Query Service
-3. Moderation Service
+1. Comment Service - {status: 'pending' }
+2. Query Service - {status: 'pending' }
+3. Moderation Service - { type: 'CommentModerated' }
 4. Event Bus
+5. Comment Service - { type: 'CommentModerated' }
+6. Comment Service - { type: 'CommentUpdated' }
 
 </details>
