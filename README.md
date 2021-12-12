@@ -287,4 +287,13 @@ But when moderation service is up, the status is still 'pending' and it's a bit 
 3. \*Option #3 - Store Events
    - in Event Bus
 
+### 53. Event Syncing in Action
+
+```sh
+# blog/query
+npm install --save axios
+```
+
+> Holy moly... This is neat!
+
 </details>
