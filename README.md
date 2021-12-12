@@ -341,4 +341,19 @@ docker exec -it [container id] [cmd]
 docker logs [container id]
 ```
 
+### 61. Important Note Regarding Node v17
+
+Currently, there is a critical bug in many libraries such as Webpack and Create React App caused by the release of Node v17.
+
+- [react-scripts fails to build project with Node 17 #11562](https://github.com/facebook/create-react-app/issues/11562)
+- [nodejs 17: digital envelope routines::unsupported #14532](https://github.com/webpack/webpack/issues/14532)
+
+## Section 4 - Orchestrating Collections of Services with Kubernetes
+
+### 63. Installing Kubernetes
+
+Click Docker Icon on the tray -> Preferences -> Kubernetes -> Enable Kubernetes
+
+Currently Kubernetes v1.21.3
+
 </details>
