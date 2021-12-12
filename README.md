@@ -328,4 +328,17 @@ docker build .
 docker run 7058e1a2c1691c63ded015c9a13731d9e2690b8b70cc
 ```
 
+### 60. Review Some Basic Commands
+
+```sh
+docker build -t pcsmomo/posts .
+docker run [image id or image tag]
+docker -it [image id or image tag] [cmd]
+# docker run -it pcsmomo/posts sh
+docker ps
+docker exec -it [container id] [cmd]
+# docker exec -it pcsmomo/posts sh
+docker logs [container id]
+```
+
 </details>
