@@ -313,4 +313,19 @@ Since deploying to a cloud service,
 
 > Docker and Kubernetes can be good solutions!!
 
+### 56. Why Kubernetes?
+
+- Cluster
+  - Mater: Program to manage everything in the cluster
+  - Node: Virtual machine
+
+### 59. Dockerizing the Posts Service
+
+```sh
+# blog/posts
+docker build .
+# => => writing image sha256:7058e1a2c1691c63ded015c9a13731d9e2690b8b70cc  0.0s
+docker run 7058e1a2c1691c63ded015c9a13731d9e2690b8b70cc
+```
+
 </details>
