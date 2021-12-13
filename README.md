@@ -89,7 +89,6 @@ kubectl version
 At first it shows `Unable to connect to the server`.\
 It will be solved after `minikube start --vm=true` as it will install the server and change the config
 
-
 ```sh
 kubectl config view
 
@@ -106,8 +105,8 @@ minikube start --vm=true
 #     > docker-machine-driver-hyper...: 10.52 MiB / 10.52 MiB  100.00% 4.60 MiB p
 # 🔑  The 'hyperkit' driver requires elevated permissions. The following commands will be executed:
 
-#     $ sudo chown root:wheel /Users/noah/.minikube/bin/docker-machine-driver-hyperkit 
-#     $ sudo chmod u+s /Users/noah/.minikube/bin/docker-machine-driver-hyperkit 
+#     $ sudo chown root:wheel /Users/noah/.minikube/bin/docker-machine-driver-hyperkit
+#     $ sudo chmod u+s /Users/noah/.minikube/bin/docker-machine-driver-hyperkit
 
 
 # Password:
@@ -139,5 +138,10 @@ minikube start --vm=true
 - Pod: More or less a running container. Technically, a pod can run multiple containers (we won't do this)
 - Deployment: Monitors a set of pods, make sure they are running and restarts them if they crash
 - Service: Provides **an easy-to-remember URL** to access a running container
+
+### 67. Notes on Config Files
+
+> Do not create Objects without _config_ files. Config files provide a precise definition of what your cluster is running.\
+> Kubernetes docs will tell you to run direct commands to create objects - only do this for testing purposes
 
 </details>
