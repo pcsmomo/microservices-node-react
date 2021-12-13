@@ -130,5 +130,14 @@ minikube start --vm=true
   - Service
     - Node
       - Pod (= Container)
+      - Pod and Container are technically different, but we will use one to one mapping
+
+### 66. Important Kubernetes Terminology
+
+- Kubernetes Cluster : A collections of nodes + a master to manage them
+- Node: A Virtual machine that will run our containers
+- Pod: More or less a running container. Technically, a pod can run multiple containers (we won't do this)
+- Deployment: Monitors a set of pods, make sure they are running and restarts them if they crash
+- Service: Provides **an easy-to-remember URL** to access a running container
 
 </details>
