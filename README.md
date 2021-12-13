@@ -239,4 +239,17 @@ ls
 kubectl logs posts
 ```
 
+### 73. Introducing Deployments
+
+When we run 3 posts pods,
+
+1. if one Pod is down, deployment manages to keep 3 pods runnning.
+2. when new version is deployed, deployment running 3 new version pods first and then kill 3 old version pods
+
+### 74. Creating a Deployment
+
+```sh
+kubectl apply -f posts-depl.yaml
+```
+
 </details>
