@@ -15,6 +15,9 @@ Microservices with Node JS and React by Stephen Grider
 - 03-with-docker
   - blog : copied from the previous section
 - 04-with-dubernetes
+  - blog
+    - infra
+      - k8s: kubernetes
 - 05-architecture-multi-service-app
 - 06-cloud
 - 07-normalization
@@ -143,5 +146,22 @@ minikube start --vm=true
 
 > Do not create Objects without _config_ files. Config files provide a precise definition of what your cluster is running.\
 > Kubernetes docs will tell you to run direct commands to create objects - only do this for testing purposes
+
+### 68. Creating a Pod
+
+```sh
+# blog/posts
+docker build -t pcsmomo/posts:0.0.1 .
+```
+
+```sh
+# blog/infra/k8s
+kubectl apply -f posts.yaml
+# pod/posts created
+kubectl get pods
+# | NAME  | READY |      STATUS      | RESTARTS | AGE |
+# | :---: | :---: | :--------------: | :------: | :-: |
+# | posts |  0/1  | ImagePullBackOff |    0     | 35s |
+```
 
 </details>
