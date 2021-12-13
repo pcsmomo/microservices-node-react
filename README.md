@@ -287,7 +287,7 @@ Updating the image used by a deployment
 
 ### 77. Preferred Method for Updating Deployments
 
-2. Method #2 - using docker hub
+2. \*Method #2 - using docker hub
    1. 'blog/infra/k8s': using 'latest' or remove tag in the pod spec section
    2. 'blog/posts': update index.js code
    3. 'blog/posts': rebuild: `docker build -t pcsmomo/posts:0.0.2 .`
@@ -305,5 +305,20 @@ kubectl get pods
 # posts-depl-76c9d74774-sp788   0/1     Terminating   0          6m47s
 kubectl logs posts-depl-6989986b47-7rrf9
 ```
+
+### 78. Networking With Services
+
+- \*Cluster IP
+  - Set up easy-to-remember URL to access a pod.
+  - Only exposes pods in the cluster
+- Node Port
+  - Makes a pod accessible from outside the cluster.
+  - Usually only used for _dev_ purposes.
+- \*Load Balancer
+  - Makes a pod accessible from outside the cluster.
+  - This is the right way to expose a pod to the outside world
+- External Name
+  - Redirects an in-cluster request to a CNAME url...
+  - don't worry about this one
 
 </details>
