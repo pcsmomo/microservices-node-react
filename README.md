@@ -221,4 +221,22 @@ spec:
 if we don't specify the tag, it will try to reach docker hub to find the image:latest \
 and in our case, we will get an error as we didn't push our image to docker hub
 
+### 71. Common Kubectl Commands
+
+|             Docker World             |              K8s World              |
+| :----------------------------------: | :---------------------------------: |
+|              docker ps               |          kubectl get pods           |
+| docker exec -it [container_id] [cmd] |  kubectl exec -it [pod_name] [cmd]  |
+|      docker logs [container_id]      |       kubectl logs [pod_name]       |
+|                                      |    kubectl delete pod [pod_name]    |
+|                                      | kubectl apply -f [config_file_name] |
+|                                      |   kubectl describe pod [pod_name]   |
+
+```sh
+kubectl exec -it posts sh
+ls
+# if we run more than two containers in a pod, we need to specify which container we want to execute
+kubectl logs posts
+```
+
 </details>
