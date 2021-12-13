@@ -18,6 +18,7 @@ kubectl get deployments
 kubectl describe deployment [depl_name]
 kubectl apply -f [config_file_name]
 kubectl delete deployment [depl_name]
+kubectl rollout restart deployment [depl_name]
 
 ## minikube
 
