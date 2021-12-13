@@ -164,4 +164,35 @@ kubectl get pods
 # | posts |  0/1  | ImagePullBackOff |    0     | 35s |
 ```
 
+### 69. ErrImagePull, ErrImageNeverPull and ImagePullBackoff Errors
+
+```sh
+# blog/infra/k8s
+kubectl delete -f posts.yaml
+# pod "posts" deleted
+```
+
+add `imagePullPolicy: Never` to posts.yaml
+
+```sh
+kubectl apply -f .
+# pod/posts created
+kubectl get pods
+# NAME    READY   STATUS    RESTARTS   AGE
+# posts   1/1     Running   0          3s
+```
+
+#### Probably...
+
+I guess before delete and create, I did this too
+
+```sh
+eval $(minikube docker-env)
+# Note - this comment will need to be repeated anytime you close and restart the terminal session
+docker build -t USERNAME/REPO .
+kubectl apply -f infra/k8s/
+```
+
+But turns out, I don't need to run that `eval` command, after testing
+
 </details>
