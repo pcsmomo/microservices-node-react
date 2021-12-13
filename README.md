@@ -195,4 +195,30 @@ kubectl apply -f infra/k8s/
 
 But turns out, I don't need to run that `eval` command, after testing
 
+```sh
+# K8s is extensible - we can add in our own custom objects. This specifies the set of objects we want K8s to look at
+apiVersion: v1
+
+# The type of object we want to create
+kind: Pod
+
+# Config options for the object we are about to create
+metadata:
+  # When the pod is created, give it a name of 'posts'
+  name: posts
+# The exact attributes we want to apply to the object we are about to create
+spec:
+# We can create many containers in a single pod
+  containers:
+    # Make a container with a name of 'posts'
+    - name: posts
+      # The exact image we want to use
+      image: pcsmomo/posts:0.0.1
+      imagePullPolicy: Never
+```
+
+`image: pcsmomo/posts` or `image: pcsmomo/posts:latest` \
+if we don't specify the tag, it will try to reach docker hub to find the image:latest \
+and in our case, we will get an error as we didn't push our image to docker hub
+
 </details>
