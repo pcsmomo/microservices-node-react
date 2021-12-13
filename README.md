@@ -273,4 +273,16 @@ kubectl delete pod posts-depl-7b58d6bb87-kx65s
 kubectl describe deployment posts-depl
 ```
 
+### 76. Updating Deployments
+
+Updating the image used by a deployment
+
+1. Method #1.
+   1. change index.js
+   2. rebuild: `docker build -t pcsmomo/posts:0.0.2 .`
+   3. update `posts-depl.yaml` file
+   4. apply `kubectl apply -f posts-depl.yaml `
+
+> Howover, this method is not really useful because we need to manually change the tag version on the yaml file
+
 </details>
