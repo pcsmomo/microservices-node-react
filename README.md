@@ -252,4 +252,25 @@ When we run 3 posts pods,
 kubectl apply -f posts-depl.yaml
 ```
 
+```sh
+kubectl get deployments
+kubectl describe deployment [depl_name]
+kubectl apply -f [config_file_name]
+kubectl delete deployment [depl_name]
+```
+
+### 75. Common Commands Around Deployments
+
+```sh
+kubectl get deployments
+# NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+# posts-depl   1/1     1            1           7s
+kubectl get pods
+# NAME                          READY   STATUS    RESTARTS   AGE
+# posts-depl-7b58d6bb87-kx65s   1/1     Running   0          53s
+kubectl delete pod posts-depl-7b58d6bb87-kx65s
+# the pod will be delete but deployment creates a new pod immediately
+kubectl describe deployment posts-depl
+```
+
 </details>
