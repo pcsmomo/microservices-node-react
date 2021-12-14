@@ -507,4 +507,10 @@ React App need to communicate with all services (except moderation)
 
 React App -> Load Balancer -> Ingress Controller -> Pod
 
+### 91. Update on Ingress Nginx Mandatory Commands
+
+In the upcoming lecture, we will be installing Ingress Nginx. In the video, it is shown that there is a required mandatory command that needed to be run for all providers. This has since been removed, so, the provider-specific commands (Docker Desktop, Minikube, etc) are all that is required.
+
+https://kubernetes.github.io/ingress-nginx/deploy/#environment-specific-instructions
+
 </details>
