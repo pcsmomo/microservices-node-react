@@ -367,4 +367,26 @@ We can connect
 - Posts Pod -> Cluster IP service for Event Bus -> Event Bus Pod
 - Event Bus Pod -> Cluster IP service for Posts -> Posts Pod
 
+### 82. Building a Deployment for the Event Bus
+
+1. Build an image for the Event Bus
+2. Push the image to Docker hub
+3. Create a deployment for Event Bus
+4. Create a Cluster IP service for Event Bus and Posts
+5. Wire it all up!
+
+```sh
+# blog/event-bus
+docker build -t pcsmomo/event-bus .
+docker push pcsmomo/event-bus
+touch event-bus-depl.yaml
+# blog/infra/k8s
+kubectl apply -f event-bus-depl.yaml
+# deployment.apps/event-bus-depl created
+kubectl get pods
+# NAME                              READY   STATUS    RESTARTS   AGE
+# event-bus-depl-668857b468-qk5vd   1/1     Running   0          24s
+# posts-depl-6989986b47-7rrf9       1/1     Running   1          9h
+```
+
 </details>
