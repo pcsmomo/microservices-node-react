@@ -430,4 +430,39 @@ kubectl get pods
 # posts-depl-94d556dcd-xk5t6       1/1     Running   0          47s
 ```
 
+### 86. Verifying Communication
+
+```sh
+kubectl exec -it posts-depl-94d556dcd-bqrdf sh
+cat index.js
+# the address is not changed
+
+# rebuild and push and rollout restart
+docker build -t pcsmomo/posts .
+docker push pcsmomo/posts
+kubectl rollout restart deployment posts-depl
+# somehow rollout does not work
+
+kubectl delete deployment post-depl
+kubectl apply -f posts-depl.yaml
+```
+
+### 87. Adding Query, Moderation and Comments
+
+```sh
+# blog/comments
+docker build -t pcsmomo/comments .
+docker push pcsmomo/comments
+# blog/moderation
+docker build -t pcsmomo/moderation .
+docker push pcsmomo/moderation
+# blog/query
+docker build -t pcsmomo/query .
+docker push pcsmomo/query
+# blog/infra/k8s
+kubectl apply -f .
+kubectl get pods
+kubectl get servuces
+```
+
 </details>
