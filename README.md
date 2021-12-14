@@ -496,4 +496,15 @@ React App need to communicate with all services (except moderation)
 2. \*Option #2 - Probably good
    - React App -> Load Balancer Service -> Cluster IP for each service
 
+### 90. Load Balancers and Ingress
+
+- Load Balancer Service
+  - Tell Kubernetes to reach out to its provider and provision a load balancer
+  - Gets traffic in to a single pod
+  - Load Balancer is actually in a cloud provider
+- Ingress or Ingress Controller
+  - A pod with a set of routing rules to distribute traffic to other services
+
+React App -> Load Balancer -> Ingress Controller -> Pod
+
 </details>
