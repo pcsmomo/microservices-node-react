@@ -20,6 +20,8 @@ const posts = {};
 // }
 
 const handleEvent = (type, data) => {
+  console.log('Event Received:', type);
+
   if (type === 'PostCreated') {
     const { id, title } = data;
 

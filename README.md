@@ -462,7 +462,29 @@ docker push pcsmomo/query
 # blog/infra/k8s
 kubectl apply -f .
 kubectl get pods
-kubectl get servuces
+kubectl get services
 ```
+
+### 88. Testing Communication
+
+```sh
+# blog/event-bus
+docker build -t pcsmomo/event-bus .
+docker push pcsmomo/event-bus
+# blog/infra/k8s
+kubectl rollout restart deployment event-bus-depl
+kubectl get pods
+# NAME                               READY   STATUS    RESTARTS   AGE
+# comments-depl-76b7f795-gkjdc       1/1     Running   0          5m47s
+# event-bus-depl-779b56dfd9-p6l8z    1/1     Running   0          2m10s
+# moderation-depl-66dddc44d5-9xnzc   1/1     Running   0          5m46s
+# posts-depl-5494775c9b-7z2h9        1/1     Running   1          13h
+# query-depl-59b5f86c4f-m6d9n        1/1     Running   0          5m46s
+```
+
+And postman test!
+
+- post message to http://192.168.64.2:30551/posts
+- `kubectl logs comments-depl-76b7f795-gkjdc`
 
 </details>
