@@ -487,4 +487,13 @@ And postman test!
 - post message to http://192.168.64.2:30551/posts
 - `kubectl logs comments-depl-76b7f795-gkjdc`
 
+### 89. Load Balancer Services
+
+React App need to communicate with all services (except moderation)
+
+1. Option #1 - Probably not good
+   - React App -> Node Port for each service
+2. \*Option #2 - Probably good
+   - React App -> Load Balancer Service -> Cluster IP for each service
+
 </details>
