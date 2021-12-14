@@ -195,7 +195,7 @@ kubectl apply -f infra/k8s/
 
 But turns out, I don't need to run that `eval` command, after testing
 
-```sh
+```yaml
 # K8s is extensible - we can add in our own custom objects. This specifies the set of objects we want K8s to look at
 apiVersion: v1
 
@@ -208,7 +208,7 @@ metadata:
   name: posts
 # The exact attributes we want to apply to the object we are about to create
 spec:
-# We can create many containers in a single pod
+  # We can create many containers in a single pod
   containers:
     # Make a container with a name of 'posts'
     - name: posts
@@ -320,5 +320,23 @@ kubectl logs posts-depl-6989986b47-7rrf9
 - External Name
   - Redirects an in-cluster request to a CNAME url...
   - don't worry about this one
+
+### 79. Creating a NodePort Service
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-srv
+spec:
+  type: NodePort
+  selector:
+    app: posts # matching with deployment template labels
+  ports:
+    - name: posts # optional
+      protocol: TCP
+      port: 4000 # outer
+      targetPort: 4000 # inter: to pod
+```
 
 </details>
