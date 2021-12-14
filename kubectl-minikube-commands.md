@@ -20,7 +20,16 @@ kubectl apply -f [config_file_name]
 kubectl delete deployment [depl_name]
 kubectl rollout restart deployment [depl_name]
 
+<!-- service -->
+
+kubectl get services
+kubectl describe service [srv_name]
+kubectl apply -f [config_file_name]
+
 ## minikube
 
 minikube start --vm=true
 minikube stop
+minikube ip
+minikube status
+minikube dashboard

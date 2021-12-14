@@ -335,8 +335,31 @@ spec:
   ports:
     - name: posts # optional
       protocol: TCP
-      port: 4000 # outer
-      targetPort: 4000 # inter: to pod
+      port: 4000 # outer: port for service itself
+      targetPort: 4000 # inter: to the pod
 ```
+
+### 80. Accessing NodePort Services
+
+```sh
+# blog/infra/k8s
+kubectl apply -f posts-srv.yaml
+# service/posts-srv created
+kubectl get services
+# NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+# kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP          23h
+# posts-srv    NodePort    10.105.88.106   <none>        4000:30551/TCP   51s
+kubectl describe service posts-srv
+minikube ip
+# 192.168.64.2
+```
+
+- PORT(S): 4000:30551/TCP\
+  - 30551: nodePort randomly assigned
+
+We can connect
+
+- Docker for Mac/Windows - localhost:3xxxx/posts
+- Docker Toolbox with Minikube - 192.168.64.2:30551/posts
 
 </details>
