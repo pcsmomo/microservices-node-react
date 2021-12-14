@@ -33,3 +33,5 @@ minikube stop
 minikube ip
 minikube status
 minikube dashboard
+
+minikube addons enable ingress

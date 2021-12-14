@@ -513,4 +513,23 @@ In the upcoming lecture, we will be installing Ingress Nginx. In the video, it i
 
 https://kubernetes.github.io/ingress-nginx/deploy/#environment-specific-instructions
 
+### 92. Installing Ingress-Nginx
+
+ingress-nginx
+
+- [ingress-nginx Github](https://github.com/kubernetes/ingress-nginx)
+- [ingress-nginx Doc](https://kubernetes.github.io/ingress-nginx/deploy)
+
+> Note, not 'kubernetes-ingress'
+
+```sh
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
+
+# Environment-specific instructions¶
+minikube addons enable ingress
+    # ▪ Using image docker.io/jettech/kube-webhook-certgen:v1.5.1
+    # ▪ Using image docker.io/jettech/kube-webhook-certgen:v1.5.1
+    # ▪ Using image k8s.gcr.io/ingress-nginx/controller:v0.44.0
+```
+
 </details>
