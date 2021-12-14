@@ -373,7 +373,7 @@ We can connect
 2. Push the image to Docker hub
 3. Create a deployment for Event Bus
 4. Create a Cluster IP service for Event Bus and Posts
-5. Wire it all up!
+5. Wire it all up! -> 'localhost' to <service_name>
 
 ```sh
 # blog/event-bus
@@ -404,6 +404,30 @@ kubectl get pods
 # kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          23h
 # posts-clusterip-srv   ClusterIP   10.96.25.216    <none>        4000/TCP         9s
 # posts-srv             NodePort    10.105.88.106   <none>        4000:30551/TCP   37m
+```
+
+### 85. Updating Service Addresses
+
+```sh
+# blog/event-bus
+docker build -t pcsmomo/event-bus .
+docker push pcsmomo/event-bus
+# blog/posts
+docker build -t pcsmomo/posts .
+docker push pcsmomo/posts
+# blog/infra/k8s
+kubectl get deployments
+# NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+# event-bus-depl   1/1     1            1           26m
+# posts-depl       1/1     1            1           9h
+kubectl rollout restart deployment posts-depl
+# deployment.apps/posts-depl restarted
+kubectl rollout restart deployment event-bus-depl
+# deployment.apps/event-bus-depl restarted
+kubectl get pods
+# NAME                             READY   STATUS    RESTARTS   AGE
+# event-bus-depl-f7bf7b948-x5nkz   1/1     Running   0          24s
+# posts-depl-94d556dcd-xk5t6       1/1     Running   0          47s
 ```
 
 </details>
