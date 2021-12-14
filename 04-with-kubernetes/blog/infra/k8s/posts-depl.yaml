@@ -16,3 +16,17 @@ spec:
         - name: posts
           image: pcsmomo/posts
           # image: pcsmomo/posts:latest  # the same
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-clusterip-srv
+spec:
+  selector:
+    app: posts
+  # type: ClusterIP # if we don't specify it, it'd be ClusterIP as a default
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000
+      targetPort: 4000

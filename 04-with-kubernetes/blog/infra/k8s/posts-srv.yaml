@@ -9,5 +9,5 @@ spec:
   ports:
     - name: posts # optional
       protocol: TCP
-      port: 4000 # outer
+      port: 4000 # outer: port for service itself
       targetPort: 4000 # inter: to pod

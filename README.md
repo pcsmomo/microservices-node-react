@@ -389,4 +389,21 @@ kubectl get pods
 # posts-depl-6989986b47-7rrf9       1/1     Running   1          9h
 ```
 
+### 83. Adding ClusterIP Services
+
+```sh
+kubectl apply -f event-bus-depl.yaml
+# deployment.apps/event-bus-depl unchanged
+# service/event-bus-srv created
+kubectl apply -f posts-depl.yaml
+# deployment.apps/posts-depl unchanged
+# service/posts-clusterip-srv created
+kubectl get pods
+# NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+# event-bus-srv         ClusterIP   10.99.99.77     <none>        4005/TCP         3m23s
+# kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          23h
+# posts-clusterip-srv   ClusterIP   10.96.25.216    <none>        4000/TCP         9s
+# posts-srv             NodePort    10.105.88.106   <none>        4000:30551/TCP   37m
+```
+
 </details>
