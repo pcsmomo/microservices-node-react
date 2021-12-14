@@ -362,4 +362,9 @@ We can connect
 - Docker for Mac/Windows - localhost:3xxxx/posts
 - Docker Toolbox with Minikube - 192.168.64.2:30551/posts
 
+### 81. Setting Up Cluster IP Services
+
+- Posts Pod -> Cluster IP service for Event Bus -> Event Bus Pod
+- Event Bus Pod -> Cluster IP service for Posts -> Posts Pod
+
 </details>
