@@ -532,4 +532,27 @@ minikube addons enable ingress
     # ▪ Using image k8s.gcr.io/ingress-nginx/controller:v0.44.0
 ```
 
+### 93. Ingress v1 API Required Update
+
+### 94. Writing Ingress Config Files
+
+[ingress](./resources/03-07%20-%20lb.jpeg)
+
+<!-- validation error occurs -->
+
+```sh
+# blog/infra/k8s
+kubectl apply -f ingress-srv.yaml
+# Error from server (InternalError): error when creating "ingress-srv.yaml": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": an error on the server ("") has prevented the request from succeeding
+```
+
+[Stackoverflow solution](https://stackoverflow.com/a/67213633/11390254)
+
+```sh
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+# validatingwebhookconfiguration.admissionregistration.k8s.io "ingress-nginx-admission" deleted
+kubectl apply -f ingress-srv.yaml
+# ingress.networking.k8s.io/ingress-srv created
+```
+
 </details>
