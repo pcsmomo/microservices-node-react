@@ -26,6 +26,16 @@ kubectl get services
 kubectl describe service [srv_name]
 kubectl apply -f [config_file_name]
 
+<!-- ingress-nginx -->
+
+kubectl get ingress
+kubectl get pods -n ingress-nginx
+kubectl get services -n ingress-nginx
+
+<!-- All? -->
+
+kubectl describe po -A > ~/desc.log
+
 ## minikube
 
 minikube start --vm=true
@@ -35,3 +45,5 @@ minikube status
 minikube dashboard
 
 minikube addons enable ingress
+minikube service list
+eval $(minikube docker-env)

@@ -530,6 +530,16 @@ minikube addons enable ingress
     # ▪ Using image docker.io/jettech/kube-webhook-certgen:v1.5.1
     # ▪ Using image docker.io/jettech/kube-webhook-certgen:v1.5.1
     # ▪ Using image k8s.gcr.io/ingress-nginx/controller:v0.44.0
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                         │
+│    😿  If the above advice does not help, please let us know:                                                           │
+│    👉  https://github.com/kubernetes/minikube/issues/new/choose                                                         │
+│                                                                                                                         │
+│    Please attach the following file to the GitHub issue:                                                                │
+│    - /var/folders/gj/j9_ldgqd3rn0pghfmfllqp600000gn/T/minikube_addons_372143d00872dcadc2a2a64cd091e7aa9a32d396_3.log    │
+│                                                                                                                         │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+# eventually it fails
 ```
 
 ### 93. Ingress v1 API Required Update
@@ -553,6 +563,67 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 # validatingwebhookconfiguration.admissionregistration.k8s.io "ingress-nginx-admission" deleted
 kubectl apply -f ingress-srv.yaml
 # ingress.networking.k8s.io/ingress-srv created
+```
+
+### 95. Important Note About Port 80
+
+```sh
+sudo lsof -i tcp:80
+kubectl get services -n ingress-nginx
+kubectl get pods -n ingress-nginx
+```
+
+### 96. Hosts File Tweak
+
+```sh
+code /etc/hosts
+# Studying udemy microservices - minikube ip
+192.168.64.2 posts.com
+```
+
+Navigate posts.com/posts -> I cannot connect
+
+```sh
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
+kubectl delete -f .
+kubectl apply -f .
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+kubectl apply -f ingress-srv.yaml
+kubectl get service ingress-nginx-controller --namespace=ingress-nginx
+```
+
+> I cannot go furtuer..
+> Stop until I find a solution..
+
+Steps
+
+1. docker running
+2. kubernetes running
+3. minikube start --vm=true
+   - minikube ip : 192.168.64.2
+   - kubectl get pods : posts-srv NodePort : port number : 30551
+
+> Then I can connect 192.168.64.2:30551/posts, but ingress
+
+4. minikube addons enable ingress
+   - failed to install
+5. eval $(minikube docker-env)
+6. change /etc/hosts
+
+> I can access posts.com:30551/posts, but \
+> I cannot connect posts.com/posts \
+> it seems like ingress load balance does not work on my environment
+
+```sh
+kubectl get services -n ingress-nginx
+# NAME                                 TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+# ingress-nginx-controller             LoadBalancer   10.109.99.78   <pending>     80:32109/TCP,443:31073/TCP   6m48s
+# ingress-nginx-controller-admission   ClusterIP      10.98.249.55   <none>        443/TCP                      6m48s
+kubectl get pods -n ingress-nginx
+# NAME                                        READY   STATUS      RESTARTS   AGE
+# ingress-nginx-admission-create-nkz2c        0/1     Completed   0          28s
+# ingress-nginx-admission-patch-hsjb9         0/1     Completed   1          27s
+# ingress-nginx-controller-69db7f75b4-wmmgs   1/1     Running     0          28s
 ```
 
 </details>
