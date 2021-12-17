@@ -720,4 +720,29 @@ kubectl apply -f client-depl.yaml
 # service/client-srv created
 ```
 
+### 99. Unique Route Paths
+
+Now client can access backend via Ingress\
+But the problem is that Ingress doesn't distinguish methods such as POST and GET
+
+- posts: POST /posts
+- query: GET /posts
+
+We need to modify them to unique routh paths
+
+- posts: POST /posts -> /posts/create
+- query: GET /posts -> /posts/list
+
+```sh
+# blog/client
+docker build -t pcsmomo/client .
+docker push pcsmomo/client
+# blog/posts
+docker build -t pcsmomo/posts .
+docker push pcsmomo/posts
+# blog/infra/k8s
+kubectl rollout restart client-depl.yaml
+kubectl rollout restart posts-depl.yaml
+```
+
 </details>
