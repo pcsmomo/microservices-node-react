@@ -763,11 +763,84 @@ build:
 ```sh
 skaffold dev
 # unable to stream build output: Get https://registry-1.docker.io/v2/library/node/manifests/sha256:8569c8f07454ec42501e5e40a680e49d3f9aabab91a6c149e309bac63a3c8d54: dial tcp: lookup registry-1.docker.io on 192.168.64.1:53: read udp 192.168.64.3:39871->192.168.64.1:53: i/o timeout. Please fix the Dockerfile and try again..
+skaffold dev
+# It hung..
 ```
 
 Again...........................................
 
 It's very slow and not working well for me.\
 (I may need a new laptop)
+
+#### 2nd Attempt
+
+- Reboot my laptop
+- Run docker (including Kubernetes)
+
+```sh
+minikube stop
+# ✋  Stopping node "minikube"  ...
+# 🛑  1 nodes stopped.
+skaffold dev
+# It builds all the images again and creating it's own dev server
+# Listing files to watch...
+# ...
+# It takes more than 10 mins in my laptop
+```
+
+all docker images are built, but errored when deploying
+
+```sh
+# Tags used in deployment:
+#  - pcsmomo/client -> pcsmomo/client:98390a7ecb0f9625cff02f6773c3c0d95bbae41268e5e69504727535dc94b67c
+#  - pcsmomo/comments -> pcsmomo/comments:bc8f694d9d2532df158e8b732ccfbc859681e0bef44329d9c482c8dd846d7c95
+#  - pcsmomo/event-bus -> pcsmomo/event-bus:768d4565a9a6ad3f0b8b855691c0807dc92b9cbd44a9bbacc3d3e008c5c799da
+#  - pcsmomo/moderation -> pcsmomo/moderation:f519c4c6837b4bbf45bffb0f4a688b3218a7c930dbdad5865778131a512dc4d2
+#  - pcsmomo/posts -> pcsmomo/posts:c3bfe073cc3c6877d80ef4cf33df5e61b7fe05adb7afbd5f787d16d7ba366184
+#  - pcsmomo/query -> pcsmomo/query:ec3011b7f94fdcb97502512474a00d9b6cc1b577dc50cc82897126b988e31782
+# Starting deploy...
+# Cleaning up...
+# WARN[0563] deployer cleanup:kubectl create: running [kubectl --context  create --dry-run=client -oyaml -f /Users/noah/Documents/Study/Study_codes/udemy/microservices-node-react/microservices-node-react-git/04-with-kubernetes/blog/infra/k8s/client-depl.yaml
+# ...
+#  - stdout: ""
+#  - stderr: "The connection to the server localhost:8080 was refused - did you specify the right host or port?\n"
+#  - cause: exit status 1  subtask=-1 task=DevLoop
+# unable to connect to Kubernetes: getting client config for Kubernetes client: error creating REST client config in-cluster: unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined
+```
+
+```sh
+# https://skaffold.dev/docs/quickstart/
+minikube start --profile custom
+# 😿  Failed to start hyperkit VM. Running "minikube delete -p custom" may fix it: creating host: create: Error creating machine: Error in driver during machine creation: IP address never found in dhcp leases file Temporary error: could not find an IP address for aa:2c:f6:cc:5:b1
+
+# ❌  Exiting due to GUEST_PROVISION: Failed to start host: creating host: create: Error creating machine: Error in driver during machine creation: IP address never found in dhcp leases file Temporary error: could not find an IP address for aa:2c:f6:cc:5:b1
+
+# ╭────────────────────────────────────────────────────────────────────╮
+# │                                                                    │
+# │    😿  If the above advice does not help, please let us know:      │
+# │    👉  https://github.com/kubernetes/minikube/issues/new/choose    │
+# │                                                                    │
+# │    Please attach the following file to the GitHub issue:           │
+# │    - /Users/noah/.minikube/logs/lastStart.txt                      │
+# │                                                                    │
+# ╰────────────────────────────────────────────────────────────────────╯
+skaffold config set --global local-cluster true
+eval $(minikube -p custom docker-env)
+```
+
+```sh
+minikube config set vm-driver hyperkit
+minikube delete
+minikube start --profile custom
+# minikube addons enable ingress
+skaffold config set --global local-cluster true
+eval $(minikube -p custom docker-env)
+skaffold dev
+# Starting deploy...
+# Cleaning up...
+# Deploy Failed. Could not connect to cluster due to "https://192.168.64.4:8443/version?timeout=32s": dial tcp 192.168.64.4:8443: i/o timeout. Check your connection for the cluster.
+minikube ip -p custom
+minikube status -p custom
+```
 
 </details>

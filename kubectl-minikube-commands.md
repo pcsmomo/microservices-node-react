@@ -47,3 +47,23 @@ minikube dashboard
 minikube addons enable ingress
 minikube service list
 eval $(minikube docker-env)
+
+```sh
+# minikube with ingress
+minikube config set vm-driver hyperkit
+minikube delete
+minikube start
+minikube addons enable ingress
+```
+
+```sh
+# minikube with skaffold
+minikube start --profile custom
+skaffold config set --global local-cluster true
+eval $(minikube -p custom docker-env)
+```
+
+## skaffold
+
+skaffold dev
+skaffold config set --global local-cluster true
