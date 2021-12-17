@@ -626,4 +626,98 @@ kubectl get pods -n ingress-nginx
 # ingress-nginx-controller-69db7f75b4-wmmgs   1/1     Running     0          28s
 ```
 
+```sh
+# another attempt
+# https://github.com/kubernetes/minikube/issues/11108
+minikube config set vm-driver hyperkit
+# ❗  These changes will take effect upon a minikube delete and then a minikube start
+minikube delete
+# 🔥  Deleting "minikube" in hyperkit ...
+# 💀  Removed all traces of the "minikube" cluster.
+minikube start
+# 😄  minikube v1.21.0 on Darwin 11.6
+# ✨  Using the hyperkit driver based on user configuration
+# 👍  Starting control plane node minikube in cluster minikube
+# 🔥  Creating hyperkit VM (CPUs=2, Memory=2200MB, Disk=20000MB) ...
+# 🔥  Deleting "minikube" in hyperkit ...
+# 🤦  StartHost failed, but will try again: creating host: create: Error creating machine: Error in driver during machine creation: IP address never found in dhcp leases file Temporary error: could not find an IP address for a6:1c:10:a6:10:6e
+# 🔥  Creating hyperkit VM (CPUs=2, Memory=2200MB, Disk=20000MB) ...
+# 🐳  Preparing Kubernetes v1.20.7 on Docker 20.10.6 ...
+#     ▪ Generating certificates and keys ...
+#     ▪ Booting up control plane ...
+#     ▪ Configuring RBAC rules ...
+# 🔎  Verifying Kubernetes components...
+#     ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+# 🌟  Enabled addons: default-storageclass, storage-provisioner
+# 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+minikube addons enable ingress
+#     ▪ Using image docker.io/jettech/kube-webhook-certgen:v1.5.1
+#     ▪ Using image docker.io/jettech/kube-webhook-certgen:v1.5.1
+#     ▪ Using image k8s.gcr.io/ingress-nginx/controller:v0.44.0
+# 🔎  Verifying ingress addon...
+# 🌟  The 'ingress' addon is enabled
+
+# blog/infra/k8s
+kubectl apply -f .
+# deployment.apps/comments-depl created
+# service/comments-srv created
+# deployment.apps/event-bus-depl created
+# service/event-bus-srv created
+# ingress.networking.k8s.io/ingress-srv created
+# deployment.apps/moderation-depl created
+# service/moderation-srv created
+# deployment.apps/posts-depl created
+# service/posts-clusterip-srv created
+# service/posts-srv created
+# deployment.apps/query-depl created
+# service/query-srv created
+kubectl get pods
+# comments-depl-76b7f795-swnsv       1/1     Running   0          2m35s
+# event-bus-depl-668857b468-mzb56    1/1     Running   0          2m34s
+# moderation-depl-66dddc44d5-vr46x   1/1     Running   0          2m34s
+# posts-depl-5494775c9b-6wcwt        1/1     Running   0          2m33s
+# query-depl-59b5f86c4f-5rfpx        1/1     Running   0          2m33s
+kubectl get services -n ingress-nginx
+# NAME                                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+# ingress-nginx-controller             NodePort    10.107.169.175   <none>        80:32292/TCP,443:32369/TCP   4m31s
+# ingress-nginx-controller-admission   ClusterIP   10.104.147.242   <none>        443/TCP                      4m31s
+kubectl get pods -n ingress-nginx
+# NAME                                        READY   STATUS      RESTARTS   AGE
+# ingress-nginx-admission-create-prpgg        0/1     Completed   0          4m24s
+# ingress-nginx-admission-patch-lt6zk         0/1     Completed   2          4m24s
+# ingress-nginx-controller-5d88495688-v5ltk   1/1     Running     0          4m24s
+minikube ip 192.168.64.3
+```
+
+- And change the /etc/hosts
+- Navigate http://posts.com/posts
+
+Damn T_T, it succeeded
+
+### 97. Important Note to Add Environment Variable
+
+[[React-Scripts] v3.4.1 fails to start in Docker #8688](https://github.com/facebook/create-react-app/issues/8688)
+
+```yaml
+# blog/client/Dockerfile
+FROM node:alpine
+
+# Add the following line
+ENV CI=true
+
+WORKDIR /app
+```
+
+### 98. Deploying the React App
+
+```sh
+# blog/client
+docker build -t pcsmomo/client .
+docker push pcsmomo/client
+# blog/infra/k8s
+kubectl apply -f client-depl.yaml
+# deployment.apps/client-depl created
+# service/client-srv created
+```
+
 </details>
