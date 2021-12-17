@@ -783,12 +783,25 @@ All Good!
 
 ### 101. Introducing Skaffold
 
-Skaffold
+Skaffold - when code changes, it applies to the pod (...nodemon?)
 
 - Automates many tasks in a Kubernetes dev environment
 - Makes it really easy to update code in a running pod
 - Makes it really easy to create/delete all objects tied to a proejct at once
 - [skaffold.dev](https://skaffold.dev/)
 - [Skaffold Documentation](https://skaffold.dev/docs/)
+
+```sh
+brew install skaffold
+```
+
+### 102. Skaffold Setup
+
+```yaml
+build:
+  local:
+    # default is true, pushing docker image
+    push: false
+```
 
 </details>
