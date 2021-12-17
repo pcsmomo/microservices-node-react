@@ -781,4 +781,14 @@ Navigate http://posts.com/ and create a new post / refresh / create a new commen
 
 All Good!
 
+### 101. Introducing Skaffold
+
+Skaffold
+
+- Automates many tasks in a Kubernetes dev environment
+- Makes it really easy to update code in a running pod
+- Makes it really easy to create/delete all objects tied to a proejct at once
+- [skaffold.dev](https://skaffold.dev/)
+- [Skaffold Documentation](https://skaffold.dev/docs/)
+
 </details>
