@@ -804,4 +804,16 @@ build:
     push: false
 ```
 
+### 103. First Time Skaffold Startup
+
+```sh
+skaffold dev
+# unable to stream build output: Get https://registry-1.docker.io/v2/library/node/manifests/sha256:8569c8f07454ec42501e5e40a680e49d3f9aabab91a6c149e309bac63a3c8d54: dial tcp: lookup registry-1.docker.io on 192.168.64.1:53: read udp 192.168.64.3:39871->192.168.64.1:53: i/o timeout. Please fix the Dockerfile and try again..
+```
+
+Again...........................................
+
+It's very slow and not working well for me.\
+(I may need a new laptop)
+
 </details>

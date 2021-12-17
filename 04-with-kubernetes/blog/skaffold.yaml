@@ -6,6 +6,7 @@ deploy:
       - ./infra/k8s/*
 build:
   local:
+    # default is true, pushing docker image
     push: false
   artifacts:
     - image: pcsmomo/client
