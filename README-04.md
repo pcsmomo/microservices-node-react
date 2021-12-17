@@ -500,7 +500,7 @@ minikube addons enable ingress
 
 ### 94. Writing Ingress Config Files
 
-[ingress](./resources/03-07%20-%20lb.jpeg)
+![Ingress Controller](./resources/94-ingress-controller.jpeg)
 
 <!-- validation error occurs -->
 

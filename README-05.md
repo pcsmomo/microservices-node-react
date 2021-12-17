@@ -22,4 +22,8 @@ Painful Things from App #1 (blog)
 6. What if someone created a comment after editing 5 others after editing a post while balancing on a tight rope...
    - Introduce a lot of code to handle concurrency issues
 
+### 109. Events and Architecture Design
+
+![second app architecture](./resources/109-second-app-architecture-design.jpeg)
+
 </details>
