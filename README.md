@@ -731,7 +731,7 @@ But the problem is that Ingress doesn't distinguish methods such as POST and GET
 We need to modify them to unique routh paths
 
 - posts: POST /posts -> /posts/create
-- query: GET /posts -> /posts/list
+- query: GET /posts
 
 ```sh
 # blog/client
@@ -744,5 +744,41 @@ docker push pcsmomo/posts
 kubectl rollout restart client-depl.yaml
 kubectl rollout restart posts-depl.yaml
 ```
+
+### 100. Final Route Config
+
+- for `/posts/:id/comments`, nginx doesn't support wild card thing
+  - so we need to use regular expression, `/posts/?(.*)/comments`
+- client has to have all rest paths, so it needs to be defined at the last
+  ```yaml
+  - path: /?(.*)
+    pathType: Prefix
+    backend:
+      service:
+        name: client-srv
+        port:
+          number: 3000
+  ```
+
+```sh
+# blog/infra/k8s
+kubectl apply -f ingress-srv.yaml
+# ingress.networking.k8s.io/ingress-srv configured
+```
+
+Navigate http://posts.com/ and create post.\
+When refresh the page, 502 error from query service.\
+app has crashed before when it connects to http://event-bus-srv:4005/events\
+
+```sh
+kubectl logs query-depl-59b5f86c4f-5rfpx
+kubectl delete pod query-depl-59b5f86c4f-5rfpx
+kubectl get pods
+# new query-depl pod is running
+```
+
+Navigate http://posts.com/ and create a new post / refresh / create a new comment / refresh
+
+All Good!
 
 </details>
