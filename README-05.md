@@ -31,6 +31,14 @@ Painful Things from App #1 (blog)
 5. While locked, no other user can purchase the ticket. After 15 minutes, the ticket should "unlock"
 6. Ticket prices can be edited if they are not locked
 
+### 108. Service Types
+
+- auth: Everything related to user signup/signin/signout
+- tickets: Ticket creation/editing. Knows whether a ticket can be updated
+- orders: Order creation/editing
+- expiration: Watchers for orders to be created, cancels them after 15 minutes
+- payments: Handles credit card payments. cancels orders if payments fails, completes if payment succeeds
+
 ### 109. Events and Architecture Design
 
 ![second app architecture](./resources/109-second-app-architecture-design.jpeg)
