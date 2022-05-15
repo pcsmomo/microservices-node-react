@@ -56,4 +56,33 @@ npm install -g typescript
 tsc --init
 ```
 
+###
+
+```sh
+# install minikube first
+# https://minikube.sigs.k8s.io/docs/start/
+minikube start --driver=docker
+
+# install skaffold
+brew install skaffold
+
+skaffold dev
+# Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+# Build [pcsmomo/auth] succeeded
+# Tags used in deployment:
+#  - pcsmomo/auth -> pcsmomo/auth:94009c663348b62439f9a33209d2626eb2b0fc75a8493782d90e1b6687f4ac2a
+# Starting deploy...
+# Cleaning up...
+# WARN[0032] deployer cleanup:kubectl create: running [kubectl --context minikube create --dry-run=client -oyaml -f /Users/noah/Documents/study/study_codes/udemy/microservices-node-react/microservices-node-react-git/05-architecture-micro-service-app/ticketing/infra/k8s/auth-depl.yaml]
+#  - stdout: ""
+#  - stderr: "error: error validating \"/Users/noah/Documents/study/study_codes/udemy/microservices-node-react/microservices-node-react-git/05-architecture-micro-service-app/ticketing/infra/k8s/auth-depl.yaml\": error validating data: ValidationError(Deployment.spec.selector): unknown field \"app\" in io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector; if you choose to ignore these errors, turn validation off with --validate=false\n"
+#  - cause: exit status 1  subtask=-1 task=DevLoop
+# kubectl create: running [kubectl --context minikube create --dry-run=client -oyaml -f /Users/noah/Documents/study/study_codes/udemy/microservices-node-react/microservices-node-react-git/05-architecture-micro-service-app/ticketing/infra/k8s/auth-depl.yaml]
+#  - stdout: ""
+#  - stderr: "error: error validating \"/Users/noah/Documents/study/study_codes/udemy/microservices-node-react/microservices-node-react-git/05-architecture-micro-service-app/ticketing/infra/k8s/auth-depl.yaml\": error validating data: ValidationError(Deployment.spec.selector): unknown field \"app\" in io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector; if you choose to ignore these errors, turn validation off with --validate=false\n"
+#  - cause: exit status 1
+```
+
+> cannot go further...
+
 </details>
