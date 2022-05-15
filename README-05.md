@@ -43,4 +43,17 @@ Painful Things from App #1 (blog)
 
 ![second app architecture](./resources/109-second-app-architecture-design.jpeg)
 
+### 111. Auth Service Setup
+
+```sh
+mkdir ticketing
+cd ticketing
+mkdir auth
+cd auth
+npm init -y
+npm install typescript ts-node-dev express @types/express
+npm install -g typescript
+tsc --init
+```
+
 </details>

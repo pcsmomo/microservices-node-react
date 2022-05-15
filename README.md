@@ -19,6 +19,8 @@ Microservices with Node JS and React by Stephen Grider
     - infra
       - k8s: kubernetes
 - 05-architecture-multi-service-app
+  - ticketing
+    - auth
 - 06-cloud
 - 07-normalization
 - 08-database-modeling
