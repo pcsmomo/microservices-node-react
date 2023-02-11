@@ -129,4 +129,36 @@ kubectl get pods  # Failed
 # posts   0/1     ErrImageNeverPull   0          2s
 ```
 
+### 69. ErrImagePull, ErrImageNeverPull and ImagePullBackoff Errors
+
+- Minikube Users:
+
+If you are using a vm driver, you will need to tell Kubernetes to use the Docker daemon running inside of the single node cluster instead of the host.
+
+Run the following command:
+
+`eval $(minikube docker-env)`
+
+Note - This command will need to be repeated anytime you close and restart the terminal session.
+
+Afterward, you can build your image:
+
+`docker build -t USERNAME/REPO .`
+
+Update, your pod manifest as shown above and then run:
+
+`kubectl apply -f infra/k8s/`
+
+[minikube docker-env](https://minikube.sigs.k8s.io/docs/commands/docker-env/)
+
+```sh
+# ./blog
+eval $(minikube docker-env)
+docker build -t pcsmomo/posts:0.0.1 posts/
+k apply -f infra/k8s/posts-pod.old.yaml
+k get pods
+# NAME    READY   STATUS    RESTARTS   AGE
+# posts   1/1     Running   0          8m29s
+```
+
 </details>
