@@ -161,4 +161,79 @@ k get pods
 # posts   1/1     Running   0          8m29s
 ```
 
+### 70. Understanding a Pod Spec
+
+`image: pcsmomo/posts` or `image: pcsmomo/posts:latest` \
+if we don't specify the tag, it will try to reach docker hub to find the image:latest \
+and in our case, we will get an error as we didn't push our image to docker hub
+
+### 71. Common Kubectl Commands
+
+```sh
+kubectl exec -it posts -- sh
+ls
+# if we run more than two containers in a pod, we need to specify which container we want to execute
+kubectl logs posts
+```
+
+### 74. Creating a Deployment
+
+```sh
+kubectl apply -f posts-depl.yaml
+```
+
+### 75. Common Commands Around Deployments
+
+```sh
+k apply -f posts-depl.yaml
+# deployment.apps/posts-depl created
+k get deployment
+# NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+# posts-depl   1/1     1            1           6s
+k get pods
+# NAME                        READY   STATUS    RESTARTS   AGE
+# posts-depl-7f649dfc-pwb9s   1/1     Running   0          15s
+k get pods
+# NAME                        READY   STATUS              RESTARTS   AGE
+# posts-depl-7f649dfc-5hgl2   0/1     ContainerCreating   0          3s
+k get pods --watch
+# NAME                        READY   STATUS    RESTARTS   AGE
+# posts-depl-7f649dfc-5hgl2   1/1     Running   0          6s
+```
+
+### 76. Updating Deployments
+
+Updating the image used by a deployment
+
+1. Method #1 - using local
+   1. 'blog/posts': update index.js code
+   2. 'blog/posts': rebuild: `docker build -t pcsmomo/posts:0.0.2 .`
+   3. 'blog/infra/k8s': update `posts-depl.yaml` file
+      `image: pcsmomo/posts:0.0.2`
+   4. 'blog/infra/k8s':apply `kubectl apply -f posts-depl.yaml `
+
+> Howover, this method is not really useful because we need to manually change the tag version on the yaml file
+
+### 77. Preferred Method for Updating Deployments
+
+2. \*Method #2 - using docker hub
+   1. 'blog/infra/k8s': using 'latest' or remove tag in the pod spec section
+      `image: pcsmomo/posts`
+   2. 'blog/posts': update index.js code
+   3. 'blog/posts': rebuild: `docker build -t pcsmomo/posts .`
+   4. push to the docker hub `docker push pcsmomo/posts`
+      - `docker login -u pcsmomo` before push
+   5. 'blog/infra/k8s': run the commend
+      - `kubectl rollout restart deployment [depl_name]`
+
+```sh
+kubectl get deployments
+kubectl rollout restart deployment posts-depl
+kubectl get deployments
+kubectl get pods
+# NAME                          READY   STATUS    RESTARTS   AGE
+# posts-depl-776ccd8798-hzxq7   1/1     Running   0          37s
+kubectl logs posts-depl-776ccd8798-hzxq7
+```
+
 </details>
