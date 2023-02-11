@@ -236,4 +236,67 @@ kubectl get pods
 kubectl logs posts-depl-776ccd8798-hzxq7
 ```
 
+### 78. Networking With Services
+
+- \*Cluster IP
+  - Set up easy-to-remember URL to access a pod.
+  - Only exposes pods in the cluster
+- Node Port
+  - Makes a pod accessible from outside the cluster.
+  - Usually only used for _dev_ purposes.
+- \*Load Balancer
+  - Makes a pod accessible from outside the cluster.
+  - This is the right way to expose a pod to the outside world
+- External Name
+  - Redirects an in-cluster request to a CNAME url...
+  - don't worry about this one
+
+### 79. Creating a NodePort Service
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-srv
+spec:
+  type: NodePort
+  selector:
+    app: posts # matching with deployment template labels
+  ports:
+    - name: posts # optional
+      protocol: TCP
+      port: 4000 # outer: port for service itself
+      targetPort: 4000 # inter: to the pod
+```
+
+### 80. Accessing NodePort Services
+
+```sh
+# blog/infra/k8s
+kubectl apply -f posts-srv.yaml
+# service/posts-srv created
+kubectl get services
+# NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+# kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP          5d1h
+# posts-srv    NodePort    10.98.216.86   <none>        4000:30097/TCP   59s
+kubectl describe service posts-srv
+# NodePort:                 posts  30097/TCP
+minikube ip
+# 192.168.49.2
+minikube service posts-srv --url
+```
+
+- Docker for Mac/Windows -> `http://localhost:3xxxx/posts`
+- Docker toolbox with Minikube -> `http://<minikube ip>:3xxxx/posts`
+
+#### ⚠️ Trouble Shooting
+
+[Minikube accessing app](https://minikube.sigs.k8s.io/docs/handbook/accessing/)
+
+```sh
+minikube service posts-srv --url
+# http://127.0.0.1:53052
+# ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+```
+
 </details>
