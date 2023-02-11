@@ -108,4 +108,25 @@ minikube start --vm=docker
 - Deployment: Monitors a set of pods, make sure they are running and restarts them if they crash
 - Service: Provides **an easy-to-remember URL** to access a running container
 
+## 67. Notes on Config Files
+
+> Do not create Objects without _config_ files. Config files provide a precise definition of what your cluster is running.\
+> Kubernetes docs will tell you to run direct commands to create objects - only do this for testing purposes
+
+### 68. Creating a Pod
+
+```sh
+# blog/posts
+docker build -t pcsmomo/posts:0.0.1 .
+```
+
+```sh
+# blog/infra/k8s
+kubectl apply -f posts-pod.old.yaml
+# pod/posts created
+kubectl get pods  # Failed
+# NAME    READY   STATUS              RESTARTS   AGE
+# posts   0/1     ErrImageNeverPull   0          2s
+```
+
 </details>
