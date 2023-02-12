@@ -512,17 +512,34 @@ look at [the config file](https://raw.githubusercontent.com/kubernetes/ingress-n
 ### 95. Writing Ingress Config Files
 
 ```sh
-k apply -f ingress-srv.yaml
+kubectl apply -f ingress-srv.yaml
 # ingress.networking.k8s.io/ingress-srv created
+
+kubectl get ing
+# NAME          CLASS    HOSTS       ADDRESS        PORTS   AGE
+# ingress-srv   <none>   posts.com   192.168.49.2   80      4m26s
 ```
 
 ### 96. Important Note About Port 80
 
 ```sh
 sudo lsof -i tcp:80
-kubectl get services -n ingress-nginx
-kubectl get pods -n ingress-nginx
 ```
+
+### 97. Hosts File Tweak
+
+```sh
+# open minikube tunnul on the other terminal
+minikube tunnel
+```
+
+```sh
+sudo vim /etc/hosts
+# add this
+# 127.0.0.1 posts.com
+```
+
+Navigate posts.com/posts -> It works this time!!
 
 </details>
 

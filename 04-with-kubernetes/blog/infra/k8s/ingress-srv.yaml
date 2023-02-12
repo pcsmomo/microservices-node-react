@@ -10,6 +10,13 @@ spec:
     - host: posts.com
       http:
         paths:
+          - path: /posts
+            pathType: Prefix
+            backend:
+              service:
+                name: posts-clusterip-srv
+                port:
+                  number: 4000
           - path: /posts/create
             pathType: Prefix
             backend:
