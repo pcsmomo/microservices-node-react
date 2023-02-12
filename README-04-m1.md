@@ -541,6 +541,39 @@ sudo vim /etc/hosts
 
 Navigate posts.com/posts -> It works this time!!
 
+### 98. Important Note to Add Environment Variable
+
+- [[React-Scripts] v3.4.1 fails to start in Docker #8688](https://github.com/facebook/create-react-app/issues/8688)
+- [WebSocket connection to 'ws://localhost:3000/ws' failed: #11779](https://github.com/facebook/create-react-app/issues/11779)
+
+```yaml
+# blog/client/Dockerfile
+FROM node:16-alpine
+
+# Add the following lines
+ENV CI=true
+ENV WDS_SOCKET_PORT=0
+
+WORKDIR /app
+COPY package.json ./
+RUN npm install
+COPY ./ ./
+
+CMD ["npm", "start"]
+```
+
+### 99. Deploying the React App
+
+```sh
+# blog/client
+docker build -t pcsmomo/client .
+docker push pcsmomo/client
+# blog/infra/k8s
+kubectl apply -f client-depl.yaml
+# deployment.apps/client-depl created
+# service/client-srv created
+```
+
 </details>
 
 ```sh
