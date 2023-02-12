@@ -695,6 +695,97 @@ sync:
 - when `src/**/*.js` code changes, skaffold throw the changes to the pod directly
 - when the others changes, skaffold rebuild the image and rollout restart
 
+### 104. First Time Skaffold Startup
+
+the first run will take a few minutes as it build all images again\
+and the first run might fail
+
+```sh
+# first attempt
+skaffold dev
+# Generating tags...
+#  - pcsmomo/client -> pcsmomo/client:d5b4244
+#  - pcsmomo/comments -> pcsmomo/comments:d5b4244
+#  - pcsmomo/event-bus -> pcsmomo/event-bus:d5b4244
+#  - pcsmomo/moderation -> pcsmomo/moderation:d5b4244
+#  - pcsmomo/posts -> pcsmomo/posts:d5b4244
+#  - pcsmomo/query -> pcsmomo/query:d5b4244
+# Checking cache...
+#  - pcsmomo/client: Not found. Building
+#  - pcsmomo/comments: Not found. Building
+#  - pcsmomo/event-bus: Not found. Building
+#  - pcsmomo/moderation: Not found. Building
+#  - pcsmomo/posts: Not found. Building
+#  - pcsmomo/query: Not found. Building
+# Starting build...
+# Found [minikube] context, using local docker daemon.
+# Building [pcsmomo/comments]...
+# Target platforms: [linux/arm64]
+# #1 [internal] load build definition from Dockerfile
+# #1 sha256:011cee10c01c93da655f80321f685cc6df204e6ede2d4963d29e38942ecaae90
+# #1 transferring dockerfile: 145B done
+# #1 DONE 0.0s
+#
+# ...
+#
+# Build [pcsmomo/query] succeeded
+# Tags used in deployment:
+#  - pcsmomo/client -> pcsmomo/client:abdfedc2ac83dc1ba5c930a8adf08d2593b68603865e68b6571d96a395e7c2f7
+#  - pcsmomo/comments -> pcsmomo/comments:10f7203cb086ef81c3eede72cc1616f50db3071e59f5c0bc5674d28623020971
+#  - pcsmomo/event-bus -> pcsmomo/event-bus:2500aefcc0ec75a8d3c7abc4c5cde5ca50483aba27b2209b48e24dc2b08190b0
+#  - pcsmomo/moderation -> pcsmomo/moderation:fdd15116b1e01b7996689ca6b9b87d899bb001696f0a1fa9e4c89f921f56fcbe
+#  - pcsmomo/posts -> pcsmomo/posts:8c308cf50a5db4ecea2fd7cd7024c5ec379d2b0f755e0c843e074433c159dc73
+#  - pcsmomo/query -> pcsmomo/query:b412fe60c83f1f8f8fb28db9606e0835798e70b422fc921acb4d9ab84067254b
+# Starting deploy...
+#  - deployment.apps/client-depl configured
+#  - service/client-srv configured
+#  - deployment.apps/comments-depl configured
+#  - service/comments-srv configured
+#  - deployment.apps/event-bus-depl configured
+#  - service/event-bus-srv configured
+#  - ingress.networking.k8s.io/ingress-srv unchanged
+#  - deployment.apps/moderation-depl configured
+#  - service/moderation-srv configured
+#  - deployment.apps/posts-depl configured
+#  - service/posts-clusterip-srv configured
+#  - service/posts-srv configured
+#  - deployment.apps/query-depl configured
+#  - service/query-srv configured
+# Waiting for deployments to stabilize...
+#  - deployment/client-depl: creating container client
+#     - pod/client-depl-79c945579f-rrtb2: creating container client
+#  - deployment/comments-depl: creating container comments
+#     - pod/comments-depl-5454b4b9fc-wqh5h: creating container comments
+#  - deployment/event-bus-depl: creating container event-bus
+#     - pod/event-bus-depl-85756bcc88-zxtlg: creating container event-bus
+#  - deployment/moderation-depl: creating container moderation
+#     - pod/moderation-depl-55b4c76974-s9spq: creating container moderation
+#  - deployment/posts-depl: creating container posts
+#     - pod/posts-depl-c56cfc99c-9zkbk: creating container posts
+#  - deployment/query-depl: creating container query
+#     - pod/query-depl-78bf8dfd77-xhsv7: creating container query
+#  - deployment/event-bus-depl: container event-bus is waiting to start: pcsmomo/event-bus:2500aefcc0ec75a8d3c7abc4c5cde5ca50483aba27b2209b48e24dc2b08190b0 can't be pulled
+#     - pod/event-bus-depl-85756bcc88-zxtlg: container event-bus is waiting to start: pcsmomo/event-bus:2500aefcc0ec75a8d3c7abc4c5cde5ca50483aba27b2209b48e24dc2b08190b0 can't be pulled
+#  - deployment/event-bus-depl failed. Error: container event-bus is waiting to start: pcsmomo/event-bus:2500aefcc0ec75a8d3c7abc4c5cde5ca50483aba27b2209b48e24dc2b08190b0 can't be pulled.
+# I0213 07:45:47.151543    7369 request.go:668] Waited for 1.139430542s due to client-side throttling, not priority and fairness, request: GET:https://127.0.0.1:59700/apis/apps/v1/namespaces/default/replicasets?labelSelector=app%!D(MISSING)query
+# Cleaning up...
+#  - deployment.apps "client-depl" deleted
+#  - service "client-srv" deleted
+#  - deployment.apps "comments-depl" deleted
+#  - service "comments-srv" deleted
+#  - deployment.apps "event-bus-depl" deleted
+#  - service "event-bus-srv" deleted
+#  - ingress.networking.k8s.io "ingress-srv" deleted
+#  - deployment.apps "moderation-depl" deleted
+#  - service "moderation-srv" deleted
+#  - deployment.apps "posts-depl" deleted
+#  - service "posts-clusterip-srv" deleted
+#  - service "posts-srv" deleted
+#  - deployment.apps "query-depl" deleted
+#  - service "query-srv" deleted
+# 1/6 deployment(s) failed
+```
+
 </details>
 
 ```sh
