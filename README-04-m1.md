@@ -603,6 +603,31 @@ kubectl rollout restart posts-depl.yaml
 > This is painful.
 > There will be a solution for this soon in this lecture!
 
+### 100. Final Route Config
+
+- for `/posts/:id/comments`, nginx doesn't support wild card thing
+  - so we need to use regular expression, `/posts/?(.*)/comments`
+- client has to have all rest paths, so it needs to be defined at the last
+  ```yaml
+  - path: /?(.*)
+    pathType: Prefix
+    backend:
+      service:
+        name: client-srv
+        port:
+          number: 3000
+  ```
+
+```sh
+# blog/infra/k8s
+kubectl apply -f ingress-srv.yaml
+# ingress.networking.k8s.io/ingress-srv configured
+```
+
+Navigate http://posts.com/ and create a new post / refresh / create a new comment / refresh
+
+All Good!
+
 </details>
 
 ```sh
