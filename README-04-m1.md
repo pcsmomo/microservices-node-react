@@ -786,6 +786,120 @@ skaffold dev
 # 1/6 deployment(s) failed
 ```
 
+### 105. A Few Notes on Skaffold
+
+```sh
+# second attempt, gracefully works!
+skaffold dev
+# Generating tags...
+#  - pcsmomo/client -> pcsmomo/client:d5b4244
+#  - pcsmomo/comments -> pcsmomo/comments:d5b4244
+#  - pcsmomo/event-bus -> pcsmomo/event-bus:d5b4244
+#  - pcsmomo/moderation -> pcsmomo/moderation:d5b4244
+#  - pcsmomo/posts -> pcsmomo/posts:d5b4244
+#  - pcsmomo/query -> pcsmomo/query:d5b4244
+# Checking cache...
+#  - pcsmomo/client: Found Locally
+#  - pcsmomo/comments: Found Locally
+#  - pcsmomo/event-bus: Found Locally
+#  - pcsmomo/moderation: Found Locally
+#  - pcsmomo/posts: Found Locally
+#  - pcsmomo/query: Found Locally
+# Tags used in deployment:
+#  - pcsmomo/client -> pcsmomo/client:abdfedc2ac83dc1ba5c930a8adf08d2593b68603865e68b6571d96a395e7c2f7
+#  - pcsmomo/comments -> pcsmomo/comments:10f7203cb086ef81c3eede72cc1616f50db3071e59f5c0bc5674d28623020971
+#  - pcsmomo/event-bus -> pcsmomo/event-bus:2500aefcc0ec75a8d3c7abc4c5cde5ca50483aba27b2209b48e24dc2b08190b0
+#  - pcsmomo/moderation -> pcsmomo/moderation:fdd15116b1e01b7996689ca6b9b87d899bb001696f0a1fa9e4c89f921f56fcbe
+#  - pcsmomo/posts -> pcsmomo/posts:8c308cf50a5db4ecea2fd7cd7024c5ec379d2b0f755e0c843e074433c159dc73
+#  - pcsmomo/query -> pcsmomo/query:b412fe60c83f1f8f8fb28db9606e0835798e70b422fc921acb4d9ab84067254b
+# Starting deploy...
+#  - deployment.apps/client-depl created
+#  - service/client-srv created
+#  - deployment.apps/comments-depl created
+#  - service/comments-srv created
+#  - deployment.apps/event-bus-depl created
+#  - service/event-bus-srv created
+#  - ingress.networking.k8s.io/ingress-srv created
+#  - deployment.apps/moderation-depl created
+#  - service/moderation-srv created
+#  - deployment.apps/posts-depl created
+#  - service/posts-clusterip-srv created
+#  - service/posts-srv created
+#  - deployment.apps/query-depl created
+#  - service/query-srv created
+# Waiting for deployments to stabilize...
+#  - deployment/client-depl is ready. [5/6 deployment(s) still pending]
+#  - deployment/comments-depl is ready. [4/6 deployment(s) still pending]
+#  - deployment/event-bus-depl is ready. [3/6 deployment(s) still pending]
+#  - deployment/moderation-depl is ready. [1/6 deployment(s) still pending]
+#  - deployment/posts-depl is ready. [2/6 deployment(s) still pending]
+#  - deployment/query-depl is ready.
+# Deployments stabilized in 4.103 seconds
+# Listing files to watch...
+#  - pcsmomo/client
+#  - pcsmomo/comments
+#  - pcsmomo/event-bus
+#  - pcsmomo/moderation
+#  - pcsmomo/posts
+#  - pcsmomo/query
+# Press Ctrl+C to exit
+# Watching for changes...
+# [event-bus]
+# [event-bus] > event-bus@1.0.0 start
+# [event-bus] > nodemon index.js
+# [event-bus]
+# [event-bus] [nodemon] 2.0.20
+# [event-bus] [nodemon] to restart at any time, enter `rs`
+# [event-bus] [nodemon] watching path(s): *.*
+# [event-bus] [nodemon] watching extensions: js,mjs,json
+# [event-bus] [nodemon] starting `node index.js`
+# [event-bus] Listening on 4005
+# [moderation]
+```
+
+Try to change a few code and see what happens
+
+```sh
+# After change client code
+# Syncing 1 files for pcsmomo/client:abdfedc2ac83dc1ba5c930a8adf08d2593b68603865e68b6571d96a395e7c2f7
+# Watching for changes...
+# [client] Compiled successfully!
+
+# After change posts code
+# Syncing 1 files for pcsmomo/posts:8c308cf50a5db4ecea2fd7cd7024c5ec379d2b0f755e0c843e074433c159dc73
+# Watching for changes...
+# [posts] [nodemon] restarting due to changes...
+# [posts] [nodemon] starting `node index.js`
+# [posts] v1000
+# [posts] Listening on 4000
+```
+
+Stop skaffold (Ctrl + C)
+
+```sh
+# ^CCleaning up...
+#  - deployment.apps "client-depl" deleted
+#  - service "client-srv" deleted
+#  - deployment.apps "comments-depl" deleted
+#  - service "comments-srv" deleted
+#  - deployment.apps "event-bus-depl" deleted
+#  - service "event-bus-srv" deleted
+#  - ingress.networking.k8s.io "ingress-srv" deleted
+#  - deployment.apps "moderation-depl" deleted
+#  - service "moderation-srv" deleted
+#  - deployment.apps "posts-depl" deleted
+#  - service "posts-clusterip-srv" deleted
+#  - service "posts-srv" deleted
+#  - deployment.apps "query-depl" deleted
+#  - service "query-srv" deleted
+
+# Help improve Skaffold with our 2-minute anonymous survey: run 'skaffold survey'
+# To help improve the quality of this product, we collect anonymized usage data for details on what is tracked and how we use this data visit <https://skaffold.dev/docs/resources/telemetry/>. This data is handled in accordance with our privacy policy <https://policies.google.com/privacy>
+
+# You may choose to opt out of this collection by running the following command:
+# 	skaffold config set --global collect-metrics false
+```
+
 </details>
 
 ```sh
