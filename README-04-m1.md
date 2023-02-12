@@ -435,4 +435,78 @@ kubectl get services
 # query-srv             ClusterIP   10.100.202.247   <none>        4002/TCP         82s
 ```
 
+### 90. Load Balancer Services
+
+React App need to communicate with all services (except moderation)
+
+1. Option #1
+   - React App -> Node Port for each service
+   - Probably not good
+2. \*Option #2
+   - React App -> Load Balancer Service -> Cluster IP for each service
+   - Probably good
+
+### 91. Load Balancers and Ingress
+
+- Load Balancer Service Type
+  - Tell Kubernetes to reach out to its provider and provision a load balancer
+  - Gets traffic in to a single pod
+  - Load Balancer is actually in a cloud provider
+- Ingress or Ingress Controller
+  - A pod with a set of **routing rules** to distribute traffic to other services
+
+### 92. Important - DO NOT SKIP - Ingress Nginx Installation Info
+
+We will be using [Ingress Nginx](https://kubernetes.github.io/ingress-nginx/), not [Nginx Ingress](https://docs.nginx.com/nginx-ingress-controller/)
+
+### 93. Installing Ingress-Nginx
+
+ingress-nginx
+
+- [ingress-nginx Github](https://github.com/kubernetes/ingress-nginx)
+- [ingress-nginx Doc](https://kubernetes.github.io/ingress-nginx/deploy)
+
+> Note, not 'kubernetes-ingress'
+
+#### Way 1 to install
+
+```sh
+minikube addons enable ingress
+# 💡  ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+# You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+# 💡  After the addon is enabled, please run "minikube tunnel" and your ingress resources would be available at "127.0.0.1"
+#     ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20220916-gd32f8c343
+#     ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20220916-gd32f8c343
+#     ▪ Using image registry.k8s.io/ingress-nginx/controller:v1.5.1
+# 🔎  Verifying ingress addon...
+# 🌟  The 'ingress' addon is enabled
+kubectl get all -n ingress-nginx
+# NAME                                           READY   STATUS      RESTARTS      AGE
+# pod/ingress-nginx-admission-create-rhr7d       0/1     Completed   0             2d8h
+# pod/ingress-nginx-admission-patch-nrd6x        0/1     Completed   0             2d8h
+# pod/ingress-nginx-controller-77669ff58-4xvfr   1/1     Running     1 (20h ago)   2d8h
+
+# NAME                                         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+# service/ingress-nginx-controller             NodePort    10.97.172.57    <none>        80:31503/TCP,443:31729/TCP   2d8h
+# service/ingress-nginx-controller-admission   ClusterIP   10.99.249.113   <none>        443/TCP                      2d8h
+
+# NAME                                       READY   UP-TO-DATE   AVAILABLE   AGE
+# deployment.apps/ingress-nginx-controller   1/1     1            1           2d8h
+
+# NAME                                                 DESIRED   CURRENT   READY   AGE
+# replicaset.apps/ingress-nginx-controller-77669ff58   1         1         1       2d8h
+
+# NAME                                       COMPLETIONS   DURATION   AGE
+# job.batch/ingress-nginx-admission-create   1/1           22s        2d8h
+# job.batch/ingress-nginx-admission-patch    1/1           22s        2d8h
+```
+
+#### Way 2 to manually install (Optional)
+
+```sh
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml
+```
+
+look at [the config file](https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml) to see what's going on
+
 </details>
