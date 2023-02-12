@@ -509,4 +509,26 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 
 look at [the config file](https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml) to see what's going on
 
+### 95. Writing Ingress Config Files
+
+```sh
+k apply -f ingress-srv.yaml
+# ingress.networking.k8s.io/ingress-srv created
+```
+
+### 96. Important Note About Port 80
+
+```sh
+sudo lsof -i tcp:80
+kubectl get services -n ingress-nginx
+kubectl get pods -n ingress-nginx
+```
+
 </details>
+
+```sh
+minikube start --driver=docker
+eval $(minikube docker-env)
+minikube addons enable ingress
+minikube tunnel
+```
