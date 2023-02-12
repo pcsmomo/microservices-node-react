@@ -640,7 +640,60 @@ Skaffold - when code changes, it applies to the pod (...nodemon?)
 
 ```sh
 brew install skaffold
+skaffold
+# A tool that facilitates continuous development for Kubernetes applications.
+#   Find more information at: https://skaffold.dev/docs/getting-started/
+# End-to-end Pipelines:
+#   run               Run a pipeline
+#   dev               Run a pipeline in development mode
+#   debug             Run a pipeline in debug mode
+
+# ...
+
+# Usage:
+#   skaffold [flags] [options]
+
+# Use "skaffold <command> --help" for more information about a given command.
+# Use "skaffold options" for a list of global command-line options (applies to all commands).
 ```
+
+### 103. Skaffold Setup
+
+#### manifests
+
+```yaml
+apiVersion: skaffold/v2alpha3
+kubectl:
+  manifests:
+    - ./infra/k8s/*
+```
+
+These 3 lines do 3 things
+
+- when skaffold starts running, apply all yaml config files
+- when config files change, apply it
+- when skaffold stops, delete all objects related to the config files
+
+#### build
+
+```yaml
+build:
+  local:
+    # default is true, pushing docker image
+    push: false
+```
+
+#### sync
+
+```yaml
+sync:
+  manual:
+    - src: 'src/**/*.js'
+      dest: .
+```
+
+- when `src/**/*.js` code changes, skaffold throw the changes to the pod directly
+- when the others changes, skaffold rebuild the image and rollout restart
 
 </details>
 
@@ -648,5 +701,7 @@ brew install skaffold
 minikube start --driver=docker
 eval $(minikube docker-env)
 minikube addons enable ingress
+
 minikube tunnel
+skaffold dev
 ```
