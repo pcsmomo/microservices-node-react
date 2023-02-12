@@ -390,4 +390,49 @@ k logs posts-depl-546dbb95dc-f4q5f
 # Event Received: PostCreated
 ```
 
+### 88. Adding Query, Moderation and Comments
+
+```sh
+# blog/comments
+docker build -t pcsmomo/comments .
+docker push pcsmomo/comments
+# blog/moderation
+docker build -t pcsmomo/moderation .
+docker push pcsmomo/moderation
+# blog/query
+docker build -t pcsmomo/query .
+docker push pcsmomo/query
+
+# blog/infra/k8s
+kubectl apply -f .
+# deployment.apps/comments-depl created
+# service/comments-srv created
+# deployment.apps/event-bus-depl created
+# service/event-bus-srv created
+# deployment.apps/moderation-depl created
+# service/moderation-srv created
+# deployment.apps/posts-depl created
+# service/posts-clusterip-srv created
+# pod/posts created
+# service/posts-srv created
+# deployment.apps/query-depl created
+# service/query-srv created
+kubectl get pods --watch
+# NAME                              READY   STATUS    RESTARTS   AGE
+# comments-depl-8d447b496-qddnk     1/1     Running   0          4m49s
+# event-bus-depl-55f54dff69-wj54w   1/1     Running   0          4m49s
+# moderation-depl-cb8d49798-ct2fj   1/1     Running   0          4m49s
+# posts-depl-7f649dfc-4nsjg         1/1     Running   0          4m49s
+# query-depl-c4bb58446-gdfqz        1/1     Running   0          4m49s
+kubectl get services
+# NAME                  TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+# comments-srv          ClusterIP   10.108.236.32    <none>        4001/TCP         82s
+# event-bus-srv         ClusterIP   10.110.85.17     <none>        4005/TCP         82s
+# kubernetes            ClusterIP   10.96.0.1        <none>        443/TCP          5d7h
+# moderation-srv        ClusterIP   10.106.48.169    <none>        4003/TCP         82s
+# posts-clusterip-srv   ClusterIP   10.102.222.241   <none>        4000/TCP         82s
+# posts-srv             NodePort    10.99.206.69     <none>        4000:30765/TCP   82s
+# query-srv             ClusterIP   10.100.202.247   <none>        4002/TCP         82s
+```
+
 </details>
