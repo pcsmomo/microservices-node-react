@@ -369,4 +369,25 @@ kubectl get pods
 # posts-depl-546dbb95dc-f4q5f       1/1     Running   0          19s
 ```
 
+### 87. Verifying Communication
+
+```sh
+kubectl exec -it posts-depl-94d556dcd-bqrdf sh
+cat index.js
+```
+
+Send a post request to posts service using postman
+
+```sh
+minikube service posts-srv --url
+# http://127.0.0.1:53052
+# ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+```
+
+```sh
+k logs posts-depl-546dbb95dc-f4q5f
+# Listening on 4000
+# Event Received: PostCreated
+```
+
 </details>
