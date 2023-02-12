@@ -5,7 +5,7 @@
 
 ## Section 4 - Orchestrating Collections of Services with Kubernetes
 
-### 63. Installing Kubernetes
+### 64. Installing Kubernetes
 
 Click Docker Icon on the tray -> Preferences -> Kubernetes -> Enable Kubernetes
 
@@ -13,7 +13,7 @@ Click Docker Icon on the tray -> Preferences -> Kubernetes -> Enable Kubernetes
 > (it take too long to enable/disable for me)\
 > running command `minikube start --driver=docker`
 
-### 64. IMPORTANT Note for Minikube and MicroK8s Users
+### 65. IMPORTANT Note for Minikube and MicroK8s Users
 
 1. Minikube Users
 
@@ -35,7 +35,7 @@ To avoid this issue, you can pass the `--driver` flag with a specific driver or 
 
 This course does not support the use of MicroK8s and will likely not work in the way that is presented. We highly suggest the use of Docker Desktop for macOS and Windows users and Minikube for Linux users. If you choose to use MicroK8s you will need to do your own research and refactoring to resolve the issues that may arise.
 
-### 65. A Kubernetes Tour
+### 66. A Kubernetes Tour
 
 ```sh
 kubectl version
@@ -100,7 +100,7 @@ minikube start --vm=docker
       - Pod (= Container)
       - Pod and Container are technically different, but we will use one to one mapping
 
-### 66. Important Kubernetes Terminology
+### 67. Important Kubernetes Terminology
 
 - Kubernetes Cluster : A collections of nodes + a master to manage them
 - Node: A Virtual machine that will run our containers
@@ -108,12 +108,12 @@ minikube start --vm=docker
 - Deployment: Monitors a set of pods, make sure they are running and restarts them if they crash
 - Service: Provides **an easy-to-remember URL** to access a running container
 
-## 67. Notes on Config Files
+## 68. Notes on Config Files
 
 > Do not create Objects without _config_ files. Config files provide a precise definition of what your cluster is running.\
 > Kubernetes docs will tell you to run direct commands to create objects - only do this for testing purposes
 
-### 68. Creating a Pod
+### 69. Creating a Pod
 
 ```sh
 # blog/posts
@@ -129,7 +129,7 @@ kubectl get pods  # Failed
 # posts   0/1     ErrImageNeverPull   0          2s
 ```
 
-### 69. ErrImagePull, ErrImageNeverPull and ImagePullBackoff Errors
+### 70. ErrImagePull, ErrImageNeverPull and ImagePullBackoff Errors
 
 - Minikube Users:
 
@@ -155,19 +155,19 @@ Update, your pod manifest as shown above and then run:
 # ./blog
 eval $(minikube docker-env)
 docker build -t pcsmomo/posts:0.0.1 posts/
-k apply -f infra/k8s/posts-pod.old.yaml
-k get pods
+kubectl apply -f infra/k8s/posts-pod.old.yaml
+kubectl get pods
 # NAME    READY   STATUS    RESTARTS   AGE
 # posts   1/1     Running   0          8m29s
 ```
 
-### 70. Understanding a Pod Spec
+### 71. Understanding a Pod Spec
 
 `image: pcsmomo/posts` or `image: pcsmomo/posts:latest` \
 if we don't specify the tag, it will try to reach docker hub to find the image:latest \
 and in our case, we will get an error as we didn't push our image to docker hub
 
-### 71. Common Kubectl Commands
+### 72. Common Kubectl Commands
 
 ```sh
 kubectl exec -it posts -- sh
@@ -176,13 +176,13 @@ ls
 kubectl logs posts
 ```
 
-### 74. Creating a Deployment
+### 75. Creating a Deployment
 
 ```sh
 kubectl apply -f posts-depl.yaml
 ```
 
-### 75. Common Commands Around Deployments
+### 76. Common Commands Around Deployments
 
 ```sh
 k apply -f posts-depl.yaml
@@ -201,7 +201,7 @@ k get pods --watch
 # posts-depl-7f649dfc-5hgl2   1/1     Running   0          6s
 ```
 
-### 76. Updating Deployments
+### 77. Updating Deployments
 
 Updating the image used by a deployment
 
@@ -214,7 +214,7 @@ Updating the image used by a deployment
 
 > Howover, this method is not really useful because we need to manually change the tag version on the yaml file
 
-### 77. Preferred Method for Updating Deployments
+### 78. Preferred Method for Updating Deployments
 
 2. \*Method #2 - using docker hub
    1. 'blog/infra/k8s': using 'latest' or remove tag in the pod spec section
@@ -236,7 +236,7 @@ kubectl get pods
 kubectl logs posts-depl-776ccd8798-hzxq7
 ```
 
-### 78. Networking With Services
+### 79. Networking With Services
 
 - \*Cluster IP
   - Set up easy-to-remember URL to access a pod.
@@ -251,7 +251,7 @@ kubectl logs posts-depl-776ccd8798-hzxq7
   - Redirects an in-cluster request to a CNAME url...
   - don't worry about this one
 
-### 79. Creating a NodePort Service
+### 80. Creating a NodePort Service
 
 ```yaml
 apiVersion: v1
@@ -269,7 +269,7 @@ spec:
       targetPort: 4000 # inter: to the pod
 ```
 
-### 80. Accessing NodePort Services
+### 81. Accessing NodePort Services
 
 ```sh
 # blog/infra/k8s
@@ -297,6 +297,76 @@ minikube service posts-srv --url
 minikube service posts-srv --url
 # http://127.0.0.1:53052
 # ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+```
+
+### 82. Setting Up Cluster IP Services
+
+- Posts Pod -> Cluster IP service for Event Bus -> Event Bus Pod
+- Event Bus Pod -> Cluster IP service for Posts -> Posts Pod
+
+### 83. Building a Deployment for the Event Bus
+
+1. Build an image for the Event Bus
+2. Push the image to Docker hub
+3. Create a deployment for Event Bus
+4. Create a Cluster IP service for Event Bus and Posts
+5. Wire it all up! -> 'localhost' to <service_name>
+
+```sh
+# blog/event-bus
+docker build -t pcsmomo/event-bus .
+docker push pcsmomo/event-bus
+touch event-bus-depl.yaml
+# blog/infra/k8s
+kubectl apply -f event-bus-depl.yaml
+# deployment.apps/event-bus-depl created
+kubectl get pods
+# NAME                              READY   STATUS    RESTARTS   AGE
+# event-bus-depl-55f54dff69-4v9vf   1/1     Running   0          18s
+# posts-depl-7f649dfc-gxsx2         1/1     Running   0          92m
+```
+
+### 84. Adding ClusterIP Services
+
+```sh
+kubectl apply -f event-bus-depl.yaml
+# deployment.apps/event-bus-depl unchanged
+# service/event-bus-srv created
+kubectl apply -f posts-depl.yaml
+# deployment.apps/posts-depl unchanged
+# service/posts-clusterip-srv created
+kubectl get services
+# NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+# event-bus-srv         ClusterIP   10.99.18.99     <none>        4005/TCP         94s
+# kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          5d3h
+# posts-clusterip-srv   ClusterIP   10.108.81.129   <none>        4000/TCP         34s
+# posts-srv             NodePort    10.98.216.86    <none>        4000:30097/TCP   97m
+```
+
+### 86. Updating Service Addresses
+
+Change the urls from `localhost:4xxx` -> `<service name>:4xxx`
+
+```sh
+# blog/event-bus
+docker build -t pcsmomo/event-bus .
+docker push pcsmomo/event-bus
+# blog/posts
+docker build -t pcsmomo/posts .
+docker push pcsmomo/posts
+# blog/infra/k8s
+kubectl get deployments
+# NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+# event-bus-depl   1/1     1            1           26m
+# posts-depl       1/1     1            1           9h
+kubectl rollout restart deployment posts-depl
+# deployment.apps/posts-depl restarted
+kubectl rollout restart deployment event-bus-depl
+# deployment.apps/event-bus-depl restarted
+kubectl get pods
+# NAME                              READY   STATUS    RESTARTS   AGE
+# event-bus-depl-7ddd999bd4-cmgz6   1/1     Running   0          11s
+# posts-depl-546dbb95dc-f4q5f       1/1     Running   0          19s
 ```
 
 </details>
