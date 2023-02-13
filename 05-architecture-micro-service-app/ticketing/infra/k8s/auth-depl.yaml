@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-    app: auth # it should match with the label in template
+      app: auth # it should match with the label in template
   template:
     metadata:
       labels:

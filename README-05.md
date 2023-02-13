@@ -87,4 +87,19 @@ npm start
 # Listening on port 3000!
 ```
 
+### 113. Auth K8s Setup
+
+```sh
+# ticketing/auth
+docker build -t pcsmomo/auth .
+```
+
+```sh
+# ticketing
+mkdir -p infra/k8s
+cd infra/k8s
+touch auth-depl.yaml
+kubectl apply -f auth-depl.yaml
+```
+
 </details>
