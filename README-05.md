@@ -67,4 +67,24 @@ We will build something like [Stubhub.com](https://www.stubhub.com/)
 
 ![second app architecture](./resources/110-second-app-architecture-design.jpeg)
 
+### 112. Auth Service Setup
+
+```sh
+mkdir ticketing
+cd ticketing
+mkdir auth
+cd auth
+npm init -y
+npm install typescript ts-node-dev express @types/express
+npm install -g typescript
+tsc --init
+
+npm start
+# > auth@1.0.0 start
+# > ts-node-dev src/index.ts
+
+# [INFO] 17:52:15 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.1, typescript ver. 4.9.5)
+# Listening on port 3000!
+```
+
 </details>
