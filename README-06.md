@@ -198,8 +198,8 @@ gcloud init
 # Your Google Cloud SDK is configured and ready to use!
 
 # * Commands that require authentication will use d**** by default
-# * Commands will reference project `ticketing-dev-377721` by default
-# * Compute Engine commands will use region `australia-southeast1` by default
+# * Commands will reference project `ticketing-dev-377721` bylt
+# * Compute Engine commands will use region `australia-southeast defau1` by default
 # * Compute Engine commands will use zone `australia-southeast1-a` by default
 
 # Run `gcloud help config` to learn how to change individual settings
@@ -212,6 +212,75 @@ gcloud init
 # * Run `gcloud --help` to see the Cloud Platform services you can interact with. And run `gcloud help COMMAND` to get help on any gcloud command.
 # * Run `gcloud topic --help` to learn about advanced features of the SDK like arg files and output formatting
 # * Run `gcloud cheat-sheet` to see a roster of go-to `gcloud` commands.
+```
+
+### 127. Installing the GCloud Context
+
+- Option 1. Don't want to run Docker at all
+  - Close Docker Desktop
+  - Run `gcloud components install kubectl`
+  - Run `gcloud container clusters get-credentials <cluster name>`
+- \*Option 2. Ok still running Docker on local
+  - Run `gcloud container clusters get-credentials <cluster name>`
+
+```sh
+gcloud container clusters get-credentials ticketing-dev
+# Fetching cluster endpoint and auth data.
+# CRITICAL: ACTION REQUIRED: gke-gcloud-auth-plugin, which is needed for continued use of kubectl, was not found or is not executable. Install gke-gcloud-auth-plugin for use with kubectl by following https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+# kubeconfig entry generated for ticketing-dev.
+
+gcloud components install gke-gcloud-auth-plugin
+# Your current Google Cloud CLI version is: 417.0.1
+# Installing components from version: 417.0.1
+
+# ┌────────────────────────────────────────────┐
+# │    These components will be installed.     │
+# ├────────────────────────┬─────────┬─────────┤
+# │          Name          │ Version │   Size  │
+# ├────────────────────────┼─────────┼─────────┤
+# │ gke-gcloud-auth-plugin │   0.4.0 │ 7.1 MiB │
+# └────────────────────────┴─────────┴─────────┘
+
+# For the latest full release notes, please visit:
+#   https://cloud.google.com/sdk/release_notes
+
+# Do you want to continue (Y/n)?  y
+
+# ╔════════════════════════════════════════════════════════════╗
+# ╠═ Creating update staging area                             ═╣
+# ╠════════════════════════════════════════════════════════════╣
+# ╠═ Installing: gke-gcloud-auth-plugin                       ═╣
+# ╠════════════════════════════════════════════════════════════╣
+# ╠═ Installing: gke-gcloud-auth-plugin                       ═╣
+# ╠════════════════════════════════════════════════════════════╣
+# ╠═ Creating backup and activating new installation          ═╣
+# ╚════════════════════════════════════════════════════════════╝
+
+# Performing post processing steps...done.
+
+# Update done!
+
+gcloud container clusters get-credentials ticketing-dev
+# Fetching cluster endpoint and auth data.
+# kubeconfig entry generated for ticketing-dev.
+
+kubectx
+# gke_ticketing-dev-377721_australia-southeast1-a_ticketing-dev
+# minikube
+# specnetes
+
+# Choose my local minikube
+kubectx minikube
+# Switched to context "minikube".
+k get pods
+# NAME                         READY   STATUS    RESTARTS   AGE
+# auth-depl-668ff4bfdb-fmtgd   1/1     Running   0          157m
+
+# Choose google cloud kubernetes cluster
+kubectx gke_ticketing-dev-377721_australia-southeast1-a_ticketing-dev
+# Switched to context "gke_ticketing-dev-377721_australia-southeast1-a_ticketing-dev".
+k get pods
+# No resources found in default namespace.
 ```
 
 </details>
