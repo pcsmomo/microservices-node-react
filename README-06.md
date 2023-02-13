@@ -160,4 +160,58 @@ if [ -f '/Users/noah/Documents/study/study_codes/udemy/microservices-node-react/
 if [ -f '/Users/noah/Documents/study/study_codes/udemy/microservices-node-react/resources/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/noah/Documents/study/study_codes/udemy/microservices-node-react/resources/google-cloud-sdk/completion.zsh.inc'; fi
 ```
 
+### 126. Initializing the GCloud SDK
+
+```sh
+gcloud --version
+# Google Cloud SDK 417.0.1
+# bq 2.0.84
+# core 2023.02.08
+# gcloud-crc32c 1.0.0
+# gsutil 5.19
+
+gcloud auth login
+# Choose the google account I use for this project
+# You are now logged in as [d****].
+# Your current project is [None].  You can change this setting by running:
+#   $ gcloud config set project PROJECT_ID
+# https://cloud.google.com/sdk/auth_success?authuser=2
+
+gcloud init
+# Pick configuration to use:
+#  [1] Re-initialize this configuration [default] with new settings
+# Pick cloud project to use:
+#  [2] ticketing-dev-377721
+# Which Google Compute Engine zone would you like to use as project default?
+# If you do not specify a zone via a command line flag while working with Compute Engine resources, the default is assumed.
+#  [40] australia-southeast1-a
+
+# Your project default Compute Engine zone has been set to [australia-southeast1-a].
+# You can change it by running [gcloud config set compute/zone NAME].
+
+# Your project default Compute Engine region has been set to [australia-southeast1].
+# You can change it by running [gcloud config set compute/region NAME].
+
+# Created a default .boto configuration file at [/Users/noah/.boto]. See this file and
+# [https://cloud.google.com/storage/docs/gsutil/commands/config] for more
+# information about configuring Google Cloud Storage.
+# Your Google Cloud SDK is configured and ready to use!
+
+# * Commands that require authentication will use d**** by default
+# * Commands will reference project `ticketing-dev-377721` by default
+# * Compute Engine commands will use region `australia-southeast1` by default
+# * Compute Engine commands will use zone `australia-southeast1-a` by default
+
+# Run `gcloud help config` to learn how to change individual settings
+
+# This gcloud configuration is called [default]. You can create additional configurations if you work with multiple accounts and/or projects.
+# Run `gcloud topic configurations` to learn more.
+
+# Some things to try next:
+
+# * Run `gcloud --help` to see the Cloud Platform services you can interact with. And run `gcloud help COMMAND` to get help on any gcloud command.
+# * Run `gcloud topic --help` to learn about advanced features of the SDK like arg files and output formatting
+# * Run `gcloud cheat-sheet` to see a roster of go-to `gcloud` commands.
+```
+
 </details>
