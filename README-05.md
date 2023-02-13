@@ -63,4 +63,8 @@ We will build something like [Stubhub.com](https://www.stubhub.com/)
 - expiration: Watchers for orders to be created, cancels them after 15 minutes
 - payments: Handles credit card payments. cancels orders if payments fails, completes if payment succeeds
 
+### 110. Events and Architecture Design
+
+![second app architecture](./resources/110-second-app-architecture-design.jpeg)
+
 </details>

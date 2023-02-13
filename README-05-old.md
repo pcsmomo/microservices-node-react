@@ -41,7 +41,7 @@ Painful Things from App #1 (blog)
 
 ### 109. Events and Architecture Design
 
-![second app architecture](./resources/109-second-app-architecture-design.jpeg)
+![second app architecture](./resources/110-second-app-architecture-design.jpeg)
 
 ### 111. Auth Service Setup
 
