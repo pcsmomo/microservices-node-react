@@ -33,4 +33,26 @@ We will build something like [Stubhub.com](https://www.stubhub.com/)
 5. While locked, no other user can purchase the ticket. After 15 minutes, the ticket should "unlock"
 6. Ticket prices can be edited if they are not locked
 
+### 108. Resource Types
+
+- User
+  - email: string
+  - password: string
+- Ticket
+  - title: string
+  - price: number
+  - userId: Ref to User
+  - orderId: Ref to Order
+- Order
+  - userId: Ref to User
+  - status: Created | Cancelled | AwaitingPayment | Completed
+  - ticketId: Ref to Ticket
+  - expiresAt: Date
+- Charge
+  - orderId: Ref to Order
+  - status: Created | Failed | Completed
+  - amount: number
+  - stripeId: string
+  - stripeRefundId: string
+
 </details>
