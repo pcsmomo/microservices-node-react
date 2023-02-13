@@ -243,4 +243,17 @@ Change `ticketing/auth/index.ts` and save the file
 # [auth] Listening on port 3000!!!!!!
 ```
 
+### 115. Note on Code Reloading
+
+If you did not see your server restart after changing the index.ts file, do the following:
+
+```json
+// ticketing/auth/package.json
+{
+  "start": "ts-node-dev --poll src/index.ts"
+}
+```
+
+### 117. Ingress-Nginx Setup
+
 </details>
