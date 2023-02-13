@@ -254,6 +254,17 @@ If you did not see your server restart after changing the index.ts file, do the 
 }
 ```
 
-### 117. Ingress-Nginx Setup
+### 118. Hosts File and Security Warning
+
+```sh
+sudo vim /etc/hosts
+# add this
+# 127.0.0.1 ticketing.dev
+```
+
+- Navigate `https://ticketing.dev/api/users/currentuser`
+- You will see a warning message, "Your connection is not private"
+- Unskippable HTTPS warning in chrome?
+  - type `thisisunsafe`
 
 </details>
