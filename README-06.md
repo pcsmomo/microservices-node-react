@@ -288,5 +288,8 @@ k get pods
 1. Enable Google Cloud Build
    - Google Cloud -> CI/CD -> Cloud Build API -> Enable
 2. Update the `skaffold.yaml` file to use Google Cloud Build
+3. Setup ingress-nginx on our google cloud cluster kubernetes.github.io/ingress-nginx
+4. Update our hosts file again to poin to the remote cluster
+5. Restart skaffold
 
 </details>
