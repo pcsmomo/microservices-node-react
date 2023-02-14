@@ -7,8 +7,11 @@ deploy:
 build:
   local:
     push: false
+  googleCloudBuild:
+    projectId: ticketing-dev-377721
   artifacts:
-    - image: pcsmomo/auth
+    # - image: pcsmomo/auth # local
+    - image: us.gcr.io/ticketing-dev-377721/auth  # google cloud
       context: auth
       docker:
         dockerfile: Dockerfile

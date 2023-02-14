@@ -283,4 +283,10 @@ k get pods
 # No resources found in default namespace.
 ```
 
+### 128. Updating the Skaffold Config
+
+1. Enable Google Cloud Build
+   - Google Cloud -> CI/CD -> Cloud Build API -> Enable
+2. Update the `skaffold.yaml` file to use Google Cloud Build
+
 </details>
