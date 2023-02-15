@@ -375,4 +375,91 @@ sudo vim /etc/hosts
 # 34.116.75.247 ticketing.dev
 ```
 
+### 131. Final Config and Test
+
+```sh
+skaffold dev
+# Generating tags...
+#  - us.gcr.io/ticketing-dev-377721/auth -> us.gcr.io/ticketing-dev-377721/auth:432e9c2
+# Checking cache...
+#  - us.gcr.io/ticketing-dev-377721/auth: Not found. Building
+# Starting build...
+# Building [us.gcr.io/ticketing-dev-377721/auth]...
+# Target platforms: [linux/amd64]
+# Cleaning up...
+#  - No resources found
+# build [us.gcr.io/ticketing-dev-377721/auth] failed: getting cloudbuild client: google: could not find default credentials. See https://developers.google.com/accounts/docs/application-default-credentials for more information.
+
+gcloud auth application-default login
+# Your browser has been opened to visit:
+
+#     https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8085%2F&scope=openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fsqlservice.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Faccounts.reauth&state=L6IMYcVq1PUTURUrYuvkfCLXz9DfpB&access_type=offline&code_challenge=UmxS9t6VkglwNxKkDIBncuRBcrDj-6rxjCHTSHP4Azc&code_challenge_method=S256
+
+
+# Credentials saved to file: [/Users/noah/.config/gcloud/application_default_credentials.json]
+
+# These credentials will be used by any library that requests Application Default Credentials (ADC).
+
+# Quota project "ticketing-dev-377721" was added to ADC which can be used by Google client libraries for billing and quota. Note that some services may still bill the project owning the resource.
+
+skaffold dev
+# Generating tags...
+#  - us.gcr.io/ticketing-dev-377721/auth -> us.gcr.io/ticketing-dev-377721/auth:432e9c2
+# Checking cache...
+#  - us.gcr.io/ticketing-dev-377721/auth: Not found. Building
+# Starting build...
+# Building [us.gcr.io/ticketing-dev-377721/auth]...
+# Target platforms: [linux/amd64]
+# Pushing code to gs://ticketing-dev-377721_cloudbuild/source/ticketing-dev-377721-f9ab11e7-a1fc-4b73-80da-c54b97bc7913.tar.gz
+# Logs are available at
+# https://storage.cloud.google.com/ticketing-dev-377721_cloudbuild/log-d2aa9192-e248-49fc-9165-97f60afef016.txt
+# starting build "d2aa9192-e248-49fc-9165-97f60afef016"
+
+# FETCHSOURCE
+
+# ...
+
+# bdff5591dbb5: Pushed
+# d1f7de2f26d1: Pushed
+# 2cec6047270a: Pushed
+# 432e9c2: digest: sha256:4ff841d1e2f7b36e277197bc0ea6fb9749a15af619a69ab3cb82ba810d879255 size: 1993
+# DONE
+# Build [us.gcr.io/ticketing-dev-377721/auth] succeeded
+# Tags used in deployment:
+#  - us.gcr.io/ticketing-dev-377721/auth -> us.gcr.io/ticketing-dev-377721/auth:432e9c2@sha256:4ff841d1e2f7b36e277197bc0ea6fb9749a15af619a69ab3cb82ba810d879255
+# Starting deploy...
+#  - deployment.apps/auth-depl created
+#  - service/auth-srv created
+#  - ingress.networking.k8s.io/ingress-service created
+# Waiting for deployments to stabilize...
+#  - deployment/auth-depl: creating container auth
+#     - pod/auth-depl-68f98dfcc7-tj6nm: creating container auth
+#  - deployment/auth-depl is ready.
+# Deployments stabilized in 18.149 seconds
+# Listing files to watch...
+#  - us.gcr.io/ticketing-dev-377721/auth
+# Press Ctrl+C to exit
+# Watching for changes...
+# [auth]
+# [auth] > auth@1.0.0 start
+# [auth] > ts-node-dev src/index.ts
+# [auth]
+# [auth] [INFO] 08:22:47 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.1, typescript ver. 4.9.5)
+# [auth] Listening on port 3000!!!!!!
+```
+
+Check Google Cloud -> Cloud Build -> History
+
+- Navigate https://ticketing.dev/api/users/currentuser to check
+- type `thisisunsafe` again
+
+> However, when I chnage the code, the console says `Syncing 1 files for us.gcr.io/ticketing-dev-377721/auth:432e9c2-dirty@sha256:2792c3277add2b91ac7b07eb21d6025fa2c50daeb070ad77221f4388b24df606`\
+> but it doesn't always get updated on the browser. the changes get applied after restart (=skaffold dev)
+
+#### Rollback and clean up Google Cloud part
+
+I will use kubernetes cluster on my local and won't use google cloud for this course.
+
+So the cluster and load balancer (including backend) should be deleted.
+
 </details>
