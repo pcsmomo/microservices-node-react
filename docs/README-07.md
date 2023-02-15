@@ -5,4 +5,16 @@
 
 ## Section 7 - Response Normalization Strategies
 
+```sh
+# ticketing
+minikube tunnel
+skaffold dev
+```
+
+### 134. Adding Validation
+
+```sh
+npm install --save express-validator
+```
+
 </details>
