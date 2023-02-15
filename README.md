@@ -45,12 +45,13 @@ Microservices with Node JS and React by Stephen Grider
 
 # Details
 
-[README-Section 1 to 3](./README-01.md)
-[README-Section 4](./README-04.md)
-[README-Section 4 - on Mac pro m1](./README-04-m1.md)
-[README-Section 5](./README-05.md)
-[README-Section 6: Cloud Setup](./README-06.md)
-[README-Appendix-Docker](./README-appx-docker.md)
+- [README-Section 1 to 3](./docs/README-01.md)
+- [README-Section 4](./docs/README-04.md)
+- [README-Section 4 - on Mac pro m1](./docs/README-04-m1.md)
+- [README-Section 5](./docs/README-05.md)
+- [README-Section 6: Cloud Setup](./docs/README-06.md)
+- [README-Section 7: Response Normalization](./docs/README-07.md)
+- [README-Appendix-Docker](./docs/README-appx-docker.md)
 
 <details open> 
   <summary>Click to Contract/Expend</summary>
