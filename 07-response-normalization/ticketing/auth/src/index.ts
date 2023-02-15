@@ -1,11 +1,11 @@
 import express, { json } from 'express';
 
+import { currentUserRouter } from './routes/current-user';
+
 const app = express();
 app.use(json());
 
-app.get('/api/users/currentuser', (req, res) => {
-  res.send('Hi there!');
-});
+app.use(currentUserRouter);
 
 // The port wouldn't matter when we start kubernetes
 app.listen(3000, () => {
