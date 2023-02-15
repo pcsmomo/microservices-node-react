@@ -292,4 +292,87 @@ k get pods
 4. Update our hosts file again to poin to the remote cluster
 5. Restart skaffold
 
+### 130. Creating a Load Balancer
+
+[ingress-nginx deploy to Google Cloud GKE](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke)
+
+```sh
+# Check the kubectl context
+kubectx
+# gke_ticketing-dev-377721_australia-southeast1-a_ticketing-dev
+
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user $(gcloud config get-value account)
+# clusterrolebinding.rbac.authorization.k8s.io/cluster-admin-binding created
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.3/deploy/static/provider/cloud/deploy.yaml
+# error: unable to read URL "https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.3/deploy/static/provider/cloud/deploy.yaml", server reported 404 Not Found, status code=404
+```
+
+Navigate https://github.com/kubernetes/ingress-nginx/tree/main/deploy/static/provider/cloud
+
+```sh
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
+# namespace/ingress-nginx created
+# serviceaccount/ingress-nginx created
+# serviceaccount/ingress-nginx-admission created
+# role.rbac.authorization.k8s.io/ingress-nginx created
+# role.rbac.authorization.k8s.io/ingress-nginx-admission created
+# clusterrole.rbac.authorization.k8s.io/ingress-nginx created
+# clusterrole.rbac.authorization.k8s.io/ingress-nginx-admission created
+# rolebinding.rbac.authorization.k8s.io/ingress-nginx created
+# rolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created
+# clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx created
+# clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created
+# configmap/ingress-nginx-controller created
+# service/ingress-nginx-controller created
+# service/ingress-nginx-controller-admission created
+# deployment.apps/ingress-nginx-controller created
+# job.batch/ingress-nginx-admission-create created
+# job.batch/ingress-nginx-admission-patch created
+# ingressclass.networking.k8s.io/nginx created
+# validatingwebhookconfiguration.admissionregistration.k8s.io/ingress-nginx-admission created
+
+k get ns
+# NAME              STATUS   AGE
+# default           Active   34h
+# ingress-nginx     Active   8m41s
+# kube-node-lease   Active   34h
+# kube-public       Active   34h
+# kube-system       Active   34h
+
+k get all -n ingress-nginx
+# NAME                                           READY   STATUS      RESTARTS   AGE
+# pod/ingress-nginx-admission-create-qj2vt       0/1     Completed   0          8m18s
+# pod/ingress-nginx-admission-patch-8mp9g        0/1     Completed   0          8m18s
+# pod/ingress-nginx-controller-89758f7c6-rqh6f   1/1     Running     0          8m18s
+
+# NAME                                         TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+# service/ingress-nginx-controller             LoadBalancer   10.76.12.234   34.116.75.247   80:31184/TCP,443:30725/TCP   8m21s
+# service/ingress-nginx-controller-admission   ClusterIP      10.76.9.131    <none>          443/TCP                      8m21s
+
+# NAME                                       READY   UP-TO-DATE   AVAILABLE   AGE
+# deployment.apps/ingress-nginx-controller   1/1     1            1           8m21s
+
+# NAME                                                 DESIRED   CURRENT   READY   AGE
+# replicaset.apps/ingress-nginx-controller-89758f7c6   1         1         1       8m20s
+
+# NAME                                       COMPLETIONS   DURATION   AGE
+# job.batch/ingress-nginx-admission-create   1/1           11s        8m21s
+# job.batch/ingress-nginx-admission-patch    1/1           12s        8m20s
+```
+
+- Google Cloud -> Networking -> Network services -> Load balancing
+- a loadbalancer has been created.
+- IP:Port - 34.116.75.247:80-443
+
+#### Modify the hosts file
+
+```sh
+sudo vim /etc/hosts
+# add this
+# 34.116.75.247 ticketing.dev
+```
+
 </details>
