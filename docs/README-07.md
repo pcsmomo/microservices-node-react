@@ -29,4 +29,19 @@ npm install --save-dev @types/swagger-ui-express @types/swagger-jsdoc
 
 Check the validation using postman, https://tickets.dev/api/users/signup
 
+### 136. Postman HTTPS Issues
+
+Turn off the postman `SSL certificate verification option` in Settings
+
+### 137. Surprising Complexity Around Errors
+
+If services in different language (node, python, java, etc.) and using different libraries \
+would send different structure of error messages
+
+This has been an issue at my work.
+
+The solution in this lecture is to have consistent structure from the backends
+
+Then React App doesn't need to handle those different structures of error messages!
+
 </details>
