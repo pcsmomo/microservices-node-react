@@ -17,4 +17,12 @@ skaffold dev
 npm install --save express-validator
 ```
 
+### set up swagger on express
+
+```sh
+npm install --save express
+npm install --save swagger-ui-express swagger-jsdoc
+npm install --save-dev @types/swagger-ui-express @types/swagger-jsdoc
+```
+
 </details>

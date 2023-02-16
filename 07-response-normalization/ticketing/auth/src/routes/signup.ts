@@ -3,6 +3,32 @@ import { body } from 'express-validator';
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *   name: User
+ *   description: User signup API
+ * /api/users/signup:
+ *   post:
+ *     summary: Signup a new user
+ *     tags: [User]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       200:
+ *         description: The signed up user.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Some server error
+ *
+ */
 router.post(
   '/api/users/signup',
   [
@@ -24,3 +50,24 @@ router.post(
 );
 
 export { router as signupRouter };
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - email
+ *         - password
+ *       properties:
+ *         email:
+ *           type: string
+ *           description: user email
+ *         password:
+ *           type: string
+ *           description: user password
+ *       example:
+ *         email: test@test.com
+ *         password: 12345678
+ */
