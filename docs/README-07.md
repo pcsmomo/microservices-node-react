@@ -44,4 +44,23 @@ The solution in this lecture is to have consistent structure from the backends
 
 Then React App doesn't need to handle those different structures of error messages!
 
+### 139. Solution for Error Handling
+
+- Write an error handling middleware
+- Make sure w ecapture all possible erros using Express's error handling mechanism (call the `next` function!)
+
+[Express Error Handling](https://expressjs.com/en/guide/error-handling.html)
+
+1. Synchronous erorr handler
+2. Asynchronous route handler
+
+#### E.G. Writing error handlers
+
+```js
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+```
+
 </details>
