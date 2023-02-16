@@ -63,4 +63,11 @@ app.use((err, req, res, next) => {
 });
 ```
 
+### skaffold reloading doesn't work sometimes
+
+```sh
+# Output in verbose mode
+scaffold dev -v debug
+```
+
 </details>
