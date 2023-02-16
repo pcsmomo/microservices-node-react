@@ -25,4 +25,8 @@ npm install --save swagger-ui-express swagger-jsdoc
 npm install --save-dev @types/swagger-ui-express @types/swagger-jsdoc
 ```
 
+### 135. Handling Validation Errors
+
+Check the validation using postman, https://tickets.dev/api/users/signup
+
 </details>
