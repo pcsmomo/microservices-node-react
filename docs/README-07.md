@@ -110,4 +110,10 @@ k get pods
 # auth-mongo-depl-5f4498964f-hbbck   1/1     Running   0          105s
 ```
 
+### 155. Getting TypeScript and Mongoose to Cooperate
+
+- Issue #1: Typescript wants to make sure we are providing the correct properties
+  - Mongoose does not make this easy
+- Issue #2: The properties that we pass to the User contructor don't necessarily match up with the properties available on a user
+
 </details>
