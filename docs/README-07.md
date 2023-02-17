@@ -70,4 +70,11 @@ app.use((err, req, res, next) => {
 scaffold dev -v debug
 ```
 
+### 147. Verifying Our Custom Errors
+
+- Option #1: Using `interface` in typescript feature
+- \*Option #2: Using `abstract class` in vanila javascript feature
+  - Why he chose to use Abstract Class over Typescript Interface?
+  - -> Because it is javascript feature (not typescript) so we can use it in `instanceof` checks!!!
+
 </details>
