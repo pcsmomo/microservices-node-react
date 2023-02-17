@@ -1,6 +1,7 @@
 import express, { json } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerJsDocSpecs, swaggerUiOptions } from './config/swagger-config';
+import 'express-async-errors';
 
 // Routes
 import { currentUserRouter } from './routes/current-user';
@@ -27,7 +28,7 @@ app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);
 
-app.all('*', () => {
+app.all('*', async () => {
   throw new NotFoundError();
 });
 

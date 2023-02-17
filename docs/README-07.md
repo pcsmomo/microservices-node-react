@@ -77,4 +77,20 @@ scaffold dev -v debug
   - Why he chose to use Abstract Class over Typescript Interface?
   - -> Because it is javascript feature (not typescript) so we can use it in `instanceof` checks!!!
 
+### 150. Uh Oh... Async Error Handling
+
+```js
+// this works
+app.all('*', async (req, res, next) => {
+  next(new NotFoundError());
+});
+```
+
+However the `next` keyword is quite dependent to `express.js`\
+So if you don't want to use it, install a small library
+
+```sh
+npm install --save express-async-errors
+```
+
 </details>
