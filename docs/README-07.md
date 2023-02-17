@@ -93,4 +93,21 @@ So if you don't want to use it, install a small library
 npm install --save express-async-errors
 ```
 
+## Section 8 - Database Management and Modeling
+
+### 152. Creating Databases in Kubernetes
+
+```sh
+npm install mongoose
+```
+
+After setup `auth-mongo-depl.yaml` skaffold automatically applies deployment and service.
+
+```sh
+k get pods
+# NAME                               READY   STATUS    RESTARTS   AGE
+# auth-depl-78b8f69dc5-gnnz2         1/1     Running   0          3m19s
+# auth-mongo-depl-5f4498964f-hbbck   1/1     Running   0          105s
+```
+
 </details>
