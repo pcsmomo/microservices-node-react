@@ -277,4 +277,22 @@ k describe pod auth-depl-6ccb96c595-l58zx
 
 > Something to keep in mind, when you work with kubernetes
 
+### 182. Accessing Env Variables in a Pod
+
+```ts
+// auth/index.ts
+if (!process.env.JWT_KEY) {
+  throw new Error('JWT_KEY must be defined');
+}
+```
+
+```ts
+// auth/routes/signup.ts
+process.env.JWT_KEY!;
+```
+
+> `index.ts` is already type checking\
+> But in `signup.ts`, typescript doesn't know about it.\
+> if we are confident, we can add `!` at the end to make typescript happy
+
 </details>
