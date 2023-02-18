@@ -23,13 +23,15 @@ Microservices with Node JS and React by Stephen Grider
     - auth
 - 06-cloud
   - exactly the same code as the previous section
-- 07-response-normalization
+- 07-response-normalization: code from section 05
   - ticketing
     - auth
       - Error message handling middleware
       - express swagger setup
       - express-async-errors
-- 08-database-modeling
+- 08-database-modeling: mongoose
+  - ticketing
+    - auth
 - 09-authentication
 - 10-testing
 - 11-SSR-nextjs
