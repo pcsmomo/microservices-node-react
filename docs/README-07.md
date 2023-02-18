@@ -206,6 +206,19 @@ npm install --save-dev @types/jsonwebtoken
 
 - Create a new user in https://ticketing.dev/api/users/signup
 - Check the response Cookie tab
-  - session: <JWT token (base64 incoded)>
+  - session: (base 64 incoded) { jwt: <JWT token>}
+  - as we stored it as
+    ```js
+    req.session = {
+      jwt: userJwt,
+    };
+    ```
+
+### 179. JWT Signing Keys
+
+- base64 Decode whole session value
+  - https://www.base64decode.org/
+- take the jwt value and check it in jwt.io with temporary secret key `asdf`
+  - https://jwt.io/
 
 </details>
