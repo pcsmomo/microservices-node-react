@@ -142,4 +142,48 @@ k get pods
 
 > However, we would not implement this issue solving part in this project
 
+### 174. Microservices Auth Requirements
+
+#### Differences between Cookies and JWTs
+
+- Cookies
+  - Transport mechanism
+  - Moves any kind of data between browser and server
+  - Automatically managed by the browser
+- JWT's
+  - Authentication/Authorization mechanism
+  - Stores any data we want
+  - We have to manage it manually
+
+#### Options to deliver my JWT
+
+- Headers/Authorization
+- Body/token
+- Headers/Cookie
+
+### 175. Issues with JWT's and Server Side Rendering
+
+#### Communications for Normal React App
+
+- 1st: to React app
+  - Request: GET ticketing.dev
+  - Response: HTML file with some script tags
+- 2nd: to React app
+  - Request: I need JS files
+  - Response: JS Files
+- 3rd: to Orders Service
+  - This is where we need JWT
+  - Request: I need data
+  - Response: Orders Data
+
+#### Communications for Next Js APP
+
+- 1st: to NextJs App
+  - JWT is needed
+  - Request: GET ticketing.dev
+    - Next to Orders Service
+      - Request: I need data
+      - Response: Orders Data
+  - Response: Fully rendered HTML file with content
+
 </details>
