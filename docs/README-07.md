@@ -132,4 +132,14 @@ k get pods
 
 > We are going with Option #2 to stick with the idea of independent services
 
+### 172. Solving Issues with Option #2
+
+- Add a logic to check JWT, Cookie is viable to all the services
+- and Auth service will have the token refresh logic
+- To enhance this, send UserBannedEvent to Event Bus
+
+![auth service issue](../resources/172-solving-issues-with-option-2.png)
+
+> However, we would not implement this issue solving part in this project
+
 </details>
