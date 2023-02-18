@@ -19,22 +19,21 @@ Microservices with Node JS and React by Stephen Grider
     - infra
       - k8s: kubernetes
 - 05-architecture-multi-service-app
-  - ticketing
-    - auth
+  - ticketing/auth
 - 06-cloud
   - exactly the same code as the previous section
 - 07-response-normalization: code from section 05
-  - ticketing
-    - auth
-      - Error message handling middleware
-      - express swagger setup
-      - express-async-errors
-- 08-database-modeling: mongoose
-  - ticketing
-    - auth
+  - ticketing/auth
+    - Error message handling middleware
+    - express swagger setup
+    - express-async-errors
+- 08-database-modeling
+  - ticketing/auth
+    - mongoose
 - 09-authentication
-  - ticketing
-    - auth
+  - ticketing/auth
+    - jwt
+    - K8s Secret
 - 10-testing
 - 11-SSR-nextjs
 - 12-code-sharing-reuse

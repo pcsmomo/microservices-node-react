@@ -3,13 +3,19 @@
 <details open> 
   <summary>Click to Contract/Expend</summary>
 
-## Section 7 - Response Normalization Strategies
+# How to run
 
 ```sh
 # ticketing
 minikube tunnel
 skaffold dev
+
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 ```
+
+add `127.0.0.1 ticketing.dev` to /etc/hosts
+
+## Section 7 - Response Normalization Strategies
 
 ### 134. Adding Validation
 
@@ -220,5 +226,55 @@ npm install --save-dev @types/jsonwebtoken
   - https://www.base64decode.org/
 - take the jwt value and check it in jwt.io with temporary secret key `asdf`
   - https://jwt.io/
+
+### 181. Creating and Accessing Secrets
+
+```sh
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+kubectl get secrets
+# NAME         TYPE     DATA   AGE
+# jwt-secret   Opaque   1      12s
+```
+
+- frankly, using config file is a better approach\
+- becuase if we have more services we have to remember all these different keys
+- so in production, use config files!
+
+#### If you put wrong secret name
+
+```yaml
+containers:
+  - name: auth
+    image: pcsmomo/auth
+    env:
+      - name: JWT_KEY
+        valueFrom:
+          secretKeyRef:
+            name: alaskdjlakd
+            key: JWT_KEY
+```
+
+Kubernetes won't work
+
+```sh
+skaffold dev
+# Waiting for deployments to stabilize...
+#  - deployment/auth-depl: container auth in error: &ContainerStateWaiting{Reason:CreateContainerConfigError,Message:secret "alaskdjlakd" not found,}
+#     - pod/auth-depl-6f5bf5dcdd-cjvp7: container auth in error: &ContainerStateWaiting{Reason:CreateContainerConfigError,Message:secret "alaskdjlakd" not found,}
+k get pods
+# NAME                               READY   STATUS                       RESTARTS   AGE
+# auth-depl-6ccb96c595-l58zx         0/1     CreateContainerConfigError   0          18s
+# auth-depl-86587c798c-jrqbx         1/1     Running                      0          47s
+# auth-mongo-depl-7644c7fb5c-rn7sd   1/1     Running                      0          30m
+k describe pod auth-depl-6ccb96c595-l58zx
+# Events:
+#   Type     Reason     Age               From               Message
+#   ----     ------     ----              ----               -------
+#   Normal   Scheduled  30s               default-scheduler  Successfully assigned default/auth-depl-6ccb96c595-l58zx to minikube
+#   Normal   Pulled     0s (x4 over 29s)  kubelet            Container image "pcsmomo/auth:736a379d3d7a10231917894b07729ed1f3c483002cf0295822e12ff6b7b8baa2" already present on machine
+#   Warning  Failed     0s (x4 over 29s)  kubelet            Error: secret "alaskdjlakd" not found
+```
+
+> Something to keep in mind, when you work with kubernetes
 
 </details>
