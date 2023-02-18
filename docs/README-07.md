@@ -324,4 +324,13 @@ JSON.stringify(personTwo);
 // '1'
 ```
 
+### 190. Returning the Current User
+
+Test it in Postman
+
+- When signin or sinup succeeded, we will have a cookie for the same domain.
+- test it in https://ticketing.dev/api/users/currentuser
+- and remove `session` in cookies (on the top right)
+  - you'll get `{ "currentUser": null }`
+
 </details>
