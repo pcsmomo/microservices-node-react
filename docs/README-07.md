@@ -305,4 +305,23 @@ If we use several different databases, we want those IDs look the same.
 
 > make `_id` to `id` as it looks more generic
 
+### 184. Formatting JSON Properties
+
+```js
+const person = { name: 'alex' };
+// undefined
+JSON.stringify(person);
+// '{"name":"alex"}'
+
+const personTwo = {
+  name: 'alex',
+  toJSON() {
+    return 1;
+  },
+};
+// undefined
+JSON.stringify(personTwo);
+// '1'
+```
+
 </details>

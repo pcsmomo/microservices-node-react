@@ -21,16 +21,31 @@ interface UserDoc extends mongoose.Document {
   password: string;
 }
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-});
+  {
+    toJSON: {
+      // ret: the plain object representation which has been converted
+      transform(_doc, ret) {
+        // direct change to the ret object
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.password;
+        // delete ret.__v;  // same as `versionKey: false`
+      },
+      versionKey: false,
+    },
+  }
+);
 
 // Hash the plain text password before saving
 // Must use a function keyword to bind, not an arrow function
