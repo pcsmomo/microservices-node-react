@@ -116,4 +116,20 @@ k get pods
   - Mongoose does not make this easy
 - Issue #2: The properties that we pass to the User contructor don't necessarily match up with the properties available on a user
 
+## Section 9 - Authentication Strategies and Options
+
+### 169. Fundamental Authentication Strategies
+
+- Fundamental Option #1: Individual services rely on the auth service
+  - Pros: changes to auth state are immedately reflected
+  - Cons: Auth service goes down? Entire app is broken
+- Fundamental Option #1.1: Individual services rely on the auth service as a gateway
+- \*Fundamental Option #2: Individual services know how to authenticate a user
+  - Pros: Auth service is down? Who cares!
+  - Cons: Some user got banned? Darn, I just gave them the keys to my car 5 minutes ago...
+
+### 171. So Which Option?
+
+> We are going with Option #2 to stick with the idea of independent services
+
 </details>
