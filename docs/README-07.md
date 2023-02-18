@@ -295,4 +295,14 @@ process.env.JWT_KEY!;
 > But in `signup.ts`, typescript doesn't know about it.\
 > if we are confident, we can add `!` at the end to make typescript happy
 
+### 183. Common Response Properties
+
+If we use several different databases, we want those IDs look the same.
+
+- ❌ `_id` from MongoDB
+- ✅ `id` from MySQL
+- ✅ `id` from Postgres
+
+> make `_id` to `id` as it looks more generic
+
 </details>
