@@ -33,6 +33,8 @@ Microservices with Node JS and React by Stephen Grider
   - ticketing
     - auth
 - 09-authentication
+  - ticketing
+    - auth
 - 10-testing
 - 11-SSR-nextjs
 - 12-code-sharing-reuse
