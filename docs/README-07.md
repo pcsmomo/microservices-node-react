@@ -194,4 +194,18 @@ npm install --save cookie-session
 npm install --save-dev @types/cookie-session
 ```
 
+### 178. Generating a JWT
+
+```sh
+# ticketing/auth
+npm install --save jsonwebtoken
+npm install --save-dev @types/jsonwebtoken
+```
+
+#### Test in postman
+
+- Create a new user in https://ticketing.dev/api/users/signup
+- Check the response Cookie tab
+  - session: <JWT token (base64 incoded)>
+
 </details>
