@@ -3,6 +3,7 @@ import swaggerUi from 'swagger-ui-express';
 import { swaggerJsDocSpecs, swaggerUiOptions } from './config/swagger-config';
 import 'express-async-errors';
 import mongoose from 'mongoose';
+import cookieSession from 'cookie-session';
 
 // Routes
 import { currentUserRouter } from './routes/current-user';
@@ -17,7 +18,14 @@ import { NotFoundError } from './errors/not-found-error';
 import { errorHandler } from './middlewares/error-handler';
 
 const app = express();
+app.set('trust proxy', true);
 app.use(json());
+app.use(
+  cookieSession({
+    signed: false,
+    secure: true,
+  })
+);
 
 // Swagger docs
 app.use(

@@ -186,4 +186,12 @@ k get pods
       - Response: Orders Data
   - Response: Fully rendered HTML file with content
 
+### 177. Adding Session Support
+
+```sh
+# ticketing/auth
+npm install --save cookie-session
+npm install --save-dev @types/cookie-session
+```
+
 </details>
