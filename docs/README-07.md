@@ -348,4 +348,10 @@ Test it in Postman
 
 ![architecture for our cluster](../resources/196-architecture-our-cluster.png)
 
+### 197. Testing Goals
+
+- Goal #1: Basic request handling
+- Goal #2: Some tests around models
+- Goal #3: Event emitting + receiving
+
 </details>
