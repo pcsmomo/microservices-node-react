@@ -35,6 +35,7 @@ Microservices with Node JS and React by Stephen Grider
     - jwt
     - K8s Secret
 - 10-testing
+  - ticketing/auth
 - 11-SSR-nextjs
 - 12-code-sharing-reuse
 - 13-CRUD-server-setup

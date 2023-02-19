@@ -333,4 +333,19 @@ Test it in Postman
 - and remove `session` in cookies (on the top right)
   - you'll get `{ "currentUser": null }`
 
+## Section 10 - Testing Isolated Microservices
+
+### 196. Scope of Testing
+
+- Test a single peice of code in isolation
+  - Single middleware
+- Test how different pieces of code work together
+  - Request flowing through multiple middlewares to a request handler
+- Test how different components work together
+  - Make request to service, ensure write to database was completed
+- Test how different service work together
+  - Creating a 'payment' at the 'payments' service should affect the 'orders' service
+
+![architecture for our cluster](../resources/196-architecture-our-cluster.png)
+
 </details>
