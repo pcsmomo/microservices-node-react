@@ -390,4 +390,25 @@ npm install --save-dev jest ts-jest supertest mongodb-memory-server @types/jest 
 npm install --only=prod
 ```
 
+### 202. Test Environment Setup
+
+Sometimes jest doesn't notice when typescript file changes.\
+`--no-cache` flag will improve this behaviour
+
+```json
+// package.json
+{
+  "scripts": {
+    "test": "jest --watchAll --no-cache"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": ["./src/test/setup.ts"]
+  }
+}
+```
+
+[mongodb-memory-server doc](https://nodkz.github.io/mongodb-memory-server/docs/guides/quick-start-guide)
+
 </details>
