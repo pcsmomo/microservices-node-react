@@ -411,4 +411,19 @@ Sometimes jest doesn't notice when typescript file changes.\
 
 [mongodb-memory-server doc](https://nodkz.github.io/mongodb-memory-server/docs/guides/quick-start-guide)
 
+### 204. An Important Note
+
+if `jest --watch` mode doesn't watch the changes and keeps failing the test,\
+just restart the jest `npm test` again.
+
+### 205. Testing Invalid Input
+
+```js
+// either `return` or `await` is fine
+it('returns a 400 with missing email and password', async () => {
+  await request(app).post()...
+  return request(app).post()...
+});
+```
+
 </details>
