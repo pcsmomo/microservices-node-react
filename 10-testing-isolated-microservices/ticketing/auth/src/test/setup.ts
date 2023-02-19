@@ -4,6 +4,9 @@ import { app } from '../app';
 
 let mongo: any;
 beforeAll(async () => {
+  // environment variables (not the best way to do it though)
+  process.env.JWT_KEY = 'asdfasdf';
+
   mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
