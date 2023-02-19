@@ -354,4 +354,29 @@ Test it in Postman
 - Goal #2: Some tests around models
 - Goal #3: Event emitting + receiving
 
+### 198. Testing Architecture
+
+- Jest
+  - Start in-memory copy of MongoDB
+  - Start up our express app
+  - Use `supertest` library to make fake requests to our express app
+  - Run assertions to make sure the request did the right thing
+
+### 199. Index to App Refactor
+
+refactor the `index.ts` and `app.ts` structure to make supertest testing easy
+
+### Install morgan to get close with logging
+
+```sh
+npm install --save morgan
+npm install --save-dev @types/morgan
+# didn't work..
+
+npm uninstall --save morgan
+npm uninstall --save-dev @types/morgan
+```
+
+> hmm.. somehow morgan doesn't work. what went wrong...
+
 </details>
