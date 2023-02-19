@@ -379,4 +379,15 @@ npm uninstall --save-dev @types/morgan
 
 > hmm.. somehow morgan doesn't work. what went wrong...
 
+### 200. A Few Dependencies
+
+```sh
+npm install --save-dev jest ts-jest supertest mongodb-memory-server @types/jest @types/supertest
+```
+
+```yaml
+# Dockerfile
+npm install --only=prod
+```
+
 </details>
