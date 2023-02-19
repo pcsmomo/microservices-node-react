@@ -426,4 +426,27 @@ it('returns a 400 with missing email and password', async () => {
 });
 ```
 
+### 207. Changing Node Env During Tests
+
+```ts
+expect(response.get('Set-Cookie')).toBeDefined();
+```
+
+It will initially fails because `secure: true` below (in test, no https)
+
+```ts
+app.use(
+  cookieSession({
+    signed: false,
+    secure: true,
+  })
+);
+```
+
+This will fix!
+
+```ts
+secure: process.env.NODE_ENV !== 'test',
+```
+
 </details>
