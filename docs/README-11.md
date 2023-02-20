@@ -76,4 +76,11 @@ If it happenes,
   kubectl delete pod client-depl-7fdb5dc774-tqn4d
   ```
 
+### 224. Adding Global CSS
+
+```sh
+# ticketing/client
+npm install bootstrap
+```
+
 </details>
