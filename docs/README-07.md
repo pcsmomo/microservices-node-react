@@ -449,4 +449,9 @@ This will fix!
 secure: process.env.NODE_ENV !== 'test',
 ```
 
+### 210. Issues with Cookies During Testing
+
+- between auth service and postman, cookie is automatically handled
+- between auth service and supertest, cookie is not handled, so we need to manually handle it
+
 </details>
