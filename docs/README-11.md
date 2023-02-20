@@ -36,4 +36,20 @@ npm install --save react react-dom next
 docker build -t pcsmomo/client .
 ```
 
+### 221. Running Next in Kubernetes
+
+1. create `client-depl.yaml`
+2. add artifact to `skaffold.yaml`
+3. add path to `ingress.srv.yaml`
+   - path will be captured in order.
+   - client should be to the bottom as the other services has more specific paths
+
+```sh
+# restart skaffold
+skaffold dev
+```
+
+- Navigate https://ticketing.dev
+- if get a warning message, type `thisisunsafe`
+
 </details>
