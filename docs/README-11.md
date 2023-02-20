@@ -17,4 +17,14 @@ add `127.0.0.1 ticketing.dev` to /etc/hosts
 
 ## Section 11 - Integrating a Server-Side-Rendered React App
 
+### 219. Basics of Next JS
+
+```sh
+# ticketing
+mkdir client
+cd client
+npm init -y
+npm install --save react react-dom next
+```
+
 </details>
