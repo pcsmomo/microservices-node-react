@@ -83,4 +83,10 @@ If it happenes,
 npm install bootstrap
 ```
 
+### 226. Handling Email and Password Inputs
+
+```sh
+npm install axios
+```
+
 </details>
