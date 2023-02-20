@@ -89,4 +89,9 @@ npm install bootstrap
 npm install axios
 ```
 
+### 232. Overview on Server Side Rendering
+
+- NextJs
+  -
+
 </details>
