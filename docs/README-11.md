@@ -92,6 +92,21 @@ npm install axios
 ### 232. Overview on Server Side Rendering
 
 - NextJs
-  -
+  - inspect URL of incoming request. Datetime set of components to show
+  - Call those components `getInitialProps` static method
+  - Render each component with data from `getInitialProps` one time
+  - Assemble HTML from all components, send back response
+
+### 235. Why the Error?
+
+Server Error
+
+Error: connect ECONNREFUSED 127.0.0.1:80
+
+- when axios request(`/api/users/currentuser`) happens from client side, the browser takes use the same domain (https://ticketing.dev/api/users/currentuser)
+  - and ingress Nginx will take care of it
+- but axios request(`/api/users/currentuser`) happens in `getInitialProps` which is node server running on the pod 127.0.0.1:80,
+  - it tries to connect `127.0.0.1:80/(api/users/currentuser`
+  - because we run this whole microservices in kubernetes
 
 </details>
