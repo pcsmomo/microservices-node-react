@@ -454,4 +454,12 @@ secure: process.env.NODE_ENV !== 'test',
 - between auth service and postman, cookie is automatically handled
 - between auth service and supertest, cookie is not handled, so we need to manually handle it
 
+### 211. Easy Auth Solution
+
+```ts
+// ticketing/auth/src/routes/__test__/current-user.test.ts
+const cookie = authResponse.get('Set-Cookie');
+const response = await request(app).set('Cookie', cookie);
+```
+
 </details>
