@@ -27,4 +27,13 @@ npm init -y
 npm install --save react react-dom next
 ```
 
+### 220. Building a Next Image
+
+> We will be writing the Next app using Javascript, not Typescript\
+> It would be normally be beneficial to use TS, but this app in particular would need a lot of extra TS stuff written out for little benefit
+
+```sh
+docker build -t pcsmomo/client .
+```
+
 </details>
