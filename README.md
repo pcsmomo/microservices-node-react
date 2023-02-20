@@ -61,6 +61,7 @@ Microservices with Node JS and React by Stephen Grider
 - [README-Section 5: ticketing app with skaffold](./docs/README-05.md)
 - [README-Section 6: Cloud Setup](./docs/README-06.md)
 - [README-Section 7 to 10](./docs/README-07.md)
+- [README-Section 11: Server Side Rendered React app (Next js)](./docs/README-11.md)
 - [README-Appendix-Docker](./docs/README-appx-docker.md)
 
 <details open> 
