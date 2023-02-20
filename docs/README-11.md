@@ -109,4 +109,20 @@ Error: connect ECONNREFUSED 127.0.0.1:80
   - it tries to connect `127.0.0.1:80/(api/users/currentuser`
   - because we run this whole microservices in kubernetes
 
+### 236. Two Possible Solutions
+
+- \*Request Option #1:
+  - follow the same domain we're currently on
+  - http://????/api/users/currentuser
+- Request Option #2:
+  - http://auth-srv/api/users/currentuser
+  - cons
+    - NextJs will be quite coupled to the specific service
+    - moreover, we've already defined all these in `ingress-srv.yaml`
+
+#### challenges for us
+
+1. Routing
+2. Cookie
+
 </details>
