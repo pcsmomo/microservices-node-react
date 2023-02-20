@@ -52,4 +52,28 @@ skaffold dev
 - Navigate https://ticketing.dev
 - if get a warning message, type `thisisunsafe`
 
+### 223. Note on File Change Detection
+
+Next js is(or was) finicky that sometimes it doesn't hot reload the changes.
+
+However, now I am using `"next": "^13.1.6"` which is the latest version, I have not observed my changes are not reflected.
+
+If it happenes,
+
+- firstly, create `next.config.js`
+  ```js
+  // ticketing/client/next.config.js
+  module.exports = {
+    webpack: config => {
+      config.watchOptions.poll = 300;
+      return config;
+    },
+  };
+  ```
+- secondly, manually kill the client pod, then k8s will create the new pod with the changes applied
+  ```sh
+  # manually kill the pod
+  kubectl delete pod client-depl-7fdb5dc774-tqn4d
+  ```
+
 </details>
