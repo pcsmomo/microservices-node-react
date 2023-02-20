@@ -1,6 +1,13 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
+import request from 'supertest';
+
 import { app } from '../app';
+
+// declare global to make typescript aware of the global variable
+declare global {
+  var getCookieAfterSignup: () => Promise<string[]>;
+}
 
 let mongo: any;
 beforeAll(async () => {
@@ -28,3 +35,22 @@ afterAll(async () => {
 
   await mongoose.connection.close();
 });
+
+// this doesn't have to be defined here. (it's just an option)
+// It can be defined somewhere else and imported in test files.
+global.getCookieAfterSignup = async () => {
+  const email = 'test@test.com';
+  const password = 'password';
+
+  const response = await request(app)
+    .post('/api/users/signup')
+    .send({
+      email,
+      password,
+    })
+    .expect(201);
+
+  const cookie = response.get('Set-Cookie');
+
+  return cookie;
+};
