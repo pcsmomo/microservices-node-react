@@ -6,6 +6,7 @@ const useRequest = ({ url, method, body }) => {
 
   const doRequest = async () => {
     try {
+      setErrors(null);
       const response = await axios[method](url, body);
       return response.data;
     } catch (err) {
@@ -24,3 +25,5 @@ const useRequest = ({ url, method, body }) => {
 
   return { doRequest, errors };
 };
+
+export default useRequest;
