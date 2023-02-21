@@ -125,4 +125,37 @@ Error: connect ECONNREFUSED 127.0.0.1:80
 1. Routing
 2. Cookie
 
+### 237. Cross Namespace Service Communication
+
+We access ervices using that `http://auth-srv` style only when they are in the same namespace
+
+```sh
+k get ns
+# NAME                   STATUS   AGE
+# default                Active   14d
+# ingress-nginx          Active   11d
+# kube-node-lease        Active   14d
+# kube-public            Active   14d
+# kube-system            Active   14d
+# kubernetes-dashboard   Active   14d
+```
+
+#### Cross namespace communication uses a different pattern
+
+http://NAMEOFSERVICE.NAMESPACE.svc.cluster.local
+
+```sh
+k get services -n ingress-nginx
+# NAME                                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+# ingress-nginx-controller             NodePort    10.97.172.57    <none>        80:31503/TCP,443:31729/TCP   11d
+# ingress-nginx-controller-admission   ClusterIP   10.99.249.113   <none>        443/TCP                      11d
+```
+
+- http://ingress-nginx.ingress-nginx-controller.svc.cluster.local
+- http://ingress-nginx.ingress-nginx-controller.svc.cluster.local/api/users/currentuser
+
+> However, this domain is not easy to remember and use it \
+> (Optional) then we can use `External Name Service` to use it like this short form, http://ingress-nginx \
+> We won't do this in this course
+
 </details>
