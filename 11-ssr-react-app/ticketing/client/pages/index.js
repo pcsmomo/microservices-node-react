@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const LandingPage = ({ currentUser }) => {
-  console.log(currentUser);
-  axios.get('/api/users/currentuser').catch(err => {
-    console.log(err.message);
-  });
+  // console.log(currentUser);
+  // axios.get('/api/users/currentuser').catch(err => {
+  //   console.log(err.message);
+  // });
 
   return <h1>Landing Page</h1>;
 };
@@ -17,10 +17,14 @@ const LandingPage = ({ currentUser }) => {
 
 // getServerSideProps can replace getIinitialProps as getIinitialProps is considered as a legacy method
 // But leave it for now to see the usecase of getIinitialProps
-// LandingPage.getInitialProps = async () => {
-//   const response = await axios.get('/api/users/currentuser');
+LandingPage.getInitialProps = async () => {
+  // const response = await axios.get(
+  //   // 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser'
+  //   '/api/users/currentuser'
+  // );
 
-//   return { color: 'red' };
-// };
+  console.log('I WAS EXECUTED');
+  return {};
+};
 
 export default LandingPage;

@@ -158,4 +158,14 @@ k get services -n ingress-nginx
 > (Optional) then we can use `External Name Service` to use it like this short form, http://ingress-nginx \
 > We won't do this in this course
 
+### 238. When is GetInitialProps Called?
+
+- getInitialProps executed on the server
+  - hard refresh of page
+  - clicking link from different domain
+  - typing url into address bar
+- getInitialProps executed on the client
+  - navigating from one page to another while in the app
+    - test in `https://ticketing-dev/auth/signup`
+
 </details>
