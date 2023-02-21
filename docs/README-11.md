@@ -6,8 +6,13 @@
 # How to run
 
 ```sh
-# ticketing
 minikube tunnel
+
+# ./ticketing/client
+docker build -t YOURDOCKERID/client .
+# docker push YOURDOCKERID/client # necessary?
+
+# ./ticketing
 skaffold dev
 
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf

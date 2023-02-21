@@ -37,6 +37,7 @@ Microservices with Node JS and React by Stephen Grider
 - 10-testing
   - ticketing/auth
 - 11-SSR-nextjs
+  - ticketing/client
 - 12-code-sharing-reuse
 - 13-CRUD-server-setup
 - 14-NATS-streaming-server
@@ -62,6 +63,7 @@ Microservices with Node JS and React by Stephen Grider
 - [README-Section 6: Cloud Setup](./docs/README-06.md)
 - [README-Section 7 to 10](./docs/README-07.md)
 - [README-Section 11: Server Side Rendered React app (Next js)](./docs/README-11.md)
+- [README-Section 12: Code Sharing](./docs/README-12.md)
 - [README-Appendix-Docker](./docs/README-appx-docker.md)
 
 <details open> 
