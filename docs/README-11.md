@@ -168,4 +168,14 @@ k get services -n ingress-nginx
   - navigating from one page to another while in the app
     - test in `https://ticketing-dev/auth/signup`
 
+### 248. Issues with Custom App GetInitialProps
+
+- Page component getInitialProps
+  - `context === {req, res}`
+- Custom App component getInitialProps
+  - `context === { Component, ctx: {req, res}}`
+
+After setting getInitialProps in Custom App component, \
+getInitialProps in index.js doesn't get invoked anymore
+
 </details>
