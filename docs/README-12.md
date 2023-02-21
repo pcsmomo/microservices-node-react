@@ -28,4 +28,16 @@ add `127.0.0.1 ticketing.dev` to /etc/hosts
 2. Code Sharing Option #2 - Git Submodule
 3. Code Sharing Option #3 - NPM Package
 
+### 257. NPM Organizations
+
+- NPM Public Registry
+  - Organization
+- NPM Private Registry
+
+### Create a new organization on npmjs.com
+
+- https://www.npmjs.com/org/create
+- Create a new organization
+  - dwktickets
+
 </details>
