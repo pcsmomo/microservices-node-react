@@ -24,11 +24,11 @@ LandingPage.getInitialProps = async ({ req }) => {
     const { data } = await axios.get(
       'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser',
       {
-        headers: {
-          Host: 'ticketing.dev',
-        },
+        headers: req.headers,
       }
     );
+
+    // console.log(req.headers);
 
     return data;
   } else {
@@ -39,7 +39,6 @@ LandingPage.getInitialProps = async ({ req }) => {
     // { currentUser: null }
     return data;
   }
-  return {};
 };
 
 export default LandingPage;
