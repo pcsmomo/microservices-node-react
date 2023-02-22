@@ -138,4 +138,17 @@ npm publish
 }
 ```
 
+### 262. Relocating Shared Code
+
+```ts
+import { BadRequestError } from '@dwttickets/common/errors/bad-request-error';
+✅ import { BadRequestError } from '@dwttickets/common';
+```
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm install express express-validator cookie-session jsonwebtoken @types/express @types/cookie-session @types/jsonwebtoken
+npm run pub
+```
+
 </details>
