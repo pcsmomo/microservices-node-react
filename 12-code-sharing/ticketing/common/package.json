@@ -1,5 +1,5 @@
 {
-  "name": "common",
+  "name": "@dwktickets/common",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

@@ -40,4 +40,26 @@ add `127.0.0.1 ticketing.dev` to /etc/hosts
 - Create a new organization
   - dwktickets
 
+### 258. Publishing NPM Modules
+
+```sh
+# ./ticketing
+mkdir common
+cd common
+npm init -y
+```
+
+I will have to create the pakcage outside of this git repo\
+as it should have it's own git set up
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+git init
+git add .
+git commit -m"initial commit"
+
+npm login
+npm publich --access public
+```
+
 </details>
