@@ -90,11 +90,6 @@ npm run build
 ### 261. An Easy Publish Command
 
 ```sh
-# ./ticketing/common
-
-```
-
-```sh
 # udemy/microservices-node-react/dwktickets-npm/commmon
 git add .
 git commit -m "additional config"
@@ -143,12 +138,24 @@ npm publish
 ```ts
 import { BadRequestError } from '@dwttickets/common/errors/bad-request-error';
 ✅ import { BadRequestError } from '@dwttickets/common';
+
+// I would prefer this though
+import { BadRequestError } from '@dwttickets/common/error';
+import { validateRequest } from '@dwttickets/common/middleware';
 ```
 
 ```sh
 # udemy/microservices-node-react/dwktickets-npm/commmon
 npm install express express-validator cookie-session jsonwebtoken @types/express @types/cookie-session @types/jsonwebtoken
 npm run pub
+```
+
+### 263. Updating Import Statements
+
+```sh
+# ./ticketing/auth
+npm install @dwktickets/common
+# "@dwktickets/common": "^1.0.3",
 ```
 
 </details>

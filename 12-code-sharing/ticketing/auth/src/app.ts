@@ -12,11 +12,8 @@ import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
 
-// Errors
-import { NotFoundError } from './errors/not-found-error';
-
-// Middlewares
-import { errorHandler } from './middlewares/error-handler';
+// common Middlewares and Errors
+import { errorHandler, NotFoundError } from '@dwktickets/common';
 
 const app = express();
 app.set('trust proxy', true);

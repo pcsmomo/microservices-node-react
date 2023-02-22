@@ -2,11 +2,8 @@ import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
 
-// Middlewares
-import { validateRequest } from '../middlewares/validate-request';
-
-// Erorrs
-import { BadRequestError } from '../errors/bad-request-error';
+// common Middlewares and Errors
+import { validateRequest, BadRequestError } from '@dwktickets/common';
 
 // Models
 import { User } from '../models/user';
