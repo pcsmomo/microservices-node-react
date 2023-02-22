@@ -126,4 +126,16 @@ npm publish
 # + @dwktickets/common@1.0.1
 ```
 
+> 'pub' script is not a suggested way to do \
+> becuase set it the same commit message and always patch the version
+> In this course, we use it for saving time.
+
+```json
+{
+  "scripts": {
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
+  }
+}
+```
+
 </details>
