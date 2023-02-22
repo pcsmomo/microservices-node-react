@@ -83,7 +83,47 @@ npm install typescript del-cli --save-dev
 ```
 
 ```sh
+# ./ticketing/common
 npm run build
+```
+
+### 261. An Easy Publish Command
+
+```sh
+# ./ticketing/common
+
+```
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+git add .
+git commit -m "additional config"
+
+npm version patch
+# v1.0.1
+
+npm run build
+# > npm run clean && tsc
+# > @dwktickets/common@1.0.1 clean
+# > del ./build/*
+
+npm publish
+# npm notice
+# npm notice 📦  @dwktickets/common@1.0.1
+# npm notice === Tarball Contents ===
+# npm notice 396B package.json
+# npm notice === Tarball Details ===
+# npm notice name:          @dwktickets/common
+# npm notice version:       1.0.1
+# npm notice filename:      @dwktickets/common-1.0.1.tgz
+# npm notice package size:  316 B
+# npm notice unpacked size: 396 B
+# npm notice shasum:        59cf2c1ee64285d460c1907a7a9ab2feff6cd80e
+# npm notice integrity:     sha512-Hkv6mrJy/N88v[...]2giVzckr47flA==
+# npm notice total files:   1
+# npm notice
+# npm notice Publishing to https://registry.npmjs.org/
+# + @dwktickets/common@1.0.1
 ```
 
 </details>
