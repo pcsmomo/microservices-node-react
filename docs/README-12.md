@@ -75,4 +75,15 @@ tsc --init
 npm install typescript del-cli --save-dev
 ```
 
+```json
+{
+  "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
+  "outDir": "./build" /* Specify an output folder for all emitted files. */
+}
+```
+
+```sh
+npm run build
+```
+
 </details>
