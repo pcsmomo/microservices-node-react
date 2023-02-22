@@ -62,4 +62,17 @@ npm login
 npm publich --access public
 ```
 
+### 259. Project Setup
+
+- There might be differences in our TS settings between the common lib and our services - don't want to deal with that
+- Services might not be written with TS at all!
+- **Our common library will be written as Typescript and published as Javascript**
+
+```sh
+# ./ticketing/common
+# udemy/microservices-node-react/dwktickets-npm/commmon
+tsc --init
+npm install typescript del-cli --save-dev
+```
+
 </details>
