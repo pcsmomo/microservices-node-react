@@ -1,7 +1,8 @@
 import express from 'express';
 
 // Middlewares
-import { currentUser } from '@dwktickets/common';
+// import { currentUser } from '@dwktickets/common';
+import { currentUser } from '@dwktickets/common/build/middlewares';
 
 const router = express.Router();
 

@@ -139,9 +139,9 @@ npm publish
 import { BadRequestError } from '@dwttickets/common/errors/bad-request-error';
 ✅ import { BadRequestError } from '@dwttickets/common';
 
-// I would prefer this though
-import { BadRequestError } from '@dwttickets/common/error';
-import { validateRequest } from '@dwttickets/common/middleware';
+// I would prefer to have option for this though
+import { BadRequestError } from '@dwttickets/common/errors';
+import { validateRequest } from '@dwttickets/common/middlewares';
 ```
 
 ```sh
@@ -156,6 +156,33 @@ npm run pub
 # ./ticketing/auth
 npm install @dwktickets/common
 # "@dwktickets/common": "^1.0.3",
+```
+
+### 264. Updating the Common Module
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+# + @dwktickets/common@1.0.4
+```
+
+```sh
+# ./ticketing/auth
+npm update @dwktickets/common
+# "@dwktickets/common": "^1.0.4",
+```
+
+```sh
+k get pods
+k exec -it auth-depl-dbccd4b4-g5sdx sh
+> cat node_modules/@dwktickets/common/package.json
+# "version": "1.0.3",
+# Hmm...
+
+# even after `skaffold build`, it is still 1.0.3 version.
+# I had to update the library manually in the pod
+k exec -it auth-depl-dbccd4b4-g5sdx sh
+> npm update @dwktickets/common
 ```
 
 </details>
