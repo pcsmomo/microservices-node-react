@@ -39,7 +39,9 @@ Microservices with Node JS and React by Stephen Grider
 - 11-SSR-nextjs
   - ticketing/client
 - 12-code-sharing-reuse
-- 13-CRUD-server-setup
+  - ticketing/auth
+  - ticketing/common
+- 13-tickets-crud-server
 - 14-NATS-streaming-server
 - 15-connecting-NATS
 - 16-NATS-client

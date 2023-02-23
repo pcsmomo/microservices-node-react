@@ -185,4 +185,21 @@ k exec -it auth-depl-dbccd4b4-g5sdx sh
 > npm update @dwktickets/common
 ```
 
+## Section 13 - Create-Read-Update-Destroy Server Setup
+
+### 267. Project Setup
+
+```sh
+# ./ticketing
+mkdir tickets
+cd tickets
+
+npm install
+```
+
+```sh
+docker build -t pcsmomo/tickets .
+# docker push pcsmomo/tickets # necessary?
+```
+
 </details>
