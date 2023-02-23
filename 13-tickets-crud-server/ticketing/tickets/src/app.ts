@@ -6,7 +6,7 @@ import cookieSession from 'cookie-session';
 import { createTicketRouter } from './routes/new';
 
 // common Middlewares and Errors
-import { errorHandler, NotFoundError } from '@dwktickets/common';
+import { errorHandler, NotFoundError, currentUser } from '@dwktickets/common';
 
 const app = express();
 app.set('trust proxy', true);
@@ -17,6 +17,7 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   })
 );
+app.use(currentUser); // this must be after use cookieSession
 
 app.use(createTicketRouter);
 

@@ -145,8 +145,13 @@ import { validateRequest } from '@dwttickets/common/middlewares';
 ```
 
 ```sh
+# ./ticketing/common
 # udemy/microservices-node-react/dwktickets-npm/commmon
 npm install express express-validator cookie-session jsonwebtoken @types/express @types/cookie-session @types/jsonwebtoken
+```
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
 npm run pub
 ```
 
@@ -200,6 +205,19 @@ npm install
 ```sh
 docker build -t pcsmomo/tickets .
 docker push pcsmomo/tickets # skaffold pull the image from here
+```
+
+### 273. Adding Auth Protection
+
+Two ways to assert the tests with supertest response
+
+```ts
+// 1
+const response = await request(app).post('/api/tickets').send({});
+expect(response.status).not.toEqual(404);
+
+// 2
+await request(app).post('/api/tickets').send({}).expect(401);
 ```
 
 </details>
