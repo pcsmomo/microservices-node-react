@@ -220,4 +220,11 @@ expect(response.status).not.toEqual(404);
 await request(app).post('/api/tickets').send({}).expect(401);
 ```
 
+### 274. Faking Authentication During Tests
+
+1. Singup on https://ticketing.dev
+2. Copy the cookie value after `session=` on the network tab
+3. Decode it on https://www.base64decode.org/
+4. Copy the JWT value
+
 </details>
