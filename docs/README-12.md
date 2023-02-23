@@ -9,8 +9,8 @@
 minikube tunnel
 
 # ./ticketing/client
-docker build -t YOURDOCKERID/client .
-# docker push YOURDOCKERID/client # necessary?
+docker build -t pcsmomo/client .
+docker push pcsmomo/client # skaffold pull the image from here
 
 # ./ticketing
 skaffold dev
@@ -199,7 +199,7 @@ npm install
 
 ```sh
 docker build -t pcsmomo/tickets .
-# docker push pcsmomo/tickets # necessary?
+docker push pcsmomo/tickets # skaffold pull the image from here
 ```
 
 </details>
