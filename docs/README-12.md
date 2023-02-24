@@ -232,4 +232,17 @@ await request(app).post('/api/tickets').send({}).expect(401);
 > In the lecture, an error was expected for the mongodb document id\
 > I don't get any error. Maybe latest mongoose changes not to throw the error.
 
+### 285. Better Error Logging
+
+After fix
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+# v1.0.5
+
+# ./ticketing/tickets
+npm update @dwktickets/common
+```
+
 </details>
