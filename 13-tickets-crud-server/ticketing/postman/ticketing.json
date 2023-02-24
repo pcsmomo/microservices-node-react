@@ -118,6 +118,115 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "tickets",
+			"item": [
+				{
+					"name": "GET /api/tickets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Ty",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tickets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/tickets/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Ty",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tickets/63f91d5daffcf96641955438",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tickets",
+								"63f91d5daffcf96641955438"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save ticket /api/tickets",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"concert\",\n    \"price\": 10\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tickets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change ticket /api/tickets",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"new concert\",\n    \"price\": 500\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tickets/63f91d5daffcf96641955438",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tickets",
+								"63f91d5daffcf96641955438"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
