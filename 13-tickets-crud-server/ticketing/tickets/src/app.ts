@@ -5,6 +5,7 @@ import cookieSession from 'cookie-session';
 // Routes
 import { createTicketRouter } from './routes/new';
 import { showTicketRouter } from './routes/show';
+import { indexTicketRouter } from './routes';
 
 // common Middlewares and Errors
 import { errorHandler, NotFoundError, currentUser } from '@dwktickets/common';
@@ -22,6 +23,7 @@ app.use(currentUser); // this must be after use cookieSession
 
 app.use(createTicketRouter);
 app.use(showTicketRouter);
+app.use(indexTicketRouter);
 
 app.all('*', async () => {
   throw new NotFoundError();
