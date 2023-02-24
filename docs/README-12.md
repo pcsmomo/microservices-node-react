@@ -227,4 +227,9 @@ await request(app).post('/api/tickets').send({}).expect(401);
 3. Decode it on https://www.base64decode.org/
 4. Copy the JWT value
 
+### 284. What's that Error?!
+
+> In the lecture, an error was expected for the mongodb document id\
+> I don't get any error. Maybe latest mongoose changes not to throw the error.
+
 </details>
