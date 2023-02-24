@@ -245,4 +245,14 @@ npm run pub
 npm update @dwktickets/common
 ```
 
+### 288. Handling Updates
+
+Generate mongoose random object id
+
+````ts
+import mongoose from 'mongoose';
+const id = new mongoose.Types.ObjectId().toHexString()
+```
+
 </details>
+````

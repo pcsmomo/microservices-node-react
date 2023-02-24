@@ -1,9 +1,6 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import request from 'supertest';
 import jwt from 'jsonwebtoken';
-
-import { app } from '../app';
 
 // declare global to make typescript aware of the global variable
 declare global {
@@ -42,7 +39,7 @@ afterAll(async () => {
 global.signin = () => {
   // Build a JWT payload. { id, email}
   const payload = {
-    id: '1lk24j124l',
+    id: new mongoose.Types.ObjectId().toHexString(),
     email: 'test@test.com',
   };
 
