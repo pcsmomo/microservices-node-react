@@ -128,4 +128,15 @@ Now we want it random IDs
 
 It looks like as the same concept as Kafka Consumer Group
 
+### 306. Manual Ack Mode
+
+While consuming a message if the process fails (db connection issue, etc), we want to re-consume the message.
+
+```js
+// the defualt is false
+const options = stan.subscriptionOptions().setManualAckMode(true);
+// as default, after 30s timeout if we don't acknowledge back,
+// the message will be re-consumed on the next listener
+```
+
 </details>
