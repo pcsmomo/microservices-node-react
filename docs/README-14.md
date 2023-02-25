@@ -92,4 +92,23 @@ npm run publish
 # Publisher connected to NATS
 ```
 
+### 302. Listening For Data
+
+```sh
+# ./ticketing/nats-test
+npm run listen
+# Listener connected to NATS
+```
+
+On the publisher terminal, type `rs` and enter and repeat it a few more times
+
+```sh
+# ./ticketing/nats-test
+npm run publish
+rs
+# Enter
+```
+
+The server restarts and it publishes a few more messages
+
 </details>
