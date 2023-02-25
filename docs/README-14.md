@@ -63,4 +63,33 @@ npm install node-nats-streaming ts-node-dev typescript @types/node
 tsc --init
 ```
 
+### 299. Port-Forwarding with Kubectl
+
+- Option #1: Publisher Program - (Ingress-Nginx - NATS ClusterIP Service - NATS Pod)
+  - a bit too heavy for our case
+- Option #2: Publisher Program - (NodePort Service - NATS Pod)
+  - creating a config file is still too much
+- **Option #3**: Publisher Program - (Port-Forward Port 4222 - NATS Pod)
+  - Great for temporary connection!!
+  - Need to keep the terminal open
+
+```sh
+kubectl get pods
+# NAME                                  READY   STATUS    RESTARTS   AGE
+# ...
+# nats-depl-689cdd9577-flmx7            1/1     Running   0          41m
+kubectl port-forward nats-depl-689cdd9577-flmx7 4222:4222
+# Forwarding from 127.0.0.1:4222 -> 4222
+# Forwarding from [::1]:4222 -> 4222
+
+# Keep the terminal open
+```
+
+```sh
+# ./ticketing/nats-test
+npm run publish
+# [INFO] 22:56:46 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.1, typescript ver. 4.9.5)
+# Publisher connected to NATS
+```
+
 </details>
