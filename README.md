@@ -66,6 +66,7 @@ Microservices with Node JS and React by Stephen Grider
 - [README-Section 7 to 10](./docs/README-07.md)
 - [README-Section 11: Server Side Rendered React app (Next js)](./docs/README-11.md)
 - [README-Section 12 to 13](./docs/README-12.md)
+- [README-Section 14: NATS Streaming Server](./docs/README-14.md)
 - [README-Appendix-Docker](./docs/README-appx-docker.md)
 
 <details open> 

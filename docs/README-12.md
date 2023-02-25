@@ -249,10 +249,9 @@ npm update @dwktickets/common
 
 Generate mongoose random object id
 
-````ts
+```ts
 import mongoose from 'mongoose';
-const id = new mongoose.Types.ObjectId().toHexString()
+const id = new mongoose.Types.ObjectId().toHexString();
 ```
 
 </details>
-````
