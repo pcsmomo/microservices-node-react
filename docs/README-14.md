@@ -36,4 +36,12 @@ add `127.0.0.1 ticketing.dev` to /etc/hosts
 > The NATS Streaming Server is being deprecated. Critical bug fixes and security fixes will be applied until June of 2023.\
 > NATS-enabled applications requiring persistence should use [JetStream](https://docs.nats.io/nats-concepts/jetstream).
 
+### 297. Big Notes on NATS Streaming
+
+[npm node-nats-streaming](https://www.npmjs.com/package/node-nats-streaming)
+
+![NATS channel](../resources/297-1-nats-channel.png)
+
+![NATS channel](../resources/297-2-nats-db.png)
+
 </details>
