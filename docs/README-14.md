@@ -139,4 +139,37 @@ const options = stan.subscriptionOptions().setManualAckMode(true);
 // the message will be re-consumed on the next listener
 ```
 
+### 307. Client Health Checks
+
+Sometimes, the listerner couldn't consume a message hung somewhere and the next message is processed first.\
+To investigate it, check the the monitor service
+
+```sh
+# In a new terminal
+kubectl port-forward nats-depl-58d8b8d57d-6csgg 8222:8222
+```
+
+navigate, http://localhost:8222/streaming
+
+- [clients](http://localhost:8222/streaming/clientsz)
+- [channels](http://localhost:8222/streaming/channelsz)
+  - http://localhost:8222/streaming/channelsz?subs=1
+
+#### What's happening?
+
+- In the `?subs=1` URL, we can see two subscriptions.
+- if we restart, `rs` a listner and refresh the page, we can see 3 subscriptions.
+- nats-streaming-server expects the lost connection to be back and wait for 30 seconds keeping the subscription.
+- so this time, if a message is allocated to the disconnected subscription, it hung.
+
+#### Possible solutions?
+
+- Option #1. Tweak the nats-streaming docker image option
+  - -hbi, --hb_interval <duration> Interval at which server sends heartbeat to a client
+  - -hbt, --hb_timeout <duration> How long server waits for a heartbeat response
+  - -hbf, --hb_fail_count <int> Number of failed heartbeats before server
+    closes the client connection
+  - > it still has a few seconds missing
+- Option #2.
+
 </details>
