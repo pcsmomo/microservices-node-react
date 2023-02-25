@@ -59,6 +59,8 @@ mkdir nats-test
 cd nats-test
 npm init -y
 npm install node-nats-streaming ts-node-dev typescript @types/node
+
+tsc --init
 ```
 
 </details>
