@@ -14,7 +14,7 @@ Microservices with Node JS and React by Stephen Grider
     - moderation
 - 03-with-docker
   - blog : copied from the previous section
-- 04-with-dubernetes
+- 04-with-kubernetes
   - blog
     - infra
       - k8s: kubernetes

@@ -124,4 +124,8 @@ npm run listen
 Every connection has `clientID` and we've set the clientID, "123" for listener\
 Now we want it random IDs
 
+### 305. Queue Groups
+
+It looks like as the same concept as Kafka Consumer Group
+
 </details>
