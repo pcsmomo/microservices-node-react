@@ -169,7 +169,11 @@ navigate, http://localhost:8222/streaming
   - -hbt, --hb_timeout <duration> How long server waits for a heartbeat response
   - -hbf, --hb_fail_count <int> Number of failed heartbeats before server
     closes the client connection
-  - > it still has a few seconds missing
-- Option #2.
+  - > it still has a few seconds missing during health check interval
+- **Option #2**. listening `close` from the code
+  ```ts
+  stan.on('close', () => {});
+  ```
+  - > It works for general cases, but it wouldn't prevent 100% shutdown issues. e.g. node server closed from Activity monitor or something.
 
 </details>
