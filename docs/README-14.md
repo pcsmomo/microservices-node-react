@@ -111,4 +111,17 @@ rs
 
 The server restarts and it publishes a few more messages
 
+### 304. Client ID Generation
+
+Open a new terminal and run another listener
+
+```sh
+# ./ticketing/nats-test
+npm run listen
+# Error: Unhandled error. ('stan: clientID already registered')
+```
+
+Every connection has `clientID` and we've set the clientID, "123" for listener\
+Now we want it random IDs
+
 </details>
