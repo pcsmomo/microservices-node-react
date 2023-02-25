@@ -44,4 +44,21 @@ add `127.0.0.1 ticketing.dev` to /etc/hosts
 
 ![NATS channel](../resources/297-2-nats-db.png)
 
+### 298. Building a NATS Test Project
+
+#### Short term goal
+
+1. Create a new sub-project with typescript support
+2. Install node-nats-streaming library and connect to nats streaming server
+3. We should have two npm scripts, one to emit events, and one to listen for events
+4. This program will be ran outside of kubernetes!
+
+```sh
+# ./ticketing
+mkdir nats-test
+cd nats-test
+npm init -y
+npm install node-nats-streaming ts-node-dev typescript @types/node
+```
+
 </details>
