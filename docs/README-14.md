@@ -20,6 +20,17 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 
 add `127.0.0.1 ticketing.dev` to /etc/hosts
 
+```sh
+# temporarily port forwarding NATS services
+k get pods
+
+# NATS client
+k port-forward nats-depl-588b8b6b8-2s9nt 4222:4222
+
+# NATS mornitoring service (not necessary. For debugging)
+k port-forward nats-depl-588b8b6b8-2s9nt 8222:8222
+```
+
 ## Section 14: NATS Streaming Server - An Event Bus Implementation
 
 ### 295. Three Important Items
@@ -188,5 +199,9 @@ These three options work very well
 
 - Initially a listener consume all messages.
 - when the listener restarts, it consumes messages after the last message consumed(=offset?)
+
+## Section 15 - Connecting to NATS in a Node JS World
+
+### 317. Reusable NATS Listeners
 
 </details>
