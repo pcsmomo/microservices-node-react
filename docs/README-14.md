@@ -176,4 +176,17 @@ navigate, http://localhost:8222/streaming
   ```
   - > It works for general cases, but it wouldn't prevent 100% shutdown issues. e.g. node server closed from Activity monitor or something.
 
+### 315. Durable Subscriptions
+
+```ts
+// ticketing/nats-test/src/listener.ts
+const options = stan.setDeliverAllAvailable().setDurableName('order-service');
+stan.subscribe('', 'orders-service-queue-group', options);
+```
+
+These three options work very well
+
+- Initially a listener consume all messages.
+- when the listener restarts, it consumes messages after the last message consumed(=offset?)
+
 </details>

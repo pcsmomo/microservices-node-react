@@ -42,7 +42,9 @@ Microservices with Node JS and React by Stephen Grider
   - ticketing/auth
   - ticketing/common
 - 13-tickets-crud-server
+  - ticketing/tickets
 - 14-NATS-streaming-server
+  - - ticketing/nats-test
 - 15-connecting-NATS
 - 16-NATS-client
 - 17-cross-service-data-replication
