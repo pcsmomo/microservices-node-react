@@ -44,8 +44,11 @@ Microservices with Node JS and React by Stephen Grider
 - 13-tickets-crud-server
   - ticketing/tickets
 - 14-NATS-streaming-server
-  - - ticketing/nats-test
-- 15-connecting-NATS
+  - ticketing/nats-test
+- 15-connecting-NATS (from here not under the section)
+  - (From this section, locate the project file under `root/ticketing` not under the each section)
+  - (As the project size gets bigger it takes more space, currently 18.1 MB for this git repo)
+  - root/ticketing/nats-test
 - 16-NATS-client
 - 17-cross-service-data-replication
 - 18-event-flow
