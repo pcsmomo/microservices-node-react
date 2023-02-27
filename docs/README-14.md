@@ -306,4 +306,16 @@ k get pods
 k delete nats-depl-6fdbfb6c6d-6wftz
 ```
 
+### Update common module on auth and tickets services
+
+```sh
+# ./ticketing/auth
+# ./ticketing/tickets
+
+# package.json
+"@dwktickets/common": "^1.0.6",
+
+npm update @dwktickets/common
+```
+
 </details>
