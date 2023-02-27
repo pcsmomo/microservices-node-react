@@ -347,4 +347,28 @@ npm install node-nats-streaming
 Mongoose is a singleton. Once you connect to mongoose, you can use it in any other files\
 And we want to do it exactly the same with `nats-client`
 
+### 343. Graceful Shutdown
+
+```sh
+k get pods
+k delete pod nats-depl-7696c4dc97-4lsvq
+```
+
+Then `tickets` service is exited from this code
+
+```ts
+natsWrapper.client.on('close', () => {
+  console.log('NATS connecting closed!');
+  process.exit();
+});
+```
+
+And kubernetes restarted the ticket service automatically
+
+```sh
+k get pods
+# NAME                                  READY   STATUS    RESTARTS      AGE
+# tickets-depl-689578c6c6-6wzv4         1/1     Running   1 (57s ago)   85s
+```
+
 </details>

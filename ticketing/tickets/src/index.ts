@@ -17,6 +17,15 @@ const start = async () => {
     // 'ticketing', clusterID is defined in nats-depl.yaml
     await natsWrapper.connect('ticketing', 'asdfasdf', 'http://nats-srv:4222');
 
+    natsWrapper.client.on('close', () => {
+      console.log('NATS connecting closed!');
+      process.exit();
+    });
+
+    // Graceful shutdown
+    process.on('SIGINT', () => natsWrapper.client.close());
+    process.on('SIGTERM', () => natsWrapper.client.close());
+
     await mongoose.connect(process.env.MONGO_URI);
     console.info('Connected to MongoDb');
   } catch (err) {
