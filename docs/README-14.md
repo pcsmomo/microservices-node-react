@@ -320,4 +320,19 @@ npm update @dwktickets/common
 
 ## Section 16 - Managing a NATS Client
 
+### 336. More on Publishing
+
+Stephen suggests to poll data from `ticket` Mongo Object, not from the `req.body` \
+Because there possibly could be sanitizing or pre-post(?) on the model side \
+So the value could be different
+
+```ts
+new TicketCreatedPublisher(client).publish({
+  id: ticket.id,
+  title: ticket.title,
+  price: ticket.price,
+  userId: ticket.userId,
+});
+```
+
 </details>

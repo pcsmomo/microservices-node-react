@@ -7,6 +7,9 @@ import { requireAuth, validateRequest } from '@dwktickets/common';
 // Models
 import { Ticket } from '../models/ticket';
 
+// Event publisher
+import { TicketCreatedPublisher } from '../events/publishers/ticket-created-publisher';
+
 const router = express.Router();
 
 router.post(
@@ -29,6 +32,12 @@ router.post(
       // we are confident so we can use ! to tell TS that we are sure that currentUser is defined
     });
     await ticket.save();
+    new TicketCreatedPublisher(client).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId,
+    });
 
     res.status(201).send(ticket);
   }
