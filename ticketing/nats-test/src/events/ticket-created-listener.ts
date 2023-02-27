@@ -9,6 +9,9 @@ export class TicketCreatedListener extends Listener {
     // console.log('Event data: ', data);
     console.log(`Event data #${msg.getSequence()}:`, data);
 
+    console.log(data.name);
+    console.log(data.cost);
+
     msg.ack();
   }
 }
