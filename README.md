@@ -48,8 +48,11 @@ Microservices with Node JS and React by Stephen Grider
 - 15-connecting-NATS (from here not under the section)
   - (From this section, locate the project file under `root/ticketing` not under the each section)
   - (As the project size gets bigger it takes more space, currently 18.1 MB for this git repo)
-  - root/ticketing/nats-test
+  - root/ticketing
+    - /nats-test
+    - /common
 - 16-NATS-client
+  - root/ticketing/tickets
 - 17-cross-service-data-replication
 - 18-event-flow
 - 19-listener-concurrency
@@ -71,7 +74,7 @@ Microservices with Node JS and React by Stephen Grider
 - [README-Section 7 to 10](./docs/README-07.md)
 - [README-Section 11: Server Side Rendered React app (Next js)](./docs/README-11.md)
 - [README-Section 12 to 13](./docs/README-12.md)
-- [README-Section 14: NATS Streaming Server](./docs/README-14.md)
+- [README-Section 14 to 16: NATS Streaming Server](./docs/README-14.md)
 - [README-Appendix-Docker](./docs/README-appx-docker.md)
 
 <details open> 

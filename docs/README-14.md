@@ -318,4 +318,6 @@ k delete nats-depl-6fdbfb6c6d-6wftz
 npm update @dwktickets/common
 ```
 
+## Section 16 - Managing a NATS Client
+
 </details>
