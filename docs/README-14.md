@@ -277,4 +277,15 @@ publish(data: T['data']): Promise<void> {
 await publisher.publish({})
 ```
 
+### 331. Common Event Definitions Summary
+
+We will be using common event definitions in the common module as all our services are in Typescript.\
+However, if you have services in different languages, this approach won't work.\
+
+#### Alternatives with Cross Language Support
+
+- JSON Schema
+- Protobuf
+- Apache Avro
+
 </details>
