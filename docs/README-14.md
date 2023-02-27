@@ -335,4 +335,16 @@ new TicketCreatedPublisher(client).publish({
 });
 ```
 
+### 338. Node Nats Streaming Installation
+
+```sh
+# ./ticketing/tickets
+npm install node-nats-streaming
+```
+
+### 339. NATS Client Singleton
+
+Mongoose is a singleton. Once you connect to mongoose, you can use it in any other files\
+And we want to do it exactly the same with `nats-client`
+
 </details>
