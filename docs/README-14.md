@@ -31,6 +31,12 @@ k port-forward nats-depl-588b8b6b8-2s9nt 4222:4222
 k port-forward nats-depl-588b8b6b8-2s9nt 8222:8222
 ```
 
+```sh
+# NATS publisher and listener in separated tabs
+npm run publish
+npm run listen # x2 or x3, for more listener(=consumer)
+```
+
 ## Section 14: NATS Streaming Server - An Event Bus Implementation
 
 ### 295. Three Important Items
