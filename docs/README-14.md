@@ -231,4 +231,19 @@ Typescript is worrying if the `subject` would be changed some other value.\
   readonly subject = Subjects.TicketCreated;
   ```
 
+### 326. Enforcing Data Types
+
+```ts
+// ./ticketing/nats-test/src/events/ticket-created-listener.ts
+// correct
+onMessage(data: TicketCreatedEvent['data'], msg: Message) {}
+
+// typescript will give you warning
+interface FakeData {
+  name: string;
+  cost: number
+}
+onMessage(data: FakeData, msg: Message) {}
+```
+
 </details>
