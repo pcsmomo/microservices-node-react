@@ -371,4 +371,20 @@ k get pods
 # tickets-depl-689578c6c6-6wzv4         1/1     Running   1 (57s ago)   85s
 ```
 
+### 344. Successful Listen!
+
+Port forward to use `nats-test` to listen the `ticket:created` events
+
+```sh
+kubectl port-forward <nats-depl-pod-name> 4222:4222
+
+# ./ticketing/nats-test
+npm run listen # x2
+```
+
+- Postman -> Signin or Signup to get credential -> Create a ticket
+- [postman script](../ticketing/postman/ticketing.json)
+
+> Successfully listening!!
+
 </details>
