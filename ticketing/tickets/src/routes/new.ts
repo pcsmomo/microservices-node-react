@@ -7,6 +7,9 @@ import { requireAuth, validateRequest } from '@dwktickets/common';
 // Models
 import { Ticket } from '../models/ticket';
 
+// NATS
+import { natsWrapper } from '../nats-wrapper';
+
 // Event publisher
 import { TicketCreatedPublisher } from '../events/publishers/ticket-created-publisher';
 
@@ -32,7 +35,7 @@ router.post(
       // we are confident so we can use ! to tell TS that we are sure that currentUser is defined
     });
     await ticket.save();
-    new TicketCreatedPublisher(client).publish({
+    new TicketCreatedPublisher(natsWrapper.client).publish({
       id: ticket.id,
       title: ticket.title,
       price: ticket.price,
