@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 import { app } from './app';
+import { natsWrapper } from './nats-wrapper';
 
 const start = async () => {
   // Check if env variables are defined
@@ -11,8 +12,11 @@ const start = async () => {
     throw new Error('MONGO_URI must be defined');
   }
 
-  // Connect to the database
+  // Connect to other services
   try {
+    // 'ticketing', clusterID is defined in nats-depl.yaml
+    await natsWrapper.connect('ticketing', 'asdfasdf', 'http://nats-srv:4222');
+
     await mongoose.connect(process.env.MONGO_URI);
     console.info('Connected to MongoDb');
   } catch (err) {
