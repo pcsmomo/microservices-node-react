@@ -288,4 +288,15 @@ However, if you have services in different languages, this approach won't work.\
 - Protobuf
 - Apache Avro
 
+### 332. Updating the Common Module
+
+```sh
+# ./ticketing/common
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm install node-nats-streaming
+
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+```
+
 </details>
