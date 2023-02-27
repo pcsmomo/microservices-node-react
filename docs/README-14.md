@@ -208,6 +208,27 @@ These three options work very well
 
 ## Section 15 - Connecting to NATS in a Node JS World
 
-### 317. Reusable NATS Listeners
+### 324. Enforcing Listener Subjects
+
+```ts
+subject = Subjects.TicketCreated;
+```
+
+```ts
+Property 'subject' in type 'TicketCreatedListener' is not assignable to the same property in base type 'Listener<TicketCreatedEvent>'.
+  Type 'Subjects' is not assignable to type 'Subjects.TicketCreated'.ts(2416)
+```
+
+If you see an error message like this, consider typing it.\
+Typescript is worrying if the `subject` would be changed some other value.\
+
+- Option #1:
+  ```ts
+  subject: Subjects.TicketCreated = Subjects.TicketCreated;
+  ```
+- Option #2:
+  ```ts
+  readonly subject = Subjects.TicketCreated;
+  ```
 
 </details>
