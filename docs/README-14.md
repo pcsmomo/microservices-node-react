@@ -246,4 +246,35 @@ interface FakeData {
 onMessage(data: FakeData, msg: Message) {}
 ```
 
+### 330. Awaiting Event Publication
+
+How to make publish method to return Promise
+
+```js
+
+// ./ticketing/nats-test/src/events/base-publisher.ts
+// before
+publish(data: T['data']) {
+  this.client.publish(this.subject, JSON.stringify(data), () => {
+    console.log('Event published.');
+  });
+}
+
+// after
+publish(data: T['data']): Promise<void> {
+  return new Promise((resolve, reject) => {
+    this.client.publish(this.subject, JSON.stringify(data), err => {
+      if (err) {
+        return reject(err);
+      }
+      console.log('Event published to subject', this.subject);
+      resolve();
+    });
+  });
+}
+
+// ./ticketing/nats-test/src/publisher.ts
+await publisher.publish({})
+```
+
 </details>
