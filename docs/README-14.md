@@ -299,4 +299,11 @@ npm install node-nats-streaming
 npm run pub
 ```
 
+### 333. Restarting NATS
+
+```sh
+k get pods
+k delete nats-depl-6fdbfb6c6d-6wftz
+```
+
 </details>
