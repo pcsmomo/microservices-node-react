@@ -408,4 +408,28 @@ res.status(201).send(ticket);
 
 > We will manage them in `transaction`
 
+### 348. Fixing a Few Tests
+
+- There's no NATS connection in tests
+- NATS connection is in `src/index.ts` only and tests imports only `src/app.ts`
+
+#### Two possible solutions
+
+- Option #1. connect to actual NATS server in test
+  - Not ideal
+- **Option #2. Use `Fake NatsWrapper`**
+  - Redirect import statement using Jest
+
+### 349. Redirecting Imports
+
+Mocking (Faking) Imports with Jest
+
+1. Find the file that we want to 'fake'
+2. In the same directory, create a folder claled `__mocks__`
+3. In that folder, create a file with an identical name to the file we want to fake
+   - `tickets/src/__mocks__/nats-wrappter.ts`
+4. Write a fake implementation
+5. Tell jest to use that fake file in our test file
+   - `jest.mock('../../nats-wrapper');`
+
 </details>
