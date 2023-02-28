@@ -2,6 +2,7 @@ import nats from 'node-nats-streaming';
 import { randomBytes } from 'crypto';
 
 import { TicketCreatedListener } from './events/ticket-created-listener';
+import { TicketUpdatedListener } from './events/ticket-updated-listener';
 
 console.clear();
 
@@ -18,6 +19,7 @@ stan.on('connect', () => {
   });
 
   new TicketCreatedListener(stan).listen();
+  new TicketUpdatedListener(stan).listen();
 });
 
 // Graceful shutdown
