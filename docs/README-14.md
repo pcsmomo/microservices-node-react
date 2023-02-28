@@ -465,4 +465,14 @@ beforeAll(async () => {
 });
 ```
 
+### 353. NATS Env Variables
+
+```yaml
+# ticketing/infra/k8s/tickets-depl.yaml
+- name: NATS_CLIENT_ID
+  valueFrom:
+    fieldRef:
+      fieldPath: metadata.name
+```
+
 </details>
