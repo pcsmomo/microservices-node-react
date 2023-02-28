@@ -55,4 +55,11 @@ docker build -t pcsmomo/orders .
 docker push pcsmomo/orders
 ```
 
+### 357. A Touch More Setup
+
+```sh
+# ticketing
+skaffold dev  # had to run a few times
+```
+
 </details>
