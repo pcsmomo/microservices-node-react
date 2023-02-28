@@ -7,10 +7,15 @@ declare global {
   var signin: () => string[];
 }
 
+// __mocks__ folder is a special folder for jest
+// and it will automatically look for a file with the same name
+// as the module that we are trying to mock out.
 jest.mock('../nats-wrapper.ts');
 
 let mongo: any;
 beforeAll(async () => {
+  jest.clearAllMocks();
+
   // environment variables (not the best way to do it though)
   process.env.JWT_KEY = 'asdfasdf';
 

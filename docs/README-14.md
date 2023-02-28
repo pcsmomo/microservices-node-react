@@ -432,4 +432,37 @@ Mocking (Faking) Imports with Jest
 5. Tell jest to use that fake file in our test file
    - `jest.mock('../../nats-wrapper');`
 
+### 351. Test-Suite Wide Mocks
+
+Globally mocking the file
+
+```ts
+// ticketing/tickets/src/test/setup.ts
+
+// __mocks__ folder is a special folder for jest
+// and it will automatically look for a file with the same name
+// as the module that we are trying to mock out.
+jest.mock('../nats-wrapper.ts');
+```
+
+### 352. Ensuring Mock Invocations
+
+```js
+// ticketing/tickets/src/__mocks__/nats-wrapper.ts
+jest
+  .fn()
+  .mockImplementation((subject: string, data: string, callback: () => void) => {
+    callback();
+  });
+
+// ticketing/tickets/src/routes/__test__/new.test.ts
+// This is a mock function that we can use to make assertions about
+expect(natsWrapper.client.publish).toHaveBeenCalled();
+
+// ticketing/tickets/src/test/setup.ts
+beforeAll(async () => {
+  jest.clearAllMocks();
+});
+```
+
 </details>
