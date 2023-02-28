@@ -35,7 +35,7 @@ router.post(
       // we are confident so we can use ! to tell TS that we are sure that currentUser is defined
     });
     await ticket.save();
-    new TicketCreatedPublisher(natsWrapper.client).publish({
+    await new TicketCreatedPublisher(natsWrapper.client).publish({
       id: ticket.id,
       title: ticket.title,
       price: ticket.price,

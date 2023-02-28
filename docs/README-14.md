@@ -387,4 +387,25 @@ npm run listen # x2
 
 > Successfully listening!!
 
+### 347. Handling Publish Failures
+
+Currently, there's no checking logic if one of actions is failed\
+Wwhich is critical
+
+```ts
+// 1
+await ticket.save();
+// 2
+await new TicketCreatedPublisher(natsWrapper.client).publish({
+  id: ticket.id,
+  title: ticket.title,
+  price: ticket.price,
+  userId: ticket.userId,
+});
+
+res.status(201).send(ticket);
+```
+
+> We will manage them in `transaction`
+
 </details>
