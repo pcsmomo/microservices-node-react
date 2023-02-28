@@ -90,4 +90,12 @@ Two primary ways to do this with MongoDB/mongoose
 - **Option #2: Mongoose Ref/Population Feature**
   - [mongoose Populate Documentation](https://mongoosejs.com/docs/populate.html)
 
+### 364. Creating an Order Status Enum
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+# + @dwktickets/common@1.0.7
+```
+
 </details>
