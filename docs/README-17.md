@@ -62,4 +62,17 @@ docker push pcsmomo/orders
 skaffold dev  # had to run a few times
 ```
 
+### 360. Subtle Service Coupling
+
+We will check ticketId if it is a mongodbID which makes subtle coupling\
+If you don't like this coupling, this `.custom()` line can be just deleted
+
+```ts
+body('ticketId')
+  .not()
+  .isEmpty()
+  .custom((input: string) => mongoose.Types.ObjectId.isValid(input))
+  .withMessage('TicketId must be provided');
+```
+
 </details>
