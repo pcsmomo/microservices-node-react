@@ -75,4 +75,19 @@ body('ticketId')
   .withMessage('TicketId must be provided');
 ```
 
+### 361. Associating Orders and Tickets
+
+We need to somehow associate Tickets and Orders together\
+"Ticket Document", "Order Document"\
+Two primary ways to do this with MongoDB/mongoose
+
+- Option #1: Embedding
+  ```json
+  { ..., "ticket" {} }
+  ```
+  - Querying is a bit challenging
+  - There are tickets not ordered, but order service woulnd't know about them
+- **Option #2: Mongoose Ref/Population Feature**
+  - [mongoose Populate Documentation](https://mongoosejs.com/docs/populate.html)
+
 </details>
