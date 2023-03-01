@@ -79,7 +79,6 @@ Microservices with Node JS and React by Stephen Grider
 - [README-Section 17: cross-service-data-replication](./docs/README-17.md)
 - [README-Appendix-Docker](./docs/README-appx-docker.md)
 
-<details open> 
-  <summary>Click to Contract/Expend</summary>
+## After the course
 
-</details>
+Replace `nats-streaming-server` to `Kafka` to see how it will work

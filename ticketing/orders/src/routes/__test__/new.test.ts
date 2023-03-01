@@ -57,3 +57,5 @@ it('reserves a ticket', async () => {
   expect(response.body.expiresAt).toBeDefined();
   expect(response.body.userId).toBeDefined();
 });
+
+it.todo('emit an order created event');
