@@ -98,4 +98,11 @@ npm run pub
 # + @dwktickets/common@1.0.7
 ```
 
+### 382. Can We Cancel?
+
+```ts
+// if it is production, we should not use "!"". It is just for test
+expect(updatedOrder!.status).toEqual(OrderStatus.Cancelled);
+```
+
 </details>
