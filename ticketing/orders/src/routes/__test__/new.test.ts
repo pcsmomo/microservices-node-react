@@ -6,6 +6,9 @@ import { app } from '../../app';
 import { Order, OrderStatus } from '../../models/order';
 import { Ticket } from '../../models/ticket';
 
+// Events
+import { natsWrapper } from '../../nats-wrapper';
+
 it('returns an error if the ticket does not exist', async () => {
   const ticketId = new mongoose.Types.ObjectId().toHexString();
 
@@ -58,4 +61,18 @@ it('reserves a ticket', async () => {
   expect(response.body.userId).toBeDefined();
 });
 
-it.todo('emit an order created event');
+it('emit an order created event', async () => {
+  const ticket = Ticket.build({
+    title: 'concert',
+    price: 20,
+  });
+  await ticket.save();
+
+  const response = await request(app)
+    .post('/api/orders')
+    .set('Cookie', global.signin())
+    .send({ ticketId: ticket.id })
+    .expect(201);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalledTimes(1);
+});

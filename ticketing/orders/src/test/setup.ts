@@ -24,8 +24,6 @@ jest.mock('../nats-wrapper.ts');
 
 let mongo: any;
 beforeAll(async () => {
-  jest.clearAllMocks();
-
   // environment variables (not the best way to do it though)
   process.env.JWT_KEY = 'asdfasdf';
 
@@ -36,6 +34,9 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+  // clear all mocks before each test
+  jest.clearAllMocks();
+
   const collections = await mongoose.connection.db.collections();
 
   for (let collection of collections) {
