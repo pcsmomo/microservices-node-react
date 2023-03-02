@@ -110,7 +110,8 @@ expect(updatedOrder!.status).toEqual(OrderStatus.Cancelled);
 ```sh
 # udemy/microservices-node-react/dwktickets-npm/commmon
 npm run pub
-# + @dwktickets/common@1.0.8
+# + @dwktickets/common@1.0.9
+# made a mistake for 1.0.8
 
 # auth, tickets, orders
 npm update @dwktickets/common
