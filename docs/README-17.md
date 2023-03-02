@@ -105,4 +105,15 @@ npm run pub
 expect(updatedOrder!.status).toEqual(OrderStatus.Cancelled);
 ```
 
+## Section 18 - Understanding Event Flow
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+# + @dwktickets/common@1.0.8
+
+# auth, tickets, orders
+npm update @dwktickets/common
+```
+
 </details>

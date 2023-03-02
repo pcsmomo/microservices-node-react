@@ -56,6 +56,9 @@ Microservices with Node JS and React by Stephen Grider
 - 17-cross-service-data-replication
   - root/ticketing/orders
 - 18-event-flow
+  - root/ticketing
+    - /common
+    - /orders
 - 19-listener-concurrency
 - 20-worker-services
 - 21-payment
@@ -76,7 +79,7 @@ Microservices with Node JS and React by Stephen Grider
 - [README-Section 11: Server Side Rendered React app (Next js)](./docs/README-11.md)
 - [README-Section 12 to 13](./docs/README-12.md)
 - [README-Section 14 to 16: NATS Streaming Server](./docs/README-14.md)
-- [README-Section 17 to ](./docs/README-17.md)
+- [README-Section 17 to 18: orders server](./docs/README-17.md)
 - [README-Appendix-Docker](./docs/README-appx-docker.md)
 
 ## After the course
