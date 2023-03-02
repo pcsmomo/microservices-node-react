@@ -107,6 +107,8 @@ expect(updatedOrder!.status).toEqual(OrderStatus.Cancelled);
 
 ## Section 18 - Understanding Event Flow
 
+### 385. Creating the Events
+
 ```sh
 # udemy/microservices-node-react/dwktickets-npm/commmon
 npm run pub
@@ -115,6 +117,25 @@ npm run pub
 
 # auth, tickets, orders
 npm update @dwktickets/common
+```
+
+## Section 19 - Listening for Events and Handling Concurrency Issues
+
+### 400. A Quick Manual Test
+
+Postman manual test
+
+- Signup: https://ticketing.dev/api/users/signup
+- Check user: https://ticketing.dev/api/users/currentuser
+- Create a new ticket: POST https://ticketing.dev/api/tickets
+- Update the ticket: PUT https://ticketing.dev/api/tickets
+
+```sh
+# skaffold dev
+# [tickets] Event published to subject ticket:created
+# [orders] Message received: ticket:created / orders-service
+# [orders] Message received: ticket:updated / orders-service
+# [tickets] Event published to subject ticket:updated
 ```
 
 </details>
