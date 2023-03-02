@@ -11,5 +11,19 @@ export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
   readonly subject = Subjects.TicketCreated;
   queueGroupName = queueGroupName;
 
-  onMessage(data: TicketCreatedEvent['data'], msg: Message) {}
+  async onMessage(data: TicketCreatedEvent['data'], msg: Message) {
+    const { title, price } = data;
+
+    const ticket = Ticket.build({
+      title,
+      price,
+    });
+    await ticket.save();
+
+    /**
+     * Acks the message, note this method shouldn't be called unless
+     * the manualAcks option was set on the subscription.
+     */
+    msg.ack();
+  }
 }
