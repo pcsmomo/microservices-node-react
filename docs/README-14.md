@@ -103,7 +103,7 @@ kubectl port-forward nats-depl-689cdd9577-flmx7 4222:4222
 ```
 
 ```sh
-# ./ticketing/nats-test
+# ./ticketing/playground/nats-test
 npm run publish
 # [INFO] 22:56:46 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.1, typescript ver. 4.9.5)
 # Publisher connected to NATS
@@ -112,7 +112,7 @@ npm run publish
 ### 302. Listening For Data
 
 ```sh
-# ./ticketing/nats-test
+# ./ticketing/playground/nats-test
 npm run listen
 # Listener connected to NATS
 ```
@@ -120,7 +120,7 @@ npm run listen
 On the publisher terminal, type `rs` and enter and repeat it a few more times
 
 ```sh
-# ./ticketing/nats-test
+# ./ticketing/playground/nats-test
 npm run publish
 rs
 # Enter
@@ -133,7 +133,7 @@ The server restarts and it publishes a few more messages
 Open a new terminal and run another listener
 
 ```sh
-# ./ticketing/nats-test
+# ./ticketing/playground/nats-test
 npm run listen
 # Error: Unhandled error. ('stan: clientID already registered')
 ```
@@ -196,7 +196,7 @@ navigate, http://localhost:8222/streaming
 ### 315. Durable Subscriptions
 
 ```ts
-// ticketing/nats-test/src/listener.ts
+// ticketing/playground/nats-test/src/listener.ts
 const options = stan.setDeliverAllAvailable().setDurableName('order-service');
 stan.subscribe('', 'orders-service-queue-group', options);
 ```
@@ -234,7 +234,7 @@ Typescript is worrying if the `subject` would be changed some other value.\
 ### 326. Enforcing Data Types
 
 ```ts
-// ./ticketing/nats-test/src/events/ticket-created-listener.ts
+// ./ticketing/playground/nats-test/src/events/ticket-created-listener.ts
 // correct
 onMessage(data: TicketCreatedEvent['data'], msg: Message) {}
 
@@ -252,7 +252,7 @@ How to make publish method to return Promise
 
 ```js
 
-// ./ticketing/nats-test/src/events/base-publisher.ts
+// ./ticketing/playground/nats-test/src/events/base-publisher.ts
 // before
 publish(data: T['data']) {
   this.client.publish(this.subject, JSON.stringify(data), () => {
@@ -273,7 +273,7 @@ publish(data: T['data']): Promise<void> {
   });
 }
 
-// ./ticketing/nats-test/src/publisher.ts
+// ./ticketing/playground/nats-test/src/publisher.ts
 await publisher.publish({})
 ```
 
@@ -378,7 +378,7 @@ Port forward to use `nats-test` to listen the `ticket:created` events
 ```sh
 kubectl port-forward <nats-depl-pod-name> 4222:4222
 
-# ./ticketing/nats-test
+# ./ticketing/playground/nats-test
 npm run listen # x2
 ```
 

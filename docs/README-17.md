@@ -138,4 +138,68 @@ Postman manual test
 # [tickets] Event published to subject ticket:updated
 ```
 
+### 401. Clear Concurrency Issues
+
+(Optional) Set up "concurrency-test" script to simulate
+
+- creating a ticket with price 5
+- modify the price to 10
+- modify the price to 15
+- run them 200 times
+
+#### Action!
+
+- Cleanup database
+  - tickets-mongo
+    ```sh
+    # see tickets in
+    k get pods
+    k exec -it <tickets-mongo-pod> sh
+    mongosh
+    test> show dbs
+    # admin     40.00 KiB
+    # config   108.00 KiB
+    # local     40.00 KiB
+    # tickets   72.00 KiB
+    test> use tickets
+    tickets> show collections
+    # tickets
+    tickets> db.tickets.find({})
+    # ...
+    tickets> db.tickets.remove({})
+    ```
+  - orders-mongo
+    ```sh
+    # see tickets in
+    k get pods
+    k exec -it <orders-mongo-pod> sh
+    mongosh
+    test> show dbs
+    # admin    40.00 KiB
+    # config  108.00 KiB
+    # local    40.00 KiB
+    # orders   80.00 KiB
+    test> use orders
+    orders> show collections
+    # orders
+    # tickets
+    orders> db.tickets.find({})
+    # ...
+    orders> db.tickets.remove({})
+    ```
+- Make 600 (3 \* 200) requests
+  ```sh
+  # ticketing/playground/concurrency-test
+  npm start
+  ```
+- Check the database
+  ```sh
+  # probably the order version of mongodb uses .length()
+  orders> db.tickets.find({ price: 10 }).count()
+  # 0
+  tickets> db.tickets.find({ price: 10 }).count()
+  # It should be 0, but when there's concurrent issue.
+  # there'd be some tickets with price 10, (wasn't updated to 15)
+  ```
+
 </details>
