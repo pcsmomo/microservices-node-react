@@ -21,10 +21,8 @@ export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
     });
     await ticket.save();
 
-    /**
-     * Acks the message, note this method shouldn't be called unless
-     * the manualAcks option was set on the subscription.
-     */
+    // Acks the message, note this method shouldn't be called unless
+    // the manualAcks option was set on the subscription.
     msg.ack();
   }
 }
