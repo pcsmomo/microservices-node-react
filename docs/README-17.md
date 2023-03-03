@@ -215,6 +215,8 @@ mongoose is managing version with `__v` flag, but we will use `version`
 
 ### 405. Implementing OCC with Mongoose
 
+Optimistic Concurrency Issue : OCC
+
 ```ts
 // ticketing/tickets/src/models/ticket.ts
 ticketSchema.set('versionKey', 'version');
