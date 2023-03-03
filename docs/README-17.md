@@ -213,4 +213,11 @@ npm install mongoose-update-if-current
 
 mongoose is managing version with `__v` flag, but we will use `version`
 
+### 405. Implementing OCC with Mongoose
+
+```ts
+// ticketing/tickets/src/models/ticket.ts
+ticketSchema.set('versionKey', 'version');
+```
+
 </details>
