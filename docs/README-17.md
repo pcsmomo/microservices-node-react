@@ -236,7 +236,16 @@ npm run pub
 # + @dwktickets/common@1.0.10
 
 # tickets, orders, (auth)
+# update package.json first, skaffold will install the version defined in package.json
+# "@dwktickets/common": "^1.0.10",
 npm update @dwktickets/common
+```
+
+### 412. Property 'version' is missing TS Errors After Running Skaffold
+
+```sh
+# ticketing/orders
+npm install mongoose-update-if-current
 ```
 
 </details>
