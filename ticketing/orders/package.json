@@ -19,7 +19,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@dwktickets/common": "^1.0.9",
+    "@dwktickets/common": "^1.0.10",
     "@types/cookie-session": "^2.0.44",
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.1",
@@ -29,6 +29,7 @@
     "express-validator": "^6.14.3",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.2",
+    "mongoose-update-if-current": "^1.4.0",
     "node-nats-streaming": "^0.3.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.5"
