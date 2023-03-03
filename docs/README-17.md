@@ -202,4 +202,15 @@ Postman manual test
   # there'd be some tickets with price 10, (wasn't updated to 15)
   ```
 
+### 404. Mongoose Update-If-Current
+
+[npm mongoose-update-if-current](https://www.npmjs.com/package/mongoose-update-if-current)
+
+```sh
+# ticketing/tickets
+npm install mongoose-update-if-current
+```
+
+mongoose is managing version with `__v` flag, but we will use `version`
+
 </details>
