@@ -248,4 +248,20 @@ npm update @dwktickets/common
 npm install mongoose-update-if-current
 ```
 
+### 414. Did it Work?
+
+[Go to \[Simulate 1,200 (3 \* 400) requests\]](#action)
+
+```sh
+# ticketing/playground/concurrency-test
+npm start
+```
+
+```
+tickets> db.tickets.find({ price: 15 }).count()
+# 400
+orders> db.tickets.find({ price: 15 }).count()
+# 400
+```
+
 </details>
