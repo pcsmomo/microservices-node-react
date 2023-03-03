@@ -264,4 +264,29 @@ orders> db.tickets.find({ price: 15 }).count()
 # 400
 ```
 
+### 416. [Optional] Versioning Without Update-If-Current
+
+what does `mongoose-update-if-current` do
+
+1. Updates the version number on records before they are saved
+   ```
+   # ticketing/orders/src/events/listeners/ticket-updated-listener.ts
+   const { title, price, version } = data;
+   ticket.set({ title, price, version });
+   await ticket.save();
+   ```
+2. Customizes the find-and-update operation (save) to look for the correct version
+   - [Mongoose Model $where](https://mongoosejs.com/docs/api/model.html#model_Model-$where)
+   ```
+   # ticketing/orders/src/events/models/ticket.ts
+   // ticketSchema.plugin(updateIfCurrentPlugin);
+   // Must use a stand function to bind, not an arrow function
+   ticketSchema.pre('save', function (done) {
+     this.$where = {
+       version: this.get('version') - 1,
+     };
+     done();
+   });
+   ```
+
 </details>
