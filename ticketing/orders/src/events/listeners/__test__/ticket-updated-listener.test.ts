@@ -36,6 +36,26 @@ const setup = async () => {
   return { listener, ticket, data, msg };
 };
 
-it('finds, updates, and saves a ticket', async () => {});
+it('finds, updates, and saves a ticket', async () => {
+  const { listener, ticket, data, msg } = await setup();
 
-it('acks the message', async () => {});
+  // Call the onMessage function with the data object + message object
+  await listener.onMessage(data, msg);
+
+  // Write assertions to make sure a ticket was created!
+  const updatedTicket = await Ticket.findById(ticket.id);
+
+  expect(updatedTicket!.title).toEqual(data.title);
+  expect(updatedTicket!.price).toEqual(data.price);
+  expect(updatedTicket!.version).toEqual(data.version);
+});
+
+it('acks the message', async () => {
+  const { listener, data, msg } = await setup();
+
+  // Call the onMessage function with the data object + message object
+  await listener.onMessage(data, msg);
+
+  // Write assertions to make sure ack function is called
+  expect(msg.ack).toHaveBeenCalledTimes(1);
+});
