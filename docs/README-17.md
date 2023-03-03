@@ -222,4 +222,21 @@ Optimistic Concurrency Issue : OCC
 ticketSchema.set('versionKey', 'version');
 ```
 
+### 409. Who Updates Versions?
+
+Who should we increment or include the 'version' number of a record with an event?\
+-> Increment/include the 'version' number whenever the `primary service responsible for a record`\
+ emits an event to describe a `create/update/detroy` to a record
+
+### 410. Including Versions in Events
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+# + @dwktickets/common@1.0.10
+
+# tickets, orders, (auth)
+npm update @dwktickets/common
+```
+
 </details>
