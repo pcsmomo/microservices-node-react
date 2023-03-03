@@ -23,8 +23,8 @@ it('implements optimistic concurrency control', async () => {
   await firstInstance!.save();
 
   // Save the second fetched ticket and expect an error
-  await expect(secondInstance!.save()).rejects.toThrow(); // This works. Thanks to co-pilot.
-  // expect(async () => await secondInstance!.save()).toThrow(); // This doesn't work
+  // await expect(secondInstance!.save()).rejects.toThrow(); // This works. Thanks to co-pilot.
+  expect(async () => await secondInstance!.save()).rejects.toThrow(); // This works too.
 
   // Author's solution
   // try {
@@ -33,4 +33,19 @@ it('implements optimistic concurrency control', async () => {
   //   return;
   // }
   // throw new Error('Should not reach this point');
+});
+
+it('increments the version number on multiple saves', async () => {
+  const ticket = Ticket.build({
+    title: 'concert',
+    price: 20,
+    userId: '123',
+  });
+
+  await ticket.save();
+  expect(ticket.version).toEqual(0);
+  await ticket.save();
+  expect(ticket.version).toEqual(1);
+  await ticket.save();
+  expect(ticket.version).toEqual(2);
 });
