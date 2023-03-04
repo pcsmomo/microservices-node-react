@@ -7,6 +7,7 @@ import { Ticket } from '../../models/ticket';
 it('fetches the order', async () => {
   // Create a ticket
   const ticket = Ticket.build({
+    id: global.generateId(),
     title: 'concert',
     price: 20,
   });
@@ -34,6 +35,7 @@ it('fetches the order', async () => {
 it('returns an error if one user tries to fetch another users order', async () => {
   // Create a ticket
   const ticket = Ticket.build({
+    id: global.generateId(),
     title: 'concert',
     price: 20,
   });
