@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 import { app } from './app';
 import { natsWrapper } from './nats-wrapper';
 
+// Events
+import { OrderCreatedListener } from './events/listeners/order-created-listener';
+import { OrderCancelledListener } from './events/listeners/order-cancelled-listener';
+
 const start = async () => {
   // Check if env variables are defined
   if (!process.env.JWT_KEY) {
@@ -39,6 +43,11 @@ const start = async () => {
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
 
+    // Listen to events
+    new OrderCreatedListener(natsWrapper.client).listen();
+    new OrderCancelledListener(natsWrapper.client).listen();
+
+    // Connect to MongoDb
     await mongoose.connect(process.env.MONGO_URI);
     console.info('Connected to MongoDb');
   } catch (err) {
