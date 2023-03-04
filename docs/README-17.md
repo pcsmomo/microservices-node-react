@@ -289,4 +289,17 @@ what does `mongoose-update-if-current` do
    });
    ```
 
+### 433. Publishing While Listening
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+# + @dwktickets/common@1.0.11
+
+# tickets, orders, (auth)
+# update package.json first, skaffold will install the version defined in package.json
+# "@dwktickets/common": "^1.0.11",
+npm update @dwktickets/common
+```
+
 </details>
