@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 // declare global to make typescript aware of the global variable
 declare global {
   var signin: () => string[];
+  var generateId: () => string;
 }
 
 global.console = {
@@ -76,4 +77,8 @@ global.signin = () => {
   // return a string that's the cookie with the encoded data
   // supertest takes this in array
   return [`session=${base64}`];
+};
+
+global.generateId = () => {
+  return new mongoose.Types.ObjectId().toHexString();
 };
