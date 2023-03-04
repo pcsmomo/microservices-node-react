@@ -302,4 +302,17 @@ npm run pub
 npm update @dwktickets/common
 ```
 
+### 434. Mock Function Arguments
+
+see inside of jest.fn() mock function for debugging
+
+```ts
+// ticketing/tickets/src/events/listeners/__test__/order-created-listener.test.ts
+// @ts-ignore
+console.log(natsWrapper.client.publish.mock.calls);
+
+// without @ts-ignore
+(natsWrapper.client.publish as jest.Mock).mock.calls[0][1];
+```
+
 </details>
