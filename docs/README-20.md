@@ -84,4 +84,17 @@ scaffold dev
 
 iTerm2 shortcut : Command + K - Clear the console
 
+### 452. Defining the Expiration Complete Event
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+# + @dwktickets/common@1.0.12
+
+# expiration, order, (tickets, auth)
+# update package.json first, skaffold will install the version defined in package.json
+# "@dwktickets/common": "^1.0.12",
+npm update @dwktickets/common
+```
+
 </details>
