@@ -38,7 +38,9 @@ router.delete(
       },
     });
 
-    res.status(204).send(order);
+    // 204: No Content, so it is actually not returning any data
+    // res.status(204).send(order);
+    res.status(204).send();
   }
 );
 

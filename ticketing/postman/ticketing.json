@@ -178,7 +178,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"concert\",\n    \"price\": 10\n}\n",
+							"raw": "{\n    \"title\": \"movie\",\n    \"price\": 15\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -213,14 +213,114 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/tickets/63f91d5daffcf96641955438",
+							"raw": "{{url}}/api/tickets/6401a3bb82dbf85e334dc897",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"tickets",
-								"63f91d5daffcf96641955438"
+								"6401a3bb82dbf85e334dc897"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "Show order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Ty",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/orders/640437c5fcdf6f153399905b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"640437c5fcdf6f153399905b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show order list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Ty",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ticketId\": \"640437a374bc2d56131dd615\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/orders/640437c5fcdf6f153399905b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"640437c5fcdf6f153399905b"
 							]
 						}
 					},
