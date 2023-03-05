@@ -67,6 +67,7 @@ Microservices with Node JS and React by Stephen Grider
     - /orders
     - /tickets
 - 20-worker-services
+
 - 21-payment
 - 22-back-to-client
 - 23-cicd
@@ -86,6 +87,7 @@ Microservices with Node JS and React by Stephen Grider
 - [README-Section 12 to 13](./docs/README-12.md)
 - [README-Section 14 to 16: NATS Streaming Server](./docs/README-14.md)
 - [README-Section 17 to 19: orders server](./docs/README-17.md)
+- [README-Section 20 to 22: expiration, payment, client(gui)](./docs/README-20.md)
 - [README-Appendix-Docker](./docs/README-appx-docker.md)
 
 ## After the course
