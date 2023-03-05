@@ -44,7 +44,7 @@ k port-forward nats-depl-588b8b6b8-2s9nt 8222:8222
   - Broker waits 15 mins to publish message
   - NATS doesn't have this feature, but some other broker might have this feature.
   - If we can use this feature, we don't even need expiration service.
-- **Options #4. Use `bull.js`**
+- **Options #4. Use `bull.js`, Job manager**
   - `bull.js` allows us to set up long live timers
   - `bull.js` store the message to redis instance
 
@@ -56,6 +56,10 @@ mkdir expiration
 cd expiration
 
 # and copy some files from `tickets` service
+# and remove dependencies that are not needed
+
+npm install
+npm install bull
 ```
 
 </details>
