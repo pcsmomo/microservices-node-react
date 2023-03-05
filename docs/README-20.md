@@ -80,4 +80,8 @@ docker push pcsmomo/expiration
 scaffold dev
 ```
 
+### 451. Delaying Job Processing
+
+iTerm2 shortcut : Command + K - Clear the console
+
 </details>

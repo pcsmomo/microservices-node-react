@@ -18,7 +18,8 @@ import { OrderCreatedPublisher } from '../events/publishers/order-created-publis
 import { natsWrapper } from '../nats-wrapper';
 
 // Constants
-const EXPIRATION_WINDOW_SECONDS = 15 * 60; // 15 minutes
+// const EXPIRATION_WINDOW_SECONDS = 15 * 60; // 15 minutes
+const EXPIRATION_WINDOW_SECONDS = 15; // 15 seconds for a test
 
 const router = express.Router();
 
