@@ -54,6 +54,8 @@ k port-forward nats-depl-588b8b6b8-2s9nt 8222:8222
 
 ### 442. Initial Setup
 
+[npm bull](https://www.npmjs.com/package/bull)
+
 ```sh
 # ticketing
 mkdir expiration
