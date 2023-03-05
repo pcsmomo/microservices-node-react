@@ -62,4 +62,16 @@ npm install
 npm install bull
 ```
 
+### 444. A Touch of Kubernetes Setup
+
+```sh
+# ticketing/expiration
+docker build -t pcsmomo/expiration .
+docker push pcsmomo/expiration
+
+# after creating expiration config files
+# restart scaffold
+scaffold dev
+```
+
 </details>
