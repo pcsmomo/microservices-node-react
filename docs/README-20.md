@@ -11,11 +11,15 @@ minikube tunnel
 # ./ticketing/client
 docker build -t pcsmomo/client .
 docker push pcsmomo/client # skaffold pull the image from here
+# build and push all services
+# client, auth, tickets, orders, expiration, payment
+
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 
 # ./ticketing
 skaffold dev
-
-kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+# if some services run before NATS service and couldn't connect to NATS, delete the pod to restart it.
+# NatsError: Could not connect to server: Error: getaddrinfo ENOTFOUND nats-srv
 ```
 
 add `127.0.0.1 ticketing.dev` to /etc/hosts
