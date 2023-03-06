@@ -67,7 +67,10 @@ Microservices with Node JS and React by Stephen Grider
     - /orders
     - /tickets
 - 20-worker-services
-
+  - root/ticketing
+    - /expiration
+    - /common
+    - /orders
 - 21-payment
 - 22-back-to-client
 - 23-cicd
