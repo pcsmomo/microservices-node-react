@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 // declare global to make typescript aware of the global variable
 declare global {
-  var signin: () => string[];
+  var signin: (id?: string) => string[];
   var generateId: () => string;
 }
 
@@ -55,10 +55,10 @@ afterAll(async () => {
 
 // this doesn't have to be defined here. (it's just an option)
 // It can be defined somewhere else and imported in test files.
-global.signin = () => {
+global.signin = (id?: string) => {
   // Build a JWT payload. { id, email}
   const payload = {
-    id: new mongoose.Types.ObjectId().toHexString(),
+    id: id || new mongoose.Types.ObjectId().toHexString(),
     email: 'test@test.com',
   };
 
