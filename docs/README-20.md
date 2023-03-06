@@ -145,4 +145,13 @@ Payment Service Flow
   - Stripe API
 - Create `charge` record to record successful payment
 
+### 476. Stripe Setup
+
+```sh
+# ticketing/payments
+npm install stripe
+```
+
+Login https://stripe.com/ and check `Publishable key` and `Secret key`
+
 </details>
