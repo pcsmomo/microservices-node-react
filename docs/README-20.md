@@ -120,4 +120,18 @@ docker push pcsmomo/payments
 scaffold dev
 ```
 
+### 467. Testing Order Creation
+
+If we assume `order` would be not null, we can convince typescript like this
+
+```ts
+// Way 1
+const order = (await Order.findById(data.id)) as OrderDoc;
+expect(order.price).toEqual(data.ticket.price);
+
+// Way 2. what the author uses
+const order = await Order.findById(data.id);
+expect(order!.price).toEqual(data.ticket.price);
+```
+
 </details>
