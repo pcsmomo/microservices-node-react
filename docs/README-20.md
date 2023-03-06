@@ -15,6 +15,11 @@ docker push pcsmomo/client # skaffold pull the image from here
 # client, auth, tickets, orders, expiration, payment
 
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Secret key>
+kubectl get secrets
+# NAME            TYPE     DATA   AGE
+# jwt-secret      Opaque   1      15d
+# stripe-secret   Opaque   1      53s
 
 # ./ticketing
 skaffold dev
@@ -153,5 +158,17 @@ npm install stripe
 ```
 
 Login https://stripe.com/ and check `Publishable key` and `Secret key`
+
+### 477. Creating a Stripe Secret
+
+```sh
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Secret key>
+kubectl get secrets
+# NAME            TYPE     DATA   AGE
+# jwt-secret      Opaque   1      15d
+# stripe-secret   Opaque   1      53s
+```
+
+and add `STRIPE_KEY` to `ticketing/infra/k8s/payments-depl.yaml`
 
 </details>
