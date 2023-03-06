@@ -97,4 +97,27 @@ npm run pub
 npm update @dwktickets/common
 ```
 
+## Section 21 - Handling Payments
+
+### 462. Initial Setup
+
+```sh
+# ticketing
+mkdir payments
+cd payments
+
+# and copy some files from `tickets` service
+# and modify index.ts, app.ts and package.json files
+
+npm install
+
+# ticketing/payments
+docker build -t pcsmomo/payments .
+docker push pcsmomo/payments
+
+# after creating payments config files
+# restart scaffold
+scaffold dev
+```
+
 </details>
