@@ -3,8 +3,10 @@ import { body } from 'express-validator';
 import {
   requireAuth,
   validateRequest,
-  BadRequestError,
   NotFoundError,
+  NotAuthorizedError,
+  BadRequestError,
+  OrderStatus,
 } from '@dwktickets/common';
 import { Order } from '../models/order';
 
@@ -18,8 +20,22 @@ router.post(
     body('orderId').not().isEmpty().withMessage('Order ID is required'),
   ],
   validateRequest,
-  (req: Request, res: Response) => {
-    res.send({ success: true });
+  async (req: Request, res: Response) => {
+    const { token, orderId } = req.body;
+
+    const order = await Order.findById(orderId);
+
+    if (!order) {
+      throw new NotFoundError();
+    }
+    if (order.userId !== req.currentUser!.id) {
+      throw new NotAuthorizedError();
+    }
+    if (order.status === OrderStatus.Cancelled) {
+      throw new BadRequestError('Cannot pay for an cancelled order');
+    }
+
+    res.status(201).send({ success: true });
   }
 );
 
