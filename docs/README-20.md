@@ -134,4 +134,15 @@ const order = await Order.findById(data.id);
 expect(order!.price).toEqual(data.ticket.price);
 ```
 
+### 472. Implementing the Create Charge Handler
+
+Payment Service Flow
+
+- Find order the user id trying to pay for
+- Make sure the order belongs to this user
+- Make sure the payment abount matches the amount due for the order
+- Verify payment with Stripe API
+  - Stripe API
+- Create `charge` record to record successful payment
+
 </details>
