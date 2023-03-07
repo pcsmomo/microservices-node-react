@@ -279,4 +279,17 @@ await stripe.charges.create({
 - [Stripe API Documentation - retrieve a charge](https://stripe.com/docs/api/charges/retrieve)
 - [Stripe API Documentation - list all charges](https://stripe.com/docs/api/charges/list)
 
+### 486. Publishing a Payment Created Event
+
+```sh
+# udemy/microservices-node-react/dwktickets-npm/commmon
+npm run pub
+# + @dwktickets/common@1.0.13
+
+# payments, orders, tickets, (auth, expiration)
+# update package.json first, skaffold will install the version defined in package.json
+# "@dwktickets/common": "^1.0.13",
+npm update @dwktickets/common
+```
+
 </details>
