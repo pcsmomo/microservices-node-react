@@ -8,6 +8,7 @@ import {
   BadRequestError,
   OrderStatus,
 } from '@dwktickets/common';
+import { stripe } from '../stripe';
 import { Order } from '../models/order';
 
 const router = express.Router();
@@ -34,6 +35,12 @@ router.post(
     if (order.status === OrderStatus.Cancelled) {
       throw new BadRequestError('Cannot pay for an cancelled order');
     }
+
+    await stripe.charges.create({
+      currency: 'aud',
+      amount: order.price * 100,
+      source: token,
+    });
 
     res.status(201).send({ success: true });
   }

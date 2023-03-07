@@ -171,4 +171,8 @@ kubectl get secrets
 
 and add `STRIPE_KEY` to `ticketing/infra/k8s/payments-depl.yaml`
 
+### 478. Creating a Charge with Stripe
+
+[Stripe API Documentation - create a charge](https://stripe.com/docs/connect/charges)
+
 </details>
