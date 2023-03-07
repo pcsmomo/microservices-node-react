@@ -1,8 +1,10 @@
 import request from 'supertest';
 import { OrderStatus } from '@dwktickets/common';
 import { app } from '../../app';
-import { Order } from '../../models/order';
 import { stripe } from '../../stripe';
+
+import { Order } from '../../models/order';
+import { Payment } from '../../models/payment';
 
 // comment this line if you want to use real stripe api
 // and set the real the line in test/setup.ts and change __mocks__/stripe.ts to stripe.ts.old
@@ -86,6 +88,12 @@ it('returns a 201 with valid inputs (using mock stripe api)', async () => {
   expect(chargeOptions.source).toEqual('tok_visa');
   expect(chargeOptions.amount).toEqual(20 * 100);
   expect(chargeOptions.currency).toEqual('aud');
+
+  const payment = await Payment.findOne({
+    orderId: order.id,
+    stripeId: global.MOCK_CHARGE_ID,
+  });
+  expect(payment).not.toBeNull();
 });
 
 it.skip('returns a 201 with valid inputs (using real stripe api)', async () => {
@@ -119,4 +127,10 @@ it.skip('returns a 201 with valid inputs (using real stripe api)', async () => {
 
   expect(stripeCharge).toBeDefined();
   expect(stripeCharge!.currency).toEqual('aud');
+
+  const payment = await Payment.findOne({
+    orderId: order.id,
+    stripeId: stripeCharge!.id,
+  });
+  expect(payment).not.toBeNull();
 });

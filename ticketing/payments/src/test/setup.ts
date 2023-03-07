@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 declare global {
   var signin: (id?: string) => string[];
   var generateId: () => string;
+  var MOCK_CHARGE_ID: string;
 }
 
 global.console = {
@@ -85,3 +86,6 @@ global.signin = (id?: string) => {
 global.generateId = () => {
   return new mongoose.Types.ObjectId().toHexString();
 };
+
+// mock stripe charge id
+global.MOCK_CHARGE_ID = 'mock_charge_id';
