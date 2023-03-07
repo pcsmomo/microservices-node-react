@@ -175,4 +175,81 @@ and add `STRIPE_KEY` to `ticketing/infra/k8s/payments-depl.yaml`
 
 [Stripe API Documentation - create a charge](https://stripe.com/docs/connect/charges)
 
+### 479. Manual Testing of Payments
+
+Stripe mock token : "tok_visa"
+
+Postman endpoint: POST https://ticketing.dev/api/payments
+
+If you provide a wrong token, you will get error messages like this
+
+```sh
+[payments] StripeInvalidRequestError: No such token: 'tok_visa111'
+[payments]     at Function.generate (/app/node_modules/stripe/lib/Error.js:10:20)
+[payments]     at res.toJSON.then.Error_1.StripeAPIError.message (/app/node_modules/stripe/lib/RequestSender.js:105:51)
+[payments]     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+[payments]   type: 'StripeInvalidRequestError',
+[payments]   raw: {
+[payments]     code: 'resource_missing',
+[payments]     doc_url: 'https://stripe.com/docs/error-codes/resource-missing',
+[payments]     message: "No such token: 'tok_visa111'",
+[payments]     param: 'source',
+[payments]     request_log_url: 'https://dashboard.stripe.com/test/logs/req_4YTbrzQTpySHjX?t=1678169173',
+[payments]     type: 'invalid_request_error',
+[payments]     headers: {
+[payments]       server: 'nginx',
+[payments]       date: 'Tue, 07 Mar 2023 06:06:13 GMT',
+[payments]       'content-type': 'application/json',
+[payments]       'content-length': '327',
+[payments]       connection: 'keep-alive',
+[payments]       'access-control-allow-credentials': 'true',
+[payments]       'access-control-allow-methods': 'GET, POST, HEAD, OPTIONS, DELETE',
+[payments]       'access-control-allow-origin': '*',
+[payments]       'access-control-expose-headers': 'Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required',
+[payments]       'access-control-max-age': '300',
+[payments]       'cache-control': 'no-cache, no-store',
+[payments]       'idempotency-key': '2c8d3efc-27f3-484a-b420-a4986a44fcd9',
+[payments]       'original-request': 'req_4YTbrzQTpySHjX',
+[payments]       'request-id': 'req_4YTbrzQTpySHjX',
+[payments]       'stripe-version': '2022-11-15',
+[payments]       'strict-transport-security': 'max-age=63072000; includeSubDomains; preload'
+[payments]     },
+[payments]     statusCode: 400,
+[payments]     requestId: 'req_4YTbrzQTpySHjX'
+[payments]   },
+[payments]   rawType: 'invalid_request_error',
+[payments]   code: 'resource_missing',
+[payments]   doc_url: 'https://stripe.com/docs/error-codes/resource-missing',
+[payments]   param: 'source',
+[payments]   detail: undefined,
+[payments]   headers: {
+[payments]     server: 'nginx',
+[payments]     date: 'Tue, 07 Mar 2023 06:06:13 GMT',
+[payments]     'content-type': 'application/json',
+[payments]     'content-length': '327',
+[payments]     connection: 'keep-alive',
+[payments]     'access-control-allow-credentials': 'true',
+[payments]     'access-control-allow-methods': 'GET, POST, HEAD, OPTIONS, DELETE',
+[payments]     'access-control-allow-origin': '*',
+[payments]     'access-control-expose-headers': 'Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required',
+[payments]     'access-control-max-age': '300',
+[payments]     'cache-control': 'no-cache, no-store',
+[payments]     'idempotency-key': '2c8d3efc-27f3-484a-b420-a4986a44fcd9',
+[payments]     'original-request': 'req_4YTbrzQTpySHjX',
+[payments]     'request-id': 'req_4YTbrzQTpySHjX',
+[payments]     'stripe-version': '2022-11-15',
+[payments]     'strict-transport-security': 'max-age=63072000; includeSubDomains; preload'
+[payments]   },
+[payments]   requestId: 'req_4YTbrzQTpySHjX',
+[payments]   statusCode: 400,
+[payments]   charge: undefined,
+[payments]   decline_code: undefined,
+[payments]   payment_intent: undefined,
+[payments]   payment_method: undefined,
+[payments]   payment_method_type: undefined,
+[payments]   setup_intent: undefined,
+[payments]   source: undefined
+[payments] }
+```
+
 </details>

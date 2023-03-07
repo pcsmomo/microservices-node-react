@@ -287,7 +287,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ticketId\": \"640437a374bc2d56131dd615\"\n}\n",
+							"raw": "{\n    \"ticketId\": \"6406d449321185b61b90097d\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -313,14 +313,46 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/orders/640437c5fcdf6f153399905b",
+							"raw": "{{url}}/api/orders/640586d6a5d76fe2eec77743",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"orders",
-								"640437c5fcdf6f153399905b"
+								"640586d6a5d76fe2eec77743"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payments",
+			"item": [
+				{
+					"name": "New payments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderId\": \"6406d44f6be64a5215bb9207\",\n    \"token\": \"tok_visa\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payments"
 							]
 						}
 					},
