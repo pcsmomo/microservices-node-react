@@ -252,4 +252,24 @@ If you provide a wrong token, you will get error messages like this
 [payments] }
 ```
 
+### 480. Automated Payment Testing
+
+- Option #1. actually connect the real stripe api
+- **Option #2. mock stripe api**
+
+```ts
+export const stripe = {
+  charges: {
+    create: jest.fn().mockResolvedValue({}),
+  },
+};
+
+// We're expecting a value
+await stripe.charges.create({
+  currency: 'aud',
+  amount: order.price * 100,
+  source: token,
+});
+```
+
 </details>
