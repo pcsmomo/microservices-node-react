@@ -173,7 +173,7 @@ and add `STRIPE_KEY` to `ticketing/infra/k8s/payments-depl.yaml`
 
 ### 478. Creating a Charge with Stripe
 
-[Stripe API Documentation - create a charge](https://stripe.com/docs/connect/charges)
+[Stripe API Documentation - create a charge](https://stripe.com/docs/api/charges/create)
 
 ### 479. Manual Testing of Payments
 
@@ -255,7 +255,9 @@ If you provide a wrong token, you will get error messages like this
 ### 480. Automated Payment Testing
 
 - Option #1. actually connect the real stripe api
-- **Option #2. mock stripe api**
+- Option #2. mock stripe api
+
+> we will look into both options
 
 ```ts
 export const stripe = {
@@ -271,5 +273,10 @@ await stripe.charges.create({
   source: token,
 });
 ```
+
+### 483. Realistic Test Implementation
+
+- [Stripe API Documentation - retrieve a charge](https://stripe.com/docs/api/charges/retrieve)
+- [Stripe API Documentation - list all charges](https://stripe.com/docs/api/charges/list)
 
 </details>
