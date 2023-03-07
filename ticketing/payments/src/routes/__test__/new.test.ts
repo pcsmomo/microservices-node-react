@@ -4,8 +4,9 @@ import { app } from '../../app';
 import { Order } from '../../models/order';
 import { stripe } from '../../stripe';
 
-// uncomment this line if you want to use mock stripe api
-// jest.mock('../../stripe');
+// comment this line if you want to use real stripe api
+// and set the real the line in test/setup.ts and change __mocks__/stripe.ts to stripe.ts.old
+jest.mock('../../stripe');
 
 it('returns a 404 when purchasing an order that does not exist', async () => {
   await request(app)
@@ -59,7 +60,7 @@ it('returns a 400 when purchasing a cancelled order', async () => {
     .expect(400);
 });
 
-it.skip('returns a 201 with valid inputs (using mock stripe api)', async () => {
+it('returns a 201 with valid inputs (using mock stripe api)', async () => {
   const userId = global.generateId();
   const order = Order.build({
     id: global.generateId(),
@@ -87,13 +88,17 @@ it.skip('returns a 201 with valid inputs (using mock stripe api)', async () => {
   expect(chargeOptions.currency).toEqual('aud');
 });
 
-it('returns a 201 with valid inputs (using real stripe api)', async () => {
+it.skip('returns a 201 with valid inputs (using real stripe api)', async () => {
+  // it is using the real stripe api
+  // so you need to set the STRIPE_KEY env variable in src/test/setup.ts
+  // it would be slower than using mock stripe api but it is more realistic
   const userId = global.generateId();
+  const price = Math.floor(Math.random() * 1000);
   const order = Order.build({
     id: global.generateId(),
     userId,
     version: 0,
-    price: 20,
+    price: price,
     status: OrderStatus.Created,
   });
   await order.save();
@@ -106,4 +111,12 @@ it('returns a 201 with valid inputs (using real stripe api)', async () => {
       orderId: order.id,
     })
     .expect(201);
+
+  const stripeCharges = await stripe.charges.list({ limit: 50 });
+  const stripeCharge = stripeCharges.data.find(charge => {
+    return charge.amount === price * 100;
+  });
+
+  expect(stripeCharge).toBeDefined();
+  expect(stripeCharge!.currency).toEqual('aud');
 });

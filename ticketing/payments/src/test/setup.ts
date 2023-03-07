@@ -23,7 +23,8 @@ global.console = {
 // as the module that we are trying to mock out.
 jest.mock('../nats-wrapper.ts');
 
-process.env.STRIPE_KEY = '<read secret key>';
+// use this key if you want to use real stripe api
+// process.env.STRIPE_KEY = '<read secret key>';
 
 let mongo: any;
 beforeAll(async () => {
