@@ -312,4 +312,12 @@ npm install react-stripe-checkout
 npm install prop-types
 ```
 
+### 506. Test Credit Card Numbers
+
+[Stripe API - testing card numbers](https://stripe.com/docs/testing#cards)
+
+- Visa
+  - Number: 4242 4242 4242 4242
+  - CVC: any 3 digits
+
 </details>
