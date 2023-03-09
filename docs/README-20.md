@@ -305,4 +305,11 @@ we need to fix it to request only once
 npm install react-stripe-checkout
 ```
 
+### 505. Configuring Stripe
+
+```sh
+# ticketing/client
+npm install prop-types
+```
+
 </details>
