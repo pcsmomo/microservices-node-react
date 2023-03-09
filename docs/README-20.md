@@ -298,4 +298,11 @@ on the LandingPage, there are two requests to get the current user\
 one from \_app.js and one from index.js(Landing page)\
 we need to fix it to request only once
 
+### 504. Showing a Stripe Payment Form
+
+```sh
+# ticketing/client
+npm install react-stripe-checkout
+```
+
 </details>
