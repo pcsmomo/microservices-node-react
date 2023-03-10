@@ -19,7 +19,7 @@ import { natsWrapper } from '../nats-wrapper';
 
 // Constants
 // const EXPIRATION_WINDOW_SECONDS = 15 * 60; // 15 minutes
-const EXPIRATION_WINDOW_SECONDS = 15; // 15 seconds for a test
+const EXPIRATION_WINDOW_SECONDS = 60; // 60 seconds for a test
 
 const router = express.Router();
 
