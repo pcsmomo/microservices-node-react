@@ -72,7 +72,14 @@ Microservices with Node JS and React by Stephen Grider
     - /common
     - /orders
 - 21-payment
+  - root/ticketing
+    - /payments
+    - /common
+    - /orders
 - 22-back-to-client
+  - root/ticketing
+    - /client
+    - /tickets
 - 23-cicd
 - 24-docker
   - 01-redis-image: start from lecture "547. Building a Dockerfile"
