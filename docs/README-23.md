@@ -72,4 +72,9 @@ git push --set-upstream origin main
 
 Git repo -> Actions -> Manual Workflow
 
+### 516. Running Tests on PR Creation
+
+Create a new branch 'dev' and create a PR for the change\
+We will see the CI triggered.
+
 </details>
