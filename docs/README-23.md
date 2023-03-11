@@ -68,4 +68,8 @@ git remote add origin git@github.com:pcsmomo/ticketing.git
 git push --set-upstream origin main
 ```
 
+### 514. Creating a GitHub Action
+
+Git repo -> Actions -> Manual Workflow
+
 </details>
