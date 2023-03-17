@@ -77,4 +77,20 @@ Git repo -> Actions -> Manual Workflow
 Create a new branch 'dev' and create a PR for the change\
 We will see the CI triggered.
 
+### 521. Deployment Options
+
+We will use Digital Ocean for deployment \
+It is the cheapest one among 4 major services (AWS, Google cloud, Azure and digital ocean) \
+And the easiest to use
+
+### 522. Creating a Hosted Cluster
+
+- Digital Ocean -> Create -> Kubernetes
+  - Node plan ($12/Month : the smallest)
+  - Number of Nodes : 2 (in production, 3 recommended)
+  - Name: Ticketing (default name is too long and hard to remember)
+
+> 3 nodes \* $12 = $36\
+> Loadbalancer = $10
+
 </details>
