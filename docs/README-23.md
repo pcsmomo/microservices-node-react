@@ -172,11 +172,6 @@ k config use-context do-syd1-ticketing
 
 ### 526. Building an Image in an Action
 
-```yaml
-# deploy-auth.yaml
-- run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-```
-
 - Github Actions
   - new actions for `deploy-auth.yaml`
 - Github -> Settings -> Security -> Secrets and variables -> Actions
@@ -186,5 +181,18 @@ k config use-context do-syd1-ticketing
   - New repository secret for docker password
     - name: DOCKER_PASSWORD
     - Secret: my docker hub password
+
+```yaml
+# deploy-auth.yaml
+- run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  env:
+    DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+```
+
+### 527. Testing the Image Build
+
+push anything to the main branch, it will triger the build action.\
+which builds the auth image and push it to my docker hub
 
 </details>
