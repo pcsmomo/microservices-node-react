@@ -6,6 +6,10 @@
 # How to run
 
 ```sh
+# Run docker desktop
+
+# run minikube
+minikube start --driver=docker
 minikube tunnel
 
 # ./ticketing/client
