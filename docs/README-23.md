@@ -123,6 +123,8 @@ doctl kubernetes cluster kubeconfig save <cluster name>
 doctl kubernetes cluster kubeconfig save ticketing
 # Notice: Adding cluster credentials to kubeconfig file found in "/Users/noah/.kube/config"
 # Notice: Setting current-context to do-syd1-ticketing
+
+# or cluster id instead of cluster name is fine according to the document
 ```
 
 ```sh
@@ -167,5 +169,22 @@ k config use-context argocd-nana
 k config use-context do-syd1-ticketing
 # (same) kubectx do-syd1-ticketing
 ```
+
+### 526. Building an Image in an Action
+
+```yaml
+# deploy-auth.yaml
+- run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+```
+
+- Github Actions
+  - new actions for `deploy-auth.yaml`
+- Github -> Settings -> Security -> Secrets and variables -> Actions
+  - New repository secret for docker username
+    - name: DOCKER_USERNAME
+    - Secret: pcsmomo
+  - New repository secret for docker password
+    - name: DOCKER_PASSWORD
+    - Secret: my docker hub password
 
 </details>
