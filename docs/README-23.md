@@ -88,9 +88,29 @@ And the easiest to use
 - Digital Ocean -> Create -> Kubernetes
   - Node plan ($12/Month : the smallest)
   - Number of Nodes : 2 (in production, 3 recommended)
-  - Name: Ticketing (default name is too long and hard to remember)
+  - Name: ticketing (default name is too long and hard to remember)
 
 > 3 nodes \* $12 = $36\
 > Loadbalancer = $10
+
+### 523. Reminder on Kubernetes Context
+
+[Digital Ocean CTL](https://github.com/digitalocean/doctl)
+
+```sh
+brew install doctl
+doctl auth init
+# Digital Ocean API token is needed
+```
+
+- Digital Ocean -> API -> Generate New Token
+  - Token name: doctl
+
+```sh
+doctl auth init
+# Enter your access token: <token> Enter
+# or
+doctl auth init -t <token>
+```
 
 </details>
