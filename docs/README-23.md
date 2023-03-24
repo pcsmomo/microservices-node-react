@@ -195,4 +195,15 @@ k config use-context do-syd1-ticketing
 push anything to the main branch, it will triger the build action.\
 which builds the auth image and push it to my docker hub
 
+### 528. Restarting the Deployment
+
+Add another secret in the github repo for digital ocean token
+
+- Digital Ocean -> my project -> API -> Generate new personal access token
+  - name: github_access_token
+- Github -> Settings -> Security -> Secrets and variables -> Actions
+  - New repository secret for digital ocean access token
+    - name: DIGITALOCEAN_ACCESS_TOKEN
+    - Secret: <digital ocean access token>
+
 </details>
