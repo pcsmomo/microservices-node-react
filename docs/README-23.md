@@ -111,6 +111,61 @@ doctl auth init
 # Enter your access token: <token> Enter
 # or
 doctl auth init -t <token>
+# Validating token... ✔
+doctl auth list
+# default (current)
+```
+
+### 524. Reminder on Swapping Contexts
+
+```sh
+doctl kubernetes cluster kubeconfig save <cluster name>
+doctl kubernetes cluster kubeconfig save ticketing
+# Notice: Adding cluster credentials to kubeconfig file found in "/Users/noah/.kube/config"
+# Notice: Setting current-context to do-syd1-ticketing
+```
+
+```sh
+kubectx
+# do-syd1-ticketing
+kubens
+# default
+# kube-node-lease
+# kube-public
+# kube-system
+k get pods
+# No resources found in default namespace.
+```
+
+```sh
+# context test
+k config view
+# contexts:
+# - context:
+#     cluster: ""
+#     user: ""
+#   name: argocd-nana
+# - context:
+#     cluster: do-syd1-ticketing
+#     user: do-syd1-ticketing-admin
+#   name: do-syd1-ticketing
+# - context:
+#     cluster: gke_ticketing-dev-377721_australia-southeast1-a_ticketing-dev
+#     user: gke_ticketing-dev-377721_australia-southeast1-a_ticketing-dev
+#   name: gke_ticketing-dev-377721_australia-southeast1-a_ticketing-dev
+# - context:
+#     cluster: kimn
+#     user: oidc-user
+#   name: kimn
+# - context:
+#     cluster: specnetes
+#     namespace: space-mex
+#     user: oidc-user
+#   name: specnetes
+
+k config use-context argocd-nana
+k config use-context do-syd1-ticketing
+# (same) kubectx do-syd1-ticketing
 ```
 
 </details>
