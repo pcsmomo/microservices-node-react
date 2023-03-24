@@ -210,4 +210,24 @@ Add another secret in the github repo for digital ocean token
     - name: DIGITALOCEAN_ACCESS_TOKEN
     - Secret: <digital ocean access token>
 
+### 531. Manual Secret Creation
+
+```sh
+kubectl config view
+kubectl config use-context do-syd1-ticketing
+
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=randomstring
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Secret key: not public key>
+```
+
 </details>
+
+```sh
+# set up for deployment
+doctl auth init -t <token>
+doctl kubernetes cluster kubeconfig save ticketing
+
+# kubectl config use-context do-syd1-ticketing
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=randomstring
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Secret key: not public key>
+```
