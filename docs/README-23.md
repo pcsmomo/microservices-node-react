@@ -231,3 +231,52 @@ doctl kubernetes cluster kubeconfig save ticketing
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=randomstring
 kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Secret key: not public key>
 ```
+
+###
+
+[ingress nginx - Digital Ocean installation](https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean)
+
+```sh
+kubectx
+# do-syd1-ticketing
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/do/deploy.yaml
+# namespace/ingress-nginx created
+# serviceaccount/ingress-nginx created
+# serviceaccount/ingress-nginx-admission created
+# role.rbac.authorization.k8s.io/ingress-nginx created
+# role.rbac.authorization.k8s.io/ingress-nginx-admission created
+# clusterrole.rbac.authorization.k8s.io/ingress-nginx created
+# clusterrole.rbac.authorization.k8s.io/ingress-nginx-admission created
+# rolebinding.rbac.authorization.k8s.io/ingress-nginx created
+# rolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created
+# clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx created
+# clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created
+# configmap/ingress-nginx-controller created
+# service/ingress-nginx-controller created
+# service/ingress-nginx-controller-admission created
+# deployment.apps/ingress-nginx-controller created
+# job.batch/ingress-nginx-admission-create created
+# job.batch/ingress-nginx-admission-patch created
+# ingressclass.networking.k8s.io/nginx created
+# validatingwebhookconfiguration.admissionregistration.k8s.io/ingress-nginx-admission created
+```
+
+Push the changes to the main branch\
+-> Github actions `deploy-manifests` will be triggered
+
+```sh
+k get pods
+# NAME                                     READY   STATUS              RESTARTS   AGE
+# auth-depl-6bf9b6476b-s9hf9               0/1     ContainerCreating   0          13s
+# auth-mongo-depl-67dc86686c-kvhhh         0/1     ContainerCreating   0          13s
+# client-depl-76c68dc5c9-4smtz             0/1     ContainerCreating   0          12s
+# expiration-depl-854b6fd55-5r7cj          0/1     ContainerCreating   0          11s
+# expiration-redis-depl-5fdd8c6d8d-pp8pt   0/1     ContainerCreating   0          11s
+# nats-depl-868b5ff766-gd5h5               0/1     ContainerCreating   0          10s
+# orders-depl-6fdb7cd5dd-5ptvk             0/1     ContainerCreating   0          10s
+# orders-mongo-depl-6568444645-sb6df       0/1     ContainerCreating   0          9s
+# payments-depl-666f576b8b-czhxz           0/1     ContainerCreating   0          9s
+# payments-mongo-depl-6cf56f89d9-kgdd7     0/1     ContainerCreating   0          8s
+# tickets-depl-74d564f5db-2g6fh            0/1     ContainerCreating   0          8s
+# tickets-mongo-depl-c545cc44c-fwrzl       0/1     ContainerCreating   0          7s
+```
