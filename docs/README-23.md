@@ -389,6 +389,49 @@ spec:
     app.kubernetes.io/component: controller
 ```
 
+### 538. Configuring the Domain Name
+
+#### Add digital ocean DNS to my domain setting
+
+- Namecheap.com -> Domain List -> ticketing-prod.site -> Domain
+  - Nameservers: Custom DNS
+    - ns1.digitalocean.com
+    - ns2.digitalocean.com
+    - ns3.digitalocean.com
+    - ✅ button click
+
+### Add my purchased domain to Load Balancer setting
+
+- Digital Ocean -> Networking -> Domains
+  - Enter domain: ticketing-prod.site
+    - Add Domain
+  - Domain detail (ticketing-prod.site)
+    - create two additional records
+      - first one: `A`
+        - Hostname: @
+        - Will direct to: my load balancer (a2b0a126ca70b41d69ee1d12e9be01a6)
+        - TTL: 30
+      - second one: `CNAME`
+        - Hostname: www
+        - Is an alias of: @
+        - TTL: 30
+
+Push the branch and merge to main.
+
+> Build failed... :(\
+> Let's troubleshoot it
+
+```sh
+Error from server (InternalError): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"Ingress\",\"metadata\":{\"annotations\":{\"kubernetes.io/ingress.class\":\"nginx\",\"nginx.ingress.kubernetes.io/use-regex\":\"true\"},\"name\":\"ingress-service\",\"namespace\":\"default\"},\"spec\":{\"rules\":[{\"host\":\"www.ticketing-prod.site\",\"http\":{\"paths\":[{\"backend\":{\"service\":{\"name\":\"auth-srv\",\"port\":{\"number\":3000}}},\"path\":\"/api/users/?(.*)\",\"pathType\":\"Prefix\"},{\"backend\":{\"service\":{\"name\":\"tickets-srv\",\"port\":{\"number\":3000}}},\"path\":\"/api/tickets/?(.*)\",\"pathType\":\"Prefix\"},{\"backend\":{\"service\":{\"name\":\"orders-srv\",\"port\":{\"number\":3000}}},\"path\":\"/api/orders/?(.*)\",\"pathType\":\"Prefix\"},{\"backend\":{\"service\":{\"name\":\"payments-srv\",\"port\":{\"number\":3000}}},\"path\":\"/api/payments/?(.*)\",\"pathType\":\"Prefix\"},{\"backend\":{\"service\":{\"name\":\"client-srv\",\"port\":{\"number\":3000}}},\"path\":\"/?(.*)\",\"pathType\":\"Prefix\"}]}}]}}\n"}},"spec":{"rules":[{"host":"www.ticketing-prod.site","http":{"paths":[{"backend":{"service":{"name":"auth-srv","port":{"number":3000}}},"path":"/api/users/?(.*)","pathType":"Prefix"},{"backend":{"service":{"name":"tickets-srv","port":{"number":3000}}},"path":"/api/tickets/?(.*)","pathType":"Prefix"},{"backend":{"service":{"name":"orders-srv","port":{"number":3000}}},"path":"/api/orders/?(.*)","pathType":"Prefix"},{"backend":{"service":{"name":"payments-srv","port":{"number":3000}}},"path":"/api/payments/?(.*)","pathType":"Prefix"},{"backend":{"service":{"name":"client-srv","port":{"number":3000}}},"path":"/?(.*)","pathType":"Prefix"}]}}]}}
+to:
+Resource: "networking.k8s.io/v1, Resource=ingresses", GroupVersionKind: "networking.k8s.io/v1, Kind=Ingress"
+Name: "ingress-service", Namespace: "default"
+for: "infra/k8s-prod/ingress.srv.yaml": error when patching "infra/k8s-prod/ingress.srv.yaml": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": failed to call webhook: Post "https://ingress-nginx-controller-admission.ingress-nginx.svc:443/networking/v1/ingresses?timeout=29s": EOF
+service/ingress-nginx-controller configured
+Error: Process completed with exit code 1.
+```
+
 </details>
 
 ```sh
