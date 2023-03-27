@@ -220,19 +220,7 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=randomstring
 kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Secret key: not public key>
 ```
 
-</details>
-
-```sh
-# set up for deployment
-doctl auth init -t <token>
-doctl kubernetes cluster kubeconfig save ticketing
-
-# kubectl config use-context do-syd1-ticketing
-kubectl create secret generic jwt-secret --from-literal=JWT_KEY=randomstring
-kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Secret key: not public key>
-```
-
-###
+### 532. Don't Forget Ingress-Nginx!
 
 [ingress nginx - Digital Ocean installation](https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean)
 
@@ -279,4 +267,26 @@ k get pods
 # payments-mongo-depl-6cf56f89d9-kgdd7     0/1     ContainerCreating   0          8s
 # tickets-depl-74d564f5db-2g6fh            0/1     ContainerCreating   0          8s
 # tickets-mongo-depl-c545cc44c-fwrzl       0/1     ContainerCreating   0          7s
+```
+
+### 536. Buying a Domain Name
+
+- Digital Ocean -> Networking -> Load Balancers
+
+#### Purchasing domain
+
+- [namecheap.com - domain](namecheap.com)
+- ticketing-prod.site
+- A$2.5 per year / no auto renewal
+
+</details>
+
+```sh
+# set up for deployment
+doctl auth init -t <token>
+doctl kubernetes cluster kubeconfig save ticketing
+
+# kubectl config use-context do-syd1-ticketing
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=randomstring
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Secret key: not public key>
 ```
