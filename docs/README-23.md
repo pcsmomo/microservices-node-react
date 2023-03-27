@@ -432,6 +432,27 @@ service/ingress-nginx-controller configured
 Error: Process completed with exit code 1.
 ```
 
+> Next day, rebuild the `deploy-manifests.yaml` and it works.
+
+### 540. Next Steps
+
+#### Clean up Digital Ocean services
+
+- Kubernetes cluster
+- Load Balance
+
+#### Next step
+
+- Add in HTTPS
+  - See [`cert-manager.io`](https://cert-manager.io/)
+- Add in Email Support
+  - Send a user an email after they have paid for an order. Create a new service using Mailchimp/Sendgrid/similar
+- Add in 'build' steps for our prod cluster
+  - Right now we are still running our services + the client in 'dev' mode.
+  - Add in additional Dockerfiles to build each services prior to deployment
+- Create a staging cluster
+  - Our teammates might want to test out our app manually before we deploy it. Maybe we could add in a new Github workflow to watch for pushes to a new branch of 'staging'. Create a new cluster that you will deploy to when you push to this branch.
+
 </details>
 
 ```sh
